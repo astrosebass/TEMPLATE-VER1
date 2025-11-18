@@ -23,6 +23,7 @@ VAR
 	sAdmGroup								: STRING (255)							:= 'Administrator';
 	sEngGroup								: STRING (255)							:= 'Engineer';
 	sOpeGroup								: STRING (255)							:= 'Operator';
+	rEfficency								: STRING(510);
 	
 	j										: DINT;
 	l										: DINT;
@@ -39,6 +40,7 @@ d_ACT_ShutdownAndQuit();
 e_ACT_UserLog();
 f_ACT_TerminalInfo();
 g_ACT_Manual();
+h_ACT_Statistics();
 
 C_1_PRG_MainHMI();
 D_1_WriteDataToCSV();
@@ -299,8 +301,32 @@ END_IF
 ]]></ST>
       </Implementation>
     </Action>
+    <Action Name="h_ACT_Statistics" Id="{00b1c5d7-138a-4e5a-aad9-c5f6ae987c75}">
+      <Implementation>
+        <ST><![CDATA[stStatisticsHMI[0].sName			:= 'TOTAL';
+
+stStatisticsHMI[0].nGood		:= stStatisticsHMI[1].nGood + stStatisticsHMI[2].nGood + stStatisticsHMI[3].nGood;
+stStatisticsHMI[0].nTotalGood	:= stStatisticsHMI[1].nTotalGood + stStatisticsHMI[2].nTotalGood + stStatisticsHMI[3].nTotalGood;
+stStatisticsHMI[0].nBad			:= stStatisticsHMI[1].nBad + stStatisticsHMI[2].nBad + stStatisticsHMI[3].nBad;
+stStatisticsHMI[0].nTotalBad	:= stStatisticsHMI[1].nTotalBad + stStatisticsHMI[2].nTotalBad + stStatisticsHMI[3].nTotalBad;
+
+								
+
+IF (( stStatisticsHMI[0].nGood + stStatisticsHMI[0].nBad) <> 0) THEN
+	
+	rEfficency							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[0].nGood) /( DINT_TO_REAL(stStatisticsHMI[0].nGood) + DINT_TO_REAL(stStatisticsHMI[0].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
+	stStatisticsHMI[0].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency));
+
+ELSE stStatisticsHMI[0].nEfficency		:= CONCAT(STR1 := '%', STR2 := (DINT_TO_STRING(0)));
+	
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="A_1_PRG_Main_Master">
       <LineId Id="443" Count="7" />
+      <LineId Id="579" Count="0" />
       <LineId Id="521" Count="0" />
       <LineId Id="451" Count="0" />
       <LineId Id="550" Count="0" />
@@ -390,6 +416,18 @@ END_IF
       <LineId Id="6" Count="0" />
       <LineId Id="16" Count="0" />
       <LineId Id="21" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.h_ACT_Statistics">
+      <LineId Id="2" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="38" Count="6" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

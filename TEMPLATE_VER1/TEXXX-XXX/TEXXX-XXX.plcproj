@@ -66,6 +66,9 @@
     <Compile Include="DUTs\MASTER\ST_Puls.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\MASTER\ST_StatisticsHMI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\STATIONS\STATION_1\E_Station1_State.TcDUT">
       <SubType>Code</SubType>
     </Compile>

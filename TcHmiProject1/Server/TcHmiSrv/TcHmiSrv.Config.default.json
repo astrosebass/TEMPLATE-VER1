@@ -52,6 +52,14 @@
             "minItems": 40,
             "type": "array"
         },
+        "PLC1.ARRAY_0..3_OF-ST_StatisticsHMI": {
+            "items": {
+                "$ref": "#/definitions/PLC1.ST_StatisticsHMI"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+        },
         "PLC1.ST_ActiveEventsHMI": {
             "properties": {
                 "sActiveEvents": {
@@ -100,6 +108,81 @@
                         },
                         {
                             "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "PLC1.ST_StatisticsHMI": {
+            "properties": {
+                "bResetBad": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/BOOL"
+                        },
+                        {
+                            "propertyOrder": 7
+                        }
+                    ]
+                },
+                "bResetGood": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/BOOL"
+                        },
+                        {
+                            "propertyOrder": 6
+                        }
+                    ]
+                },
+                "nBad": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "propertyOrder": 3
+                        }
+                    ]
+                },
+                "nGood": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "propertyOrder": 2
+                        }
+                    ]
+                },
+                "nTotalBad": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "propertyOrder": 5
+                        }
+                    ]
+                },
+                "nTotalGood": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "propertyOrder": 4
+                        }
+                    ]
+                },
+                "sName": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/STRING%2880%29"
+                        },
+                        {
+                            "propertyOrder": 1
                         }
                     ]
                 }
@@ -2935,6 +3018,23 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_Persistent.stStatisticsHMI": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Persistent::stStatisticsHMI",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "comment": "0: GENERAL"
+                    },
+                    {
+                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..3_OF-ST_StatisticsHMI"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_Persistent.stUserLog": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3936,6 +4036,7 @@
                 "PLC1.GVL_Master.sSystemTime": 3,
                 "PLC1.GVL_Master.stActiveEventsHMI": 3,
                 "PLC1.GVL_Persistent.stAlarmHistory": 3,
+                "PLC1.GVL_Persistent.stStatisticsHMI": 3,
                 "PLC1.GVL_Persistent.stUserLog": 3,
                 "SetLocale": 3,
                 "SubscribeEvents": 3,

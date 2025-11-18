@@ -18,7 +18,9 @@ TYPE E_Station3_State :
 	MOVEMENT_A			:=100,
 	MOVEMENT_B			:=120,
 	MOVEMENT_C			:=130,
-	DONE				:=140
+	DONE				:=140,
+	RESULTS				:=160,
+	RESET				:=180
 );
 END_TYPE
 ]]></Declaration>

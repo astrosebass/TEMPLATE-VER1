@@ -359,7 +359,8 @@ E_ProcessCycle.SAVE_DATA2:
 				IF tonSave_Data.Q THEN
 					eCycleState								:= E_ProcessCycle.CSV;
 				END_IF	
-
+				
+				
 E_ProcessCycle.CSV:
 			
 				stCSVProcess.bWriteData						:= TRUE;
@@ -607,6 +608,7 @@ END_CASE
       <LineId Id="240" Count="1" />
       <LineId Id="239" Count="0" />
       <LineId Id="243" Count="0" />
+      <LineId Id="261" Count="0" />
       <LineId Id="242" Count="0" />
       <LineId Id="245" Count="1" />
       <LineId Id="256" Count="2" />

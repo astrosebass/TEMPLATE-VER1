@@ -1,3 +1,282 @@
-<div id="Content1_6" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="800" data-tchmi-height="640">
+<div id="Content1_6" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1280" data-tchmi-height="479">
 
+<div id="TcHmiDatagrid_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="284" data-tchmi-height-unit="px" data-tchmi-left="163" data-tchmi-left-unit="px" data-tchmi-top="86" data-tchmi-top-unit="px" data-tchmi-width="885" data-tchmi-width-unit="px" data-tchmi-src-data="%s%PLC1.GVL_Persistent.stStatisticsHMI|BindingMode=TwoWay%/s%" data-tchmi-row-height="60" data-tchmi-grid-font-style="Normal" data-tchmi-grid-font-weight="Bold" data-tchmi-grid-font-size="25">
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "Test1": "Example Data",
+    "Test2": 42,
+    "Test3": true,
+    "Test4": "Editable Data"
+  },
+  {
+    "Test1": "Example Data",
+    "Test2": 3.1415,
+    "Test3": false,
+    "Test4": "Editable Data"
+  }
+]
+</script>
+<script data-tchmi-target-attribute="data-tchmi-cell-content-padding" type="application/json">
+{
+  "left": 3,
+  "leftUnit": "px",
+  "right": 3,
+  "rightUnit": "px",
+  "top": 0,
+  "topUnit": "px",
+  "bottom": 0,
+  "bottomUnit": "px"
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-column" type="application/json">
+[
+  {
+    "name": "sName",
+    "label": "NAME",
+    "control": "TextBox",
+    "width": 150,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "textColor": {
+      "color": "rgba(0, 0, 0, 1)"
+    },
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "nGood",
+    "label": "GOOD",
+    "control": "TextBox",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "cellBackground": {
+      "angle": 250.0,
+      "stopPoints": [
+        {
+          "color": "rgba(255, 255, 255, 1)",
+          "stop": "1.31%"
+        },
+        {
+          "color": "rgba(101, 255, 0, 1)",
+          "stop": "25%"
+        }
+      ]
+    },
+    "textColor": {
+      "color": "rgba(0, 0, 0, 1)"
+    },
+    "editable": false,
+    "horizontalAlignment": "Center",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "nTotalGood",
+    "label": "TOTAL GOOD",
+    "control": "TextBox",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "cellBackground": {
+      "angle": 250.0,
+      "stopPoints": [
+        {
+          "color": "rgba(255, 255, 255, 1)",
+          "stop": "0%"
+        },
+        {
+          "color": "rgba(101, 255, 0, 1)",
+          "stop": "25%"
+        }
+      ]
+    },
+    "textColor": {
+      "color": "rgba(0, 0, 0, 1)"
+    },
+    "editable": false,
+    "horizontalAlignment": "Center",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "nBad",
+    "label": "BAD",
+    "control": "TextBox",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "cellBackground": {
+      "angle": 250.0,
+      "stopPoints": [
+        {
+          "color": "rgba(255, 255, 255, 1)",
+          "stop": "0%"
+        },
+        {
+          "color": "rgba(255, 0, 0, 1)",
+          "stop": "25%"
+        }
+      ]
+    },
+    "textColor": {
+      "color": "rgba(0, 0, 0, 1)"
+    },
+    "editable": false,
+    "horizontalAlignment": "Center",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "nTotalBad",
+    "label": "TOTAL BAD",
+    "control": "TextBox",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "cellBackground": {
+      "angle": 250.0,
+      "stopPoints": [
+        {
+          "color": "rgba(255, 255, 255, 1)",
+          "stop": "0%"
+        },
+        {
+          "color": "rgba(255, 0, 0, 1)",
+          "stop": "25%"
+        }
+      ]
+    },
+    "textColor": {
+      "color": "rgba(0, 0, 0, 1)"
+    },
+    "editable": false,
+    "horizontalAlignment": "Center",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "bResetGood",
+    "label": "RESET GOOD",
+    "control": "Button",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": true,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "bResetBad",
+    "label": "RESET BAD",
+    "control": "Button",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": true,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "nEfficency",
+    "label": "EFFICIENCY",
+    "control": "TextBox",
+    "width": 0,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-header-background-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-header-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-table-border-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+
+
+</div>
 </div>

@@ -8,12 +8,18 @@ VAR
 	tonErrorReset						: TON;
 	tonStationStopped					: TON;
 	ctuErrorCounter						: CTU;
+	rGoodStatistics						: R_TRIG;
+	rBadStatistics						: R_TRIG;
+	rEfficency							: STRING(510);
+	
 	bPersistentError					: bool;
 /////////////////////////////////////////////////////////////////////////////////////I O/////////////////////////////////////////////////////////////////////////////////////	
 	bStopped							: BOOL;
 	bError								: BOOL;
 	bReady								: BOOL;
 	bDone								: BOOL;
+	bPass								: BOOL;
+	bFail								: BOOL;
 
 	
 END_VAR
@@ -33,7 +39,7 @@ END_VAR]]></Declaration>
       <ST><![CDATA[B_1_2_PRG_Fault_Station_1( aAlarms := stAlarms );
 a_ACT_Ctrl_Station_1();
 b_ACT_IO();
-]]></ST>
+c_ACT_Statistics_Station_1();]]></ST>
     </Implementation>
     <Action Name="a_ACT_Ctrl_Station_1" Id="{ce5dd8ea-9899-4a9f-bde8-defccc1c38a2}">
       <Implementation>
@@ -42,6 +48,8 @@ tonErrorReset( IN := (eState = E_Station1_State.RESET_ERROR), PT := T#500MS);
 tonStationStopped( IN := bStopped, PT := T#1S);
 
 ctuErrorCounter( CU := eState = E_Station1_State.RESET_ERROR, RESET := ((ctuErrorCounter.CV = 5) AND eState = E_Station1_State.PERSISTENT_ERROR), PV := 5, Q => bPersistentError);
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////CONDITIONS/////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,8 +78,14 @@ CASE eState OF
 	
 	E_Station1_State.HOMING:
 								IF bReady THEN
-									eState						:= E_Station1_State.READY;
+									eState						:= E_Station1_State.RESET;
 								END_IF
+																
+	E_Station1_State.RESET:
+								stCycleDataStation1.bPass	:= FALSE;
+								stCycleDataStation1.bFail	:= FALSE;
+								
+								eState						:= E_Station1_State.READY;
 	E_Station1_State.READY:
 								IF CMD.bExecute AND stStation1.Mov1 THEN
 									eState						:= E_Station1_State.MOVEMENT_A;
@@ -96,8 +110,21 @@ CASE eState OF
 								END_IF
 	E_Station1_State.DONE:
 								IF  CMD.bReady THEN
-									eState						:= E_Station1_State.READY;
+									eState						:= E_Station1_State.RESULTS;
 								END_IF	
+								
+	E_Station1_State.RESULTS:
+								
+								IF bPass THEN
+									stCycleDataStation1.bPass	:= TRUE;
+								ELSIF bFail THEN
+								 	stCycleDataStation1.bFail	:= TRUE;
+								END_IF
+								
+								IF  CMD.bEndCycle THEN
+									eState						:= E_Station1_State.RESET;
+								END_IF
+								
 /////////////////////////////////////////////////////////////////////////////////////RESET CMD/////////////////////////////////////////////////////////////////////////////////////			
 	
 	E_Station1_State.STOPPING: 
@@ -126,7 +153,13 @@ CASE eState OF
 								IF CMD.bReset THEN
 									eState						:= E_Station1_State.ERROR;
 								END_IF
+	
+
+
+							
+						
 								
+													
 								
 
 ELSE eState := E_Station1_State.ABORTED;
@@ -142,8 +175,10 @@ Status.bBusy				:= 	eState			= E_Station1_State.HOMING OR
 								
 Status.bDone				:=	eState			= E_Station1_State.DONE;
 											
-Status.bError				:= 	eState			= (E_Station1_State.ERROR OR  E_Station1_State.RESET_ERROR OR E_Station1_State.PERSISTENT_ERROR);
-
+Status.bError				:= 	(eState			= E_Station1_State.ERROR) OR 
+								(eState			= E_Station1_State.RESET_ERROR) OR
+								(eState			= E_Station1_State.PERSISTENT_ERROR);
+								
 Status.bReady				:= 	eState			= E_Station1_State.READY;
 
 Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
@@ -160,9 +195,52 @@ Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
 //bDone]]></ST>
       </Implementation>
     </Action>
+    <Action Name="c_ACT_Statistics_Station_1" Id="{33f3666a-9a01-47bc-b17c-8cc705cb878c}">
+      <Implementation>
+        <ST><![CDATA[stStatisticsHMI[1].sName			:= 'Station 1';
+
+
+rGoodStatistics( CLK := (stCycleDataStation1.bPass AND (eState = E_Station1_State.RESULTS)) OR bStatisticsTest[0]);
+rBadStatistics( CLK := (stCycleDataStation1.bFail AND (eState = E_Station1_State.RESULTS)) OR bStatisticsTest[1]);
+
+IF 	rGoodStatistics.Q THEN
+	
+	stStatisticsHMI[1].nGood		:= stStatisticsHMI[1].nGood + 1;
+	stStatisticsHMI[1].nTotalGood	:= stStatisticsHMI[1].nTotalGood + 1;
+	
+END_IF
+								
+IF 	rBadStatistics.Q THEN
+	
+	stStatisticsHMI[1].nBad			:= stStatisticsHMI[1].nBad + 1;
+	stStatisticsHMI[1].nTotalBad	:= stStatisticsHMI[1].nTotalBad + 1;
+	
+END_IF
+
+IF stStatisticsHMI[1].bResetGood THEN
+	stStatisticsHMI[1].nGood		:= 0;
+END_IF
+
+IF stStatisticsHMI[1].bResetBad THEN
+	stStatisticsHMI[1].nBad			:= 0;
+END_IF
+
+
+
+IF (( stStatisticsHMI[1].nGood + stStatisticsHMI[1].nBad) <> 0) THEN
+	
+	rEfficency							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[1].nGood) /( DINT_TO_REAL(stStatisticsHMI[1].nGood) + DINT_TO_REAL(stStatisticsHMI[1].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
+	stStatisticsHMI[1].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency));
+
+ELSE stStatisticsHMI[1].nEfficency		:= CONCAT(STR1 := '%', STR2 := (DINT_TO_STRING(0)));
+	
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="B_1_1_PRG_Master_Station_1">
       <LineId Id="87" Count="2" />
-      <LineId Id="41" Count="0" />
+      <LineId Id="119" Count="0" />
     </LineIds>
     <LineIds Name="B_1_1_PRG_Master_Station_1.a_ACT_Ctrl_Station_1">
       <LineId Id="121" Count="0" />
@@ -170,6 +248,8 @@ Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
       <LineId Id="71" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="110" Count="0" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="195" Count="0" />
       <LineId Id="122" Count="0" />
       <LineId Id="120" Count="0" />
       <LineId Id="70" Count="0" />
@@ -189,13 +269,24 @@ Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
       <LineId Id="134" Count="1" />
       <LineId Id="8" Count="0" />
       <LineId Id="11" Count="4" />
-      <LineId Id="19" Count="7" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="210" Count="4" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="20" Count="6" />
       <LineId Id="29" Count="4" />
       <LineId Id="36" Count="4" />
       <LineId Id="43" Count="3" />
       <LineId Id="49" Count="0" />
       <LineId Id="152" Count="1" />
       <LineId Id="156" Count="1" />
+      <LineId Id="179" Count="2" />
+      <LineId Id="184" Count="1" />
+      <LineId Id="188" Count="1" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="198" Count="0" />
       <LineId Id="163" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="164" Count="0" />
@@ -212,6 +303,12 @@ Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
       <LineId Id="111" Count="1" />
       <LineId Id="116" Count="2" />
       <LineId Id="113" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="170" Count="0" />
       <LineId Id="109" Count="0" />
       <LineId Id="61" Count="2" />
       <LineId Id="1" Count="0" />
@@ -226,12 +323,40 @@ Status.bStopped				:= 	eState			= E_Station1_State.ABORTED OR
       <LineId Id="97" Count="0" />
       <LineId Id="85" Count="0" />
       <LineId Id="98" Count="0" />
+      <LineId Id="165" Count="1" />
       <LineId Id="86" Count="0" />
       <LineId Id="99" Count="0" />
       <LineId Id="92" Count="3" />
     </LineIds>
     <LineIds Name="B_1_1_PRG_Master_Station_1.b_ACT_IO">
       <LineId Id="1" Count="3" />
+    </LineIds>
+    <LineIds Name="B_1_1_PRG_Master_Station_1.c_ACT_Statistics_Station_1">
+      <LineId Id="2" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="3" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="8" Count="2" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="27" Count="2" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="49" Count="7" />
+      <LineId Id="38" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

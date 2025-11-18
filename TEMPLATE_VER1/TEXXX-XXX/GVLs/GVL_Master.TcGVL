@@ -31,6 +31,8 @@
 	stMachineStatus					: ST_MachineStatus;	
 	stMasterCtrl					: ST_MasterCTRL;
 	stAlarms                        : ARRAY [0..3] OF ST_Events;
+	bStatisticsTest					: ARRAY[0..6] OF  BOOL;
+	
 
 END_VAR]]></Declaration>
   </GVL>
