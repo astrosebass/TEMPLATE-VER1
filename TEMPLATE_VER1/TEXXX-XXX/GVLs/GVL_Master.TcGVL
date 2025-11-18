@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <GVL Name="GVL_Master" Id="{ff1c03dd-d56c-490f-bced-572c30dff423}">
+    <Declaration><![CDATA[VAR_GLOBAL
+////////////////////////////////////////:	///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////GENERIC/////////////////////////////////////////////////////////////////////////////////////
+
+	// PowerUP 
+	tonSystemPowerUP				:TON;
+	tSystemPowerUP_Time				:TIME								:=T#35S;
+	bSystemPoweringUP				:BOOL								:=TRUE; //Global System PowerUP Flag
+	
+	fbSystemShutDown     	        : NT_Shutdown;
+	stButtonsLamps					: ST_ButtonsLamps;
+	stPuls							: ST_Puls;		
+	
+	sSystemDate						: STRING;
+	sSystemTime						: STRING;
+
+	stCSVProcess					: ST_CSVProcess;
+/////////////////////////////////////////////////////////////////////////////////////Event Log/////////////////////////////////////////////////////////////////////////////////////
+	
+	aEventTexts						: ARRAY [0..767] OF T_MaxSTring; //Event texts - set only once
+	bEventTextsSet					: BOOL;
+	aEventFlags						: ARRAY [0..767] OF BOOL;		//All event states combined from master na stations
+	aActiveEvents					: ARRAY [0..39] OF T_MaxSTring;	//Active events - connected to Alarm scree in HMI	
+	stActiveEventsHMI				: ARRAY [0..39] OF ST_ActiveEventsHMI;
+	
+/////////////////////////////////////////////////////////////////////////////////////MACHINE CONTROL////////////////////////////////////////////////////////////////////////////
+	
+	stMachineStatus					: ST_MachineStatus;	
+	stMasterCtrl					: ST_MasterCTRL;
+	stAlarms                        : ARRAY [0..3] OF ST_Events;
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="B_3_2_PRG_Fault_Station_3" Id="{81a049e5-a29e-4da5-a350-522192b04d5a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM B_3_2_PRG_Fault_Station_3
+VAR_INPUT
+	
+	i										: INT;
+	
+END_VAR
+
+VAR_IN_OUT
+	aAlarms  								: ARRAY[0..3] OF ST_Events;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[a_ACT_FaultTrig();
+
+(************************************** Faults reset **********************************************)
+IF   stButtonsLamps.bResetButtonFallingEdge THEN 
+	FOR i := 0 TO 127 DO
+		GVL_MASTER.stAlarms[3].aEventFlags[i] := FALSE;
+	END_FOR
+END_IF
+//===============================================================
+//Initialize event texts on first scan
+IF NOT GVL_MASTER.stAlarms[3].bEventTextsSet THEN
+	b_MET_SetEventTexts();
+	GVL_MASTER.stAlarms[3].bEventTextsSet := TRUE;
+END_IF
+
+
+(***************************************************************************************************)
+//Immediate fault
+GVL_MASTER.stAlarms[3].bImmediateFault := FALSE;
+FOR i := 0 TO 32DO
+	GVL_MASTER.stAlarms[3].bImmediateFault := GVL_MASTER.stAlarms[3].bImmediateFault OR GVL_MASTER.stAlarms[3].aEventFlags[i];
+END_FOR
+
+//Cycle stop fault
+GVL_MASTER.stAlarms[3].bCycleStopFault := FALSE;
+FOR i := 33 TO 79 DO
+	GVL_MASTER.stAlarms[3].bCycleStopFault := GVL_MASTER.stAlarms[3].bCycleStopFault OR GVL_MASTER.stAlarms[3].aEventFlags[i];
+END_FOR
+
+//Cycle stop REQUEST
+GVL_MASTER.stAlarms[3].bCycleStopRequest := FALSE;
+FOR i := 80 TO 99 DO
+	GVL_MASTER.stAlarms[3].bCycleStopRequest := GVL_MASTER.stAlarms[3].bCycleStopRequest OR GVL_MASTER.stAlarms[3].aEventFlags[i];
+END_FOR
+]]></ST>
+    </Implementation>
+    <Action Name="a_ACT_FaultTrig" Id="{9d938e7b-4f7b-4d65-b21a-0baa52da7b00}">
+      <Implementation>
+        <ST><![CDATA[
+/////////////////////////////////////////////////////////////////////////////////////Immediate Faults 0-32////////////////////////////////////////////////////////////////////////////////////
+
+//Immediate Fault
+GVL_MASTER.stAlarms[3].aEventTimers[0]
+(IN := ,PT:= T#500MS );
+IF GVL_MASTER.stAlarms[3].aEventTimers[0].Q  THEN 
+	GVL_MASTER.stAlarms[3].aEventFlags[0] := TRUE;
+END_IF
+
+/////////////////////////////////////////////////////////////////////////////////////Cycle stop faults 33-79////////////////////////////////////////////////////////////////////////////////////
+
+////Cycle stop fault
+GVL_MASTER.stAlarms[3].aEventTimers[33]
+(IN := ,PT:= T#500MS );
+IF GVL_MASTER.stAlarms[3].aEventTimers[33].Q THEN 
+	GVL_MASTER.stAlarms[3].aEventFlags[33] := TRUE;
+END_IF
+
+/////////////////////////////////////////////////////////////////////////////////////Cycle stop Requests 80-99////////////////////////////////////////////////////////////////////////////////////
+
+////Cycle stop Request
+GVL_MASTER.stAlarms[3].aEventTimers[80]
+(IN := ,PT:= T#500MS );
+IF GVL_MASTER.stAlarms[3].aEventTimers[80].Q THEN 
+	GVL_MASTER.stAlarms[3].aEventFlags[80] := TRUE;
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="b_MET_SetEventTexts" Id="{4e4a1dc9-50a4-4881-81ad-542d6379e085}">
+      <Declaration><![CDATA[METHOD b_MET_SetEventTexts : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////Immediate Faults 0-32////////////////////////////////////////////////////////////////////////////////////
+
+GVL_MASTER.stAlarms[3].aEventTexts[0] := 'Station 3 - Immediate Fault';
+GVL_MASTER.stAlarms[3].aEventTexts[1] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[2] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[4] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[5] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[6] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[7] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[8] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[9] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[10] := ''; 
+GVL_MASTER.stAlarms[3].aEventTexts[11] := ''; 
+GVL_MASTER.stAlarms[3].aEventTexts[12] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[13] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[14] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[15] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[16] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[17] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[18] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[19] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[20] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[21] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[22] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[23] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[24] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[25] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[26] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[27] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[28] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[29] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[30] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[31] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[32] := '';
+
+/////////////////////////////////////////////////////////////////////////////////////Cycle stop faults 33-79////////////////////////////////////////////////////////////////////////////////////
+
+GVL_MASTER.stAlarms[3].aEventTexts[33] := 'Cycle stop fault';
+GVL_MASTER.stAlarms[3].aEventTexts[34] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[35] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[36] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[37] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[38] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[39] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[40] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[41] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[42] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[43] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[44] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[45] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[46] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[47] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[48] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[49] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[50] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[51] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[52] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[53] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[54] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[55] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[56] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[57] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[58] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[59] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[60] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[61] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[62] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[63] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[64] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[65] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[66] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[67] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[68] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[69] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[70] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[71] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[73] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[74] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[75] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[76] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[77] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[78] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[79] := '';
+
+/////////////////////////////////////////////////////////////////////////////////////Cycle stop Requests 80-99////////////////////////////////////////////////////////////////////////////////////
+
+
+GVL_MASTER.stAlarms[3].aEventTexts[80] := 'Cycle stop Request';
+GVL_MASTER.stAlarms[3].aEventTexts[81] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[82] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[83] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[84] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[85] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[86] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[87] := ''; 
+GVL_MASTER.stAlarms[3].aEventTexts[88] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[89] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[90] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[91] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[92] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[93] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[94] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[95] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[96] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[97] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[98] := '';
+GVL_MASTER.stAlarms[3].aEventTexts[99] := '';
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="B_3_2_PRG_Fault_Station_3">
+      <LineId Id="127" Count="33" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="B_3_2_PRG_Fault_Station_3.a_ACT_FaultTrig">
+      <LineId Id="32" Count="0" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="2" Count="2" />
+      <LineId Id="6" Count="2" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="22" Count="9" />
+      <LineId Id="21" Count="0" />
+    </LineIds>
+    <LineIds Name="B_3_2_PRG_Fault_Station_3.b_MET_SetEventTexts">
+      <LineId Id="6" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="10" Count="22" />
+      <LineId Id="47" Count="6" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="80" Count="5" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="90" Count="8" />
+      <LineId Id="101" Count="9" />
+      <LineId Id="113" Count="9" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="127" Count="7" />
+      <LineId Id="138" Count="1" />
+      <LineId Id="34" Count="10" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="140" Count="10" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

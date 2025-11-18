@@ -1,0 +1,46 @@
+<div id="Content1_3" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1280" data-tchmi-height="479">
+
+<div id="Manual_Tab" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTabNavigation" data-tchmi-height="459" data-tchmi-height-unit="px" data-tchmi-left="18" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="1242" data-tchmi-width-unit="px">
+<script data-tchmi-target-attribute="data-tchmi-tabs" type="application/json">
+[
+  {
+    "name": "Station 1",
+    "displayName": "Station 1",
+    "targetFile": {
+      "path": "Contents/Manual/1_Station1.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center"
+  },
+  {
+    "name": "Station 2",
+    "displayName": "Station 2",
+    "targetFile": {
+      "path": "Contents/Manual/2_Station2.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center"
+  },
+  {
+    "name": "Station 3",
+    "displayName": "Station 3",
+    "targetFile": {
+      "path": "Contents/Manual/3_Station3.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center"
+  }
+]
+</script>
+
+</div>
+</div>

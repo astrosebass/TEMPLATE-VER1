@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <DUT Name="E_Station1_State" Id="{5b10c3d3-fd3b-49e5-b6cb-e01f459b546a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_Station1_State :
+(
+		//GENERIC
+	ABORTED				:=10,
+	RESET_ERROR			:=20,
+	HOMING				:=30,
+	READY				:=40,
+	//MANUAL_MODE			:=50, /manual mode not needed.
+	ERROR				:=60,
+	PERSISTENT_ERROR	:=70,
+	STOPPING			:=80,
+	//SPECIFIC FOR EVERY STATION
+	MOVEMENT_A			:=100,
+	MOVEMENT_B			:=120,
+	MOVEMENT_C			:=130,
+	DONE				:=140
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

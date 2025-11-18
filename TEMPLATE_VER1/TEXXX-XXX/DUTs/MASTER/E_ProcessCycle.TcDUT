@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <DUT Name="E_ProcessCycle" Id="{efc1fb3f-e466-425d-af8e-a4df616b7389}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_ProcessCycle :
+(
+
+	
+IDLE								:=0,
+STATION1_MOV1						:=10,
+WAIT_STATION1_MOV1					:=20,
+STATION2_MOV2						:=30,
+WAIT_STATION2_MOV2					:=40,
+STATION3_MOV3						:=50,
+WAIT_STATION3_MOV3					:=60,
+STATION1_MOV3_STATION2_MOV2			:=70,
+WAIT_STATION1_MOV3_STATION2_MOV2	:=80,
+SAVE_DATA							:=90,
+SAVE_DATA2							:=100,
+CSV									:=110,
+
+RESET_ALL_CMD						:=120
+
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,82 @@
+<div id="Content1_5" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1260" data-tchmi-height="479">
+
+<div id="TcHmiDatagrid_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="479" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1260" data-tchmi-width-unit="px" data-tchmi-src-data="%s%PLC1.GVL_Persistent.stAlarmHistory%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-cell-content-padding" type="application/json">
+{
+  "left": 3,
+  "leftUnit": "px",
+  "right": 3,
+  "rightUnit": "px",
+  "top": 0,
+  "topUnit": "px",
+  "bottom": 0,
+  "bottomUnit": "px"
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-column" type="application/json">
+[
+  {
+    "name": "sEventlog",
+    "label": "EVENT",
+    "control": "TextBox",
+    "width": 660,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "sDate",
+    "label": "DATE",
+    "control": "TextBox",
+    "width": 300,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "sTime",
+    "label": "TIME",
+    "control": "TextBox",
+    "width": 300,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  }
+]
+</script>
+</div>
+</div>

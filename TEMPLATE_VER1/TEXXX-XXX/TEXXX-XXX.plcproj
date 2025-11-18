@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{997013a6-75d1-424b-98f5-a30289b2b96e}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>TEXXX_XXX</Name>
+    <ProgramVersion>3.1.4024.0</ProgramVersion>
+    <Application>{a5fce09d-f1d0-4a9e-807a-eb00219ea591}</Application>
+    <TypeSystem>{dba18b2c-0ae9-45c8-b8b9-76f224b7cd77}</TypeSystem>
+    <Implicit_Task_Info>{18262063-24e7-436d-a552-2b6d2a430b58}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{533c41f1-aa93-4828-b306-1ded17d1a3cc}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{bd0a63b8-0f57-44ea-a620-f2e2b9cd9c69}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{7e0ded34-cd0a-44e1-a526-a59b9a6219c4}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DUTs\HMI\ST_StatusBanner.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\CARDS\ST_Terminal_Info.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\CARDS\ST_EL1809.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\IO\CARDS\ST_EL2809.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\E_MachineState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\E_ProcessCycle.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\log_CSV\ST_CSVProcess.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\log_CSV\ST_UserLog.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\log_CSV\ST_CycleData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_ButtonsLamps.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_HMI_IO.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_MachineStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_MasterCTRL.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_StationCMD.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_StationStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\MASTER\ST_Puls.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_1\E_Station1_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_1\ST_CycleDataStation1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_1\ST_Station_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_2\E_Station2_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_2\ST_CycleDataStation2.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_2\ST_Station_2.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_3\E_Station3_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_3\ST_CycleDataStation3.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\STATIONS\STATION_3\ST_Station_3.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_ActiveEventsHMI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_AlarmHistory.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_Events.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_UserLogHMI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL_Constants.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_HMI.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_IO.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_Master.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_Persistent.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_Stations.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\A_MASTER\A_1_PRG_Main_Master.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\A_MASTER\A_2_PRG_MachineCtrl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\A_MASTER\A_3_PRG_FaultHandling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\A_MASTER\A_4_PRG_MasterSystemTime.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_1_STATION_1\B_1_1_PRG_Master_Station_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_1_STATION_1\B_1_2_PRG_Fault_Station_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_2_STATION_2\B_2_1_PRG_Master_Station_2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_2_STATION_2\B_2_2_PRG_Fault_Station_2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_3_STATION_3\B_3_1_PRG_Master_Station_3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\B_STATIONS\B_3_STATION_3\B_3_2_PRG_Fault_Station_3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\C_HMI\C_1_PRG_MainHMI.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\D_CSV\D_1_WriteDataToCSV.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_EventLog.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_UserLog.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_Pulse.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_TerminalInfo.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\FB_TimeControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\PRG_Puls.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="DUTs\IO\CARDS" />
+    <Folder Include="DUTs\MASTER" />
+    <Folder Include="DUTs\IO" />
+    <Folder Include="DUTs\MASTER\log_CSV" />
+    <Folder Include="DUTs\HMI" />
+    <Folder Include="DUTs\STATIONS" />
+    <Folder Include="DUTs\STATIONS\STATION_1" />
+    <Folder Include="DUTs\STATIONS\STATION_2" />
+    <Folder Include="DUTs\STATIONS\STATION_3" />
+    <Folder Include="DUTs\USER_ALARMS_EVENTS" />
+    <Folder Include="GVLs" />
+    <Folder Include="POUs\A_MASTER" />
+    <Folder Include="POUs\B_STATIONS" />
+    <Folder Include="POUs\B_STATIONS\B_1_STATION_1" />
+    <Folder Include="POUs\B_STATIONS\B_2_STATION_2" />
+    <Folder Include="POUs\B_STATIONS\B_3_STATION_3" />
+    <Folder Include="POUs\C_HMI" />
+    <Folder Include="POUs\D_CSV" />
+    <Folder Include="POUs\Utilities" />
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+      <Parameters>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>TABLE_UPPER_BOUND</Key>
+          <Value>15</Value>
+        </Parameter>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>STRING_LENGTH_EXP</Key>
+          <Value>255</Value>
+        </Parameter>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>STRING_LENGTH_ADDRESS</Key>
+          <Value>20</Value>
+        </Parameter>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>STRING_LENGTH_COMMENT</Key>
+          <Value>255</Value>
+        </Parameter>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>STRING_LENGTH_OUTSTRING</Key>
+          <Value>255</Value>
+        </Parameter>
+        <Parameter ListName="PARAM" xmlns="">
+          <Key>TABLE_SHOW_VALID_ITEMS</Key>
+          <Value>FALSE</Value>
+        </Parameter>
+      </Parameters>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+      <Parameters>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>NMAXLICENSES</Key>
+          <Value>50</Value>
+        </Parameter>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>NMAXLICENSEDEVICES</Key>
+          <Value>16</Value>
+        </Parameter>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>NMAXCPUCOUNT</Key>
+          <Value>64</Value>
+        </Parameter>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>CMAXCHARACTERS</Key>
+          <Value>16#FFFFFFF0</Value>
+        </Parameter>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>NMAXFILESONDONGLE</Key>
+          <Value>20</Value>
+        </Parameter>
+        <Parameter ListName="PARAMETERLIST" xmlns="">
+          <Key>CMAXCSVFIELDVALUESIZE</Key>
+          <Value>255</Value>
+        </Parameter>
+      </Parameters>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TEXXX-XXX.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" />
+      <d n="Values" t="Hashtable" />
+    </o>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

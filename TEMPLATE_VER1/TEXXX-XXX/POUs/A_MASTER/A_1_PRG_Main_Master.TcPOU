@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="A_1_PRG_Main_Master" Id="{f5cadd41-0b0d-4992-977e-5b237965be89}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM A_1_PRG_Main_Master
+VAR
+	
+	rtrigButton             				: ARRAY[1..3] OF Tc2_Standard.R_TRIG;
+	ftrigButton             				: ARRAY[1..3] OF Tc2_Standard.F_TRIG; 
+	
+	fbStringFormatter       				: Tc2_Utilities.FB_FormatString;
+	fbEventLogger							: FB_EventLog;
+	
+	ntShutdown								: TC2_Utilities.NT_Shutdown;
+	closeChrome 							: NT_StartProcess;
+	tonUserLogOut							: TON;
+	fbUserLog								: FB_UserLog;
+	bTest									: BOOL;
+	bTest2									: BOOL;
+	nFindAdm								: INT;
+	nFindEng								: INT;
+	nFindOpe								: INT;
+	sUserGroupName							: STRING (255);
+	sAdmGroup								: STRING (255)							:= 'Administrator';
+	sEngGroup								: STRING (255)							:= 'Engineer';
+	sOpeGroup								: STRING (255)							:= 'Operator';
+	
+	j										: DINT;
+	l										: DINT;
+	
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////GENERAL/////////////////////////////////////////////////////////////////////////////////////
+
+a_ACT_ButtonsLamps();
+b_Meth_MapUnitEventsToHMI();
+d_ACT_ShutdownAndQuit();
+e_ACT_UserLog();
+f_ACT_TerminalInfo();
+g_ACT_Manual();
+
+C_1_PRG_MainHMI();
+D_1_WriteDataToCSV();
+
+PRG_Puls();
+
+// System PowerUP CTRL
+tonSystemPowerUP(IN:=bSystemPoweringUP, PT:=tSystemPowerUP_Time);
+IF tonSystemPowerUP.Q THEN 
+bSystemPoweringUP:=FALSE;
+END_IF
+
+A_3_PRG_FaultHandling( aAlarms := stAlarms );
+A_4_PRG_MasterSystemTime();
+/////////////////////////////////////////////////////////////////////////////////////STATIONS/////////////////////////////////////////////////////////////////////////////////////
+
+B_1_1_PRG_Master_Station_1(CMD := CMD_Station1);
+B_2_1_PRG_Master_Station_2(CMD := CMD_Station2);
+B_3_1_PRG_Master_Station_3(CMD := CMD_Station3);
+
+/////////////////////////////////////////////////////////////////////////////////////PROCESS/////////////////////////////////////////////////////////////////////////////////////
+
+A_2_PRG_MachineCtrl();
+
+/////////////////////////////////////////////////////////////////////////////////////EVENT LOG/////////////////////////////////////////////////////////////////////////////////////
+
+fbEventLogger(	bEnable       	:= A_4_PRG_MasterSystemTime.bReadyToRead,
+			    sDateTime     	:= A_4_PRG_MasterSystemTime.sDateTimeSpaces,
+			    aEventFlags   	:= aEventFlags,
+			    aEventTexts   	:= aEventTexts,
+			    aActiveEvents 	:= aActiveEvents,
+			    aEventLog     	:= aEventLog,
+				siDate			:= sSystemDate,
+				siTime			:= sSystemTime,
+				soDate			:= aDateLog,
+				soTime			:= aTimeLog
+);
+
+IF stPuls.bFlash10Hz THEN	
+	FOR j := 0 TO 39 DO
+		stActiveEventsHMI[j].sActiveEvents 				:= aActiveEvents[j];		
+	END_FOR
+	
+	FOR l:=0 TO 250 DO	
+		stAlarmHistory[l].sEventlog 					:= aEventLog[l];
+		stAlarmHistory[l].sDate							:= aDateLog[l];
+		stAlarmHistory[l].sTime							:= aTimeLog[l];
+	END_FOR
+ELSE
+	j													:= 0;
+	l													:= 0;
+END_IF
+
+////////////////////////////////////////////////////////////////////////////////////ALARMS HISTORY/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <Action Name="a_ACT_ButtonsLamps" Id="{bc3442d0-b536-4f84-a62c-f220009c35e9}">
+      <Implementation>
+        <ST><![CDATA[//===================================================================
+stButtonsLamps.bStartButtonFallingEdge 	:= ftrigButton[1].Q ;
+stButtonsLamps.bStartButtonRisingEdge 	:= rtrigButton[1].Q ;
+stButtonsLamps.bStopButtonFallingEdge 	:= ftrigButton[2].Q ; 
+stButtonsLamps.bStopButtonRisingEdge 	:= rtrigButton[2].Q ;  
+stButtonsLamps.bResetButtonFallingEdge 	:= ftrigButton[3].Q ;
+stButtonsLamps.bResetButtonRisingEdge 	:= rtrigButton[3].Q ;
+
+
+
+ftrigButton[1](CLK :=);
+rtrigButton[1](CLK						:=);
+ftrigButton[2](CLK						:=);
+rtrigButton[2](CLK						:=);
+ftrigButton[3](CLK	:= bTest			);
+rtrigButton[3](CLK						:=);
+
+
+//GVL_IO.dw_T11_EL2809.qRESETButton_Indicator := stPuls.bFlash2Hz AND (NOT stMachineStatus.bInitialising AND NOT stMachineStatus.bAutoCycle AND NOT stMachineStatus.bManualMode AND NOT stMachineStatus.bReadyToStart) ;
+//GVL_IO.dw_T11_EL2809.qStartButton_Indicator := (stPuls.bFlash2Hz AND stMachineStatus.bReadyToStart) OR (stMachineStatus.bManualMode AND stPuls.bFlash4Hz ) ;]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="b_Meth_MapUnitEventsToHMI" Id="{32e71418-dd66-4dd1-85c6-b068060c43f0}">
+      <Declaration><![CDATA[METHOD b_Meth_MapUnitEventsToHMI : BOOL
+VAR_INPUT
+END_VAR
+
+VAR
+	i		:INT; 	//Unit index
+	j		:INT;	//Unit event index
+	k		:INT; 	//HMI event index	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//Set event texts first
+IF GVL_Master.stAlarms[0].bEventTextsSet AND
+   GVL_Master.stAlarms[1].bEventTextsSet AND
+   GVL_Master.stAlarms[2].bEventTextsSet AND
+   GVL_Master.stAlarms[3].bEventTextsSet AND
+   NOT bEventTextsSet 
+THEN
+	c_Meth_SetEventTexts();
+		
+	bEventTextsSet := TRUE;
+END_IF
+
+//Map events from master and stations into HMI events
+IF bEventTextsSet THEN
+	k := 0; 
+	FOR i := 0 TO 4 DO
+		FOR j := 0 TO 128 - 1 DO
+			aEventFlags[k] := GVL_Master.stAlarms[i].aEventFlags[j];
+			k := k + 1;
+		END_FOR
+	END_FOR
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="c_Meth_SetEventTexts" Id="{f9e7d27e-a7a1-45ef-b32f-52dcb6509272}">
+      <Declaration><![CDATA[METHOD c_Meth_SetEventTexts : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	i				:INT; 	//Unit index
+	j				:INT;	//HMI event index
+	k				:INT;	//
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//Set global event texts based on unit event texts (master and stations
+k := 0;
+FOR i := 0 TO 3 DO
+	//For each unit (master, station1, station2)
+	//Alarm texts
+	FOR j := 0 TO 99 DO
+		fbStringFormatter(	sFormat := 'Alarm No. %d - %s', 
+					 	arg1 := F_INT(k), 
+						arg2 := F_String(GVL_Master.stAlarms[i].aEventTexts[j]),
+						sOut => aEventTexts[k]);
+						
+		k := k + 1; //Increment global events index
+	END_FOR
+	
+	//Messages
+	FOR j := 100 TO 127 DO
+		fbStringFormatter(	sFormat := 'Message No. %d - %s', 
+					 		arg1 := F_INT(k), 
+							arg2 := F_String(GVL_Master.stAlarms[i].aEventTexts[j]),
+							sOut => aEventTexts[k]);
+							
+		k := k + 1; //Increment global events index
+	END_FOR
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Action Name="d_ACT_ShutdownAndQuit" Id="{b7dac9a1-fefc-426e-a57f-b21e21205edc}">
+      <Implementation>
+        <ST><![CDATA[closeChrome(
+    NetId := '',
+    PathStr := 'C:\Windows\System32\mshta vbscript:Execute("CreateObject(""WScript.Shell"").Run ""powershell -c',
+    DirName := 'C:\Windows\System32\WindowsPowerShell\v1.0',
+    ComndLine := 'taskkill /F /IM chrome.exe /T"", 0: window.close")',
+    Start := bQuitHmi,
+    TmOut := DEFAULT_ADS_TIMEOUT
+);
+ 
+bQuitHmi:= FALSE;
+
+ntShutdown(NETID := NetAmsId, DELAY := 5, START := bShutDown);]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="e_ACT_UserLog" Id="{804f315c-0a35-4a48-b9b3-6593241a417c}">
+      <Implementation>
+        <ST><![CDATA[sUserGroupName																:= sUserGroupIn;
+
+nFindAdm	:= TC2_Utilities.FIND( 	STR1									:= sUserGroupName,
+									STR2									:= sAdmGroup);
+									
+nFindEng	:= TC2_Utilities.FIND( 	STR1									:= sUserGroupName,
+									STR2									:= sEngGroup);
+					
+nFindOpe	:= TC2_Utilities.FIND( 	STR1									:= sUserGroupName,
+									STR2									:= sOpeGroup);
+				
+IF nFindAdm <> 0 THEN
+	sUserGroupOut															:= 'Administrator';
+ELSIF nFindEng <> 0 THEN
+	sUserGroupOut															:= 'Engineer';
+ELSIF nFindOpe <> 0 THEN
+	sUserGroupOut															:= 'Operator';
+ELSE sUserGroupOut															:= '';
+END_IF
+
+tonUserLogOut( IN := (sUserGroupOut <> 'Administrator' OR sUserGroupOut <> 'Engineer') AND bUserLoggedIn , PT := T#10M);
+
+IF tonUserLogOut.Q THEN
+	bLogOut 											:= TRUE;
+ELSE bLogOut 											:= FALSE;
+END_IF
+
+rUserLoggedIn( CLK := bUserLoggedIn);
+
+fbUserLog(	nNumberOfData								:= 250,
+			bSaveSignal									:= rUserLoggedIn.Q, 
+			sUser										:= sUserName,
+			sGroup										:= sUserGroupOut,
+			sDate										:= sSystemDate,
+			sTime										:= sSystemTime,
+			aDataOutput									:= stUserLog);
+			
+
+
+
+
+
+
+
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="f_ACT_TerminalInfo" Id="{8299d142-9ce5-4d1b-9f3f-121127d1dbfb}">
+      <Implementation>
+        <ST><![CDATA[dw_T03_EL1809.stTerminalInfo.fbTerminalInfo( 	nTerminalState						:= dw_T03_EL1809.stTerminalInfo.nTerminal_State,
+												sTerminalState						=> dw_T03_EL1809.stTerminalInfo.sTerminalInfo);
+												
+dw_T04_EL2809.stTerminalInfo.fbTerminalInfo(	nTerminalState						:= dw_T04_EL2809.stTerminalInfo.nTerminal_State,
+												sTerminalState						=> dw_T04_EL2809.stTerminalInfo.sTerminalInfo);]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="g_ACT_Manual" Id="{87b8b019-9eb6-46b9-b781-3301c89600c8}">
+      <Implementation>
+        <ST><![CDATA[
+
+IF stMachineStatus.bReadyToStart THEN
+	bEnableManual											:= TRUE;
+ELSE bEnableManual											:= FALSE;
+END_IF
+
+IF nMainRegion = 5 AND stMasterCtrl.bNoImmediateFault AND stMasterCtrl.bNoCycleStopFault
+	AND NOT stMasterCtrl.bCycleStopRequest AND NOT stButtonsLamps.bStopButtonFallingEdge THEN
+	stMasterCtrl.bManualModeRequest							:= TRUE;
+	bManualModeOffFlag										:= FALSE;
+ELSE 
+	stMasterCtrl.bManualModeRequest							:= FALSE; 
+	bManualModeOffFlag										:= TRUE;											
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="A_1_PRG_Main_Master">
+      <LineId Id="443" Count="7" />
+      <LineId Id="521" Count="0" />
+      <LineId Id="451" Count="0" />
+      <LineId Id="550" Count="0" />
+      <LineId Id="519" Count="0" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="452" Count="48" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="501" Count="0" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="508" Count="2" />
+      <LineId Id="502" Count="3" />
+      <LineId Id="373" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.a_ACT_ButtonsLamps">
+      <LineId Id="2" Count="18" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.b_Meth_MapUnitEventsToHMI">
+      <LineId Id="6" Count="2" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="12" Count="16" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.c_Meth_SetEventTexts">
+      <LineId Id="6" Count="22" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.d_ACT_ShutdownAndQuit">
+      <LineId Id="2" Count="8" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.e_ACT_UserLog">
+      <LineId Id="198" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="199" Count="1" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="201" Count="0" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="205" Count="0" />
+      <LineId Id="204" Count="0" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="210" Count="3" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="81" Count="1" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="131" Count="1" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="188" Count="4" />
+      <LineId Id="187" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="110" Count="1" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="72" Count="0" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.f_ACT_TerminalInfo">
+      <LineId Id="1" Count="4" />
+    </LineIds>
+    <LineIds Name="A_1_PRG_Main_Master.g_ACT_Manual">
+      <LineId Id="23" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="21" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

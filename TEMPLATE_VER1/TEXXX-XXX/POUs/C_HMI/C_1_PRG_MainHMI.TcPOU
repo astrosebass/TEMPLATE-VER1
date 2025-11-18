@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="C_1_PRG_MainHMI" Id="{74beadf6-2d48-457c-a28f-741842f8514e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM C_1_PRG_MainHMI
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[a_ACT_MachineStatusBaner();]]></ST>
+    </Implementation>
+    <Action Name="a_ACT_MachineStatusBaner" Id="{0dc7bcd3-753a-4f06-be0f-fec0a8964021}">
+      <Implementation>
+        <ST><![CDATA[//Machine status banner action
+//SYSTEM POWER UP
+IF stMachineStatus.bSystemPowerUp THEN	
+	stStatusBanner.sMachineStatusText 							:= 'SYSTEM POWER UP';	
+	stStatusBanner.nMachineStatusColour 						:= nWHITE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nBLACK;
+	stStatusBanner.sBannerBckColor 								:= sWHITE;
+	stStatusBanner.sBannerTextColor 							:= sBLACK;
+END_IF
+
+(* IMMEDIATE STOPPED *)
+IF stMachineStatus.bImmediateStopped THEN	
+	stStatusBanner.sMachineStatusText 							:= 'IMMEDIATE STOPPED';		
+	stStatusBanner.nMachineStatusColour 						:= nBLACK;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sBLACK;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+END_IF
+
+(* SYSTEM INITIALISING *)
+IF stMachineStatus.bInitialising THEN	
+	stStatusBanner.sMachineStatusText 							:= 'SYSTEM INITIALIZING';		
+	stStatusBanner.nMachineStatusColour 						:= nYELLOW;
+	stStatusBanner.nMachineStatusTxtCol 						:= nBLACK;
+	stStatusBanner.sBannerBckColor 								:= sYELLOW;
+	stStatusBanner.sBannerTextColor 							:= sBLACK;
+END_IF
+(*
+(* SYSTEM IN STANDBY *)
+IF stMachineStatus.bSystemStandby THEN
+	stMachineStatus.sMachineStatusText := 'SYSTEM IN STANDBY';
+	stMachineStatus.nMachineStatusColour := nORANGE;
+	stMachineStatus.nMachineStatusTxtCol := nWHITE;
+END_IF
+*)
+(* SYSTEM READY TO START FLASH ON *)
+IF stMachineStatus.bReadyToStart AND stPuls.bFlash1Hz THEN
+	stStatusBanner.sMachineStatusText 							:= 'SYSTEM READY TO START';		
+	stStatusBanner.nMachineStatusColour 						:= nGREEN;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sGREEN;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;
+ELSIF stMachineStatus.bReadyToStart AND NOT stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'SYSTEM READY TO START';		
+	stStatusBanner.nMachineStatusColour 						:= nWHITE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nGREEN;
+	stStatusBanner.sBannerBckColor 								:= sWHITE;
+	stStatusBanner.sBannerTextColor 							:= sGREEN;
+END_IF
+
+(* SYSTEM AUTO CYCLE *)
+IF stMachineStatus.bAutoCycle THEN	
+	stStatusBanner.sMachineStatusText 							:= 'SYSTEM AUTO CYCLE';		
+	stStatusBanner.nMachineStatusColour 						:= nGREEN;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sGREEN;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+END_IF
+
+(*(* SYSTEM DWELL *)
+IF stMachineStatus.THEN	
+	GVL_MASTER.stMachineStatus.sMachineStatusText := 'SYSTEM DWELL';		
+	GVL_MASTER.stMachineStatus.nMachineStatusColour := nORANGE;
+	GVL_MASTER.stMachineStatus.nMachineStatusTxtCol := nWHITE;
+	GVL_MASTER.stMachineStatus.sBannerBckColor := sORANGE;
+	GVL_MASTER.stMachineStatus.sBannerTextColor := sWHITE;	
+END_IF*)
+
+(* STOPPING *)
+IF stMachineStatus.bStopping AND stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'STOPPING';		
+	stStatusBanner.nMachineStatusColour 						:= nBLACK;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sBLACK;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+ELSIF stMachineStatus.bStopping AND NOT stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'STOPPING';		
+	stStatusBanner.nMachineStatusColour 						:= nWHITE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nBLACK;
+	stStatusBanner.sBannerBckColor 								:= sWHITE;
+	stStatusBanner.sBannerTextColor 							:= sBLACK;	
+END_IF
+
+(* CYCLE STOPPED *)
+IF stMachineStatus.bCycleStopped THEN	
+	stStatusBanner.sMachineStatusText 							:= 'CYCLE STOPPED';		
+	stStatusBanner.nMachineStatusColour 						:= nBLACK;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sBLACK;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+END_IF
+
+(* IMMEDIATE FAULT FLASH ON *)
+IF stMachineStatus.bImmediateFault AND stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'IMMEDIATE FAULT';		
+	stStatusBanner.nMachineStatusColour 						:= nRED;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sRED;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+ELSIF stMachineStatus.bImmediateFault AND NOT stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'IMMEDIATE FAULT';		
+	stStatusBanner.nMachineStatusColour 						:= nWHITE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nBLACK;
+	stStatusBanner.sBannerBckColor 								:= sWHITE;
+	stStatusBanner.sBannerTextColor 							:= sBLACK;	
+END_IF
+
+(* CYCLE STOP FAULT FLASH ON *)
+IF stMachineStatus.bCycleStopFault AND stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'CYCLE STOP FAULT';		
+	stStatusBanner.nMachineStatusColour 						:= nRED;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sRED;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+ELSIF GVL_MASTER.stMachineStatus.bCycleStopFault AND NOT stPuls.bFlash1Hz THEN	
+	stStatusBanner.sMachineStatusText 							:= 'CYCLE STOP FAULT';		
+	stStatusBanner.nMachineStatusColour 						:= nWHITE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nRED;
+	stStatusBanner.sBannerBckColor 								:= sWHITE;
+	stStatusBanner.sBannerTextColor 							:= sRED;	
+END_IF
+
+(* MANUAL MODE *)
+IF stMachineStatus.bManualMode THEN	
+	stStatusBanner.sMachineStatusText 							:= 'MANUAL MODE';		
+	stStatusBanner.nMachineStatusColour 						:= nBLUE;
+	stStatusBanner.nMachineStatusTxtCol 						:= nWHITE;
+	stStatusBanner.sBannerBckColor 								:= sBLUE;
+	stStatusBanner.sBannerTextColor 							:= sWHITE;	
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="C_1_PRG_MainHMI">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="C_1_PRG_MainHMI.a_ACT_MachineStatusBaner">
+      <LineId Id="2" Count="5" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="8" Count="6" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="15" Count="6" />
+      <LineId Id="147" Count="1" />
+      <LineId Id="22" Count="13" />
+      <LineId Id="149" Count="1" />
+      <LineId Id="183" Count="5" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="44" Count="5" />
+      <LineId Id="154" Count="0" />
+      <LineId Id="153" Count="0" />
+      <LineId Id="50" Count="6" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="57" Count="6" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="190" Count="5" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="72" Count="5" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="78" Count="6" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="197" Count="4" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="85" Count="0" />
+      <LineId Id="93" Count="5" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="203" Count="4" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="107" Count="5" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="141" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="A_2_PRG_MachineCtrl" Id="{fa5999e8-1190-4f6f-b7ba-be790246df67}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM A_2_PRG_MachineCtrl
+VAR
+/////////////////////////////////////////////////////////////////////////////////////TIMERS & TRIGGERS/////////////////////////////////////////////////////////////////////////////////////
+
+	tonSys_Init					: Tc2_Standard.TON:=(PT:=T#1S);
+	tonSys_InitTimeout			: Tc2_Standard.TON:=(PT:=T#20S);					
+	tonFirstAutoCycle			: Tc2_Standard.TON:=(PT:=T#500MS);
+	
+/////////////////////////////////////////////////////////////////////////////////////PROCESS CYCLE/////////////////////////////////////////////////////////////////////////////////////	
+	
+	eCycleState					: E_ProcessCycle;
+	tonCMD_Done					: TON;
+	tonResetAllCMD				: TON;
+	tonExecute					: TON;
+	tonSave_Data				: TON;
+	tonWriteToCsv				: TON;
+	rNoAutoCycle				: R_TRIG;
+	
+	bStartProcessCondition		: BOOL;
+	bIndexDataHistoryFlag		: BOOL;
+	rIndexDataHistoryFlag		: R_TRIG;
+	bPASS						: BOOL;
+	bFAIL						: BOOL;
+	i							: INT;
+	
+
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////GENERAL/////////////////////////////////////////////////////////////////////////////////////
+a_ACT_MachineStatus();
+b_ACT_ProcessCycle();]]></ST>
+    </Implementation>
+    <Action Name="a_ACT_MachineStatus" Id="{83375328-405c-4671-a979-0a97efed562c}">
+      <Implementation>
+        <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////TIMERS/////////////////////////////////////////////////////////////////////////////////////
+tonSys_Init(IN:=stMachineStatus.bInitialising);
+tonSys_InitTimeout(IN:=stMachineStatus.bInitialising);
+
+
+/////////////////////////////////////////////////////////////////////////////////////CONDITIONS/////////////////////////////////////////////////////////////////////////////////////
+				IF NOT stMasterCtrl.bNoImmediateFault THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.IMMEDIATE_FAULT;
+				END_IF
+				
+				IF stMachineStatus.eMachineState		= E_MachineState.STOPPING OR
+				stMachineStatus.eMachineState			= E_MachineState.IMMEDIATE_FAULT OR
+				stMachineStatus.eMachineState			= E_MachineState.CYCLE_STOP_FAULT THEN
+					
+					CMD_Station1.bAbort					:= TRUE;	
+					CMD_Station2.bAbort					:= TRUE;	
+					CMD_Station3.bAbort					:= TRUE;
+				
+					CMD_Station1.bEnable				:= FALSE;
+					CMD_Station2.bEnable				:= FALSE;
+					CMD_Station3.bEnable				:= FALSE;
+					
+				END_IF
+				
+				IF 	stButtonsLamps.bResetButtonFallingEdge THEN
+					CMD_Station1.bReset					:= TRUE;
+					CMD_Station2.bReset					:= TRUE;
+					CMD_Station3.bReset					:= TRUE;
+				ELSE 
+					CMD_Station1.bReset					:= FALSE;
+					CMD_Station2.bReset					:= FALSE;
+					CMD_Station3.bReset					:= FALSE;
+				END_IF		
+				
+/////////////////////////////////////////////////////////////////////////////////////MACHINE CONTROL/////////////////////////////////////////////////////////////////////////////////////
+
+CASE stMachineStatus.eMachineState OF
+
+E_MachineState.SYSTEM_POWER_UP: 		
+
+				IF tonSystemPowerUP.Q THEN
+						stMachineStatus.eMachineState 	:= E_MachineState.IMMEDIATE_STOPPED;//
+				END_IF
+	
+E_MachineState.IMMEDIATE_STOPPED:		
+
+				IF stButtonsLamps.bResetButtonFallingEdge THEN
+						stMachineStatus.eMachineState 	:= E_MachineState.SYSTEM_INITIALISING;//
+				END_IF	
+
+
+E_MachineState.SYSTEM_INITIALISING:		
+				
+				CMD_Station1.bAbort						:= FALSE;	
+				CMD_Station2.bAbort						:= FALSE;	
+				CMD_Station3.bAbort						:= FALSE;	
+
+				IF tonSys_Init.Q THEN
+					CMD_Station1.bEnable				:= TRUE;
+					CMD_Station2.bEnable				:= TRUE;
+					CMD_Station3.bEnable				:= TRUE;						
+				END_IF
+
+				IF B_1_1_PRG_Master_Station_1.STATUS.bReady AND B_2_1_PRG_Master_Station_2.STATUS.bReady AND B_3_1_PRG_Master_Station_3.STATUS.bReady THEN 
+					stMachineStatus.eMachineState		:= E_MachineState.SYSTEM_READY_TO_START;
+				ELSIF stButtonsLamps.bStopButtonFallingEdge OR  
+				stMasterCtrl.bCycleStopRequest OR tonSys_InitTimeout.Q THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.STOPPING;	
+				ELSIF NOT stMasterCtrl.bNoCycleStopFault THEN		
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOP_FAULT;
+				END_IF
+			
+					
+E_MachineState.SYSTEM_READY_TO_START:	
+
+				IF 	 stButtonsLamps.bStartButtonFallingEdge AND stMasterCtrl.bAllStationsReady THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.SYSTEM_AUTO_CYCLE;
+				ELSIF stButtonsLamps.bStopButtonFallingEdge THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.STOPPING;		
+				ELSIF stMasterCtrl.bNoCycleStopFault THEN	
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOP_FAULT;
+				ELSIF GVL_Master.stMasterCTRL.bManualModeRequest AND stMasterCtrl.bNoCycleStopFault THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.MANUAL_MODE;
+				END_IF
+
+				
+
+E_MachineState.SYSTEM_AUTO_CYCLE:		
+
+				IF stButtonsLamps.bStopButtonFallingEdge OR stMasterCtrl.bCycleStopRequest THEN					
+					stMachineStatus.eMachineState 		:= E_MachineState.STOPPING;
+				ELSIF NOT stMasterCtrl.bNoCycleStopFault THEN	
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOP_FAULT;
+				END_IF
+				
+E_MachineState.SYSTEM_STANDBY:
+
+
+
+E_MachineState.STOPPING:	
+
+				IF stMasterCtrl.bAllStationsStopped THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOPPED;
+				ELSIF NOT stMasterCtrl.bNoCycleStopFault THEN	
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOP_FAULT;					
+				END_IF
+
+E_MachineState.CYCLE_STOPPED:			
+
+				IF stMasterCtrl.bNoCycleStopFault   AND NOT stMasterCtrl.bCycleStopRequest  AND stButtonsLamps.bResetButtonFallingEdge THEN	
+					stMachineStatus.eMachineState 		:= E_MachineState.SYSTEM_INITIALISING;		
+				END_IF	
+
+E_MachineState.IMMEDIATE_FAULT:	
+				
+				IF stMasterCtrl.bNoImmediateFault	THEN
+					stMachineStatus.eMachineState		:= E_MachineState.IMMEDIATE_STOPPED;		
+				END_IF
+
+E_MachineState.CYCLE_STOP_FAULT:		
+				
+				IF stMasterCtrl.bNoCycleStopFault AND stMasterCtrl.bAllStationsStopped THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOPPED;
+				END_IF	
+
+
+E_MachineState.MANUAL_MODE:
+
+				IF stButtonsLamps.bStopButtonFallingEdge OR NOT GVL_Master.stMasterCTRL.bManualModeRequest THEN
+					stMachineStatus.eMachineState 		:= E_MachineState.STOPPING;
+				ELSIF  NOT stMasterCtrl.bNoCycleStopFault THEN	
+					stMachineStatus.eMachineState 		:= E_MachineState.CYCLE_STOP_FAULT;								
+				ELSE 
+					CMD_Station1.bManualMode			:=TRUE;
+					CMD_Station2.bManualMode			:=TRUE;
+					CMD_Station3.bManualMode			:=TRUE;
+				END_IF
+ELSE
+stMachineStatus.eMachineState:=E_MachineState.SYSTEM_POWER_UP;		
+END_CASE									
+
+
+/////////////////////////////////////////////////////////////////////////////////////MACHINE STATUS/////////////////////////////////////////////////////////////////////////////////////
+stMachineStatus.bSystemPowerUp 			:= (stMachineStatus.eMachineState = E_MachineState.SYSTEM_POWER_UP);
+stMachineStatus.bImmediateStopped 		:= (stMachineStatus.eMachineState = E_MachineState.IMMEDIATE_STOPPED);
+stMachineStatus.bInitialising 			:= (stMachineStatus.eMachineState = E_MachineState.SYSTEM_INITIALISING);
+stMachineStatus.bReadyToStart 			:= (stMachineStatus.eMachineState = E_MachineState.SYSTEM_READY_TO_START);
+stMachineStatus.bAutoCycle 				:= (stMachineStatus.eMachineState = E_MachineState.SYSTEM_AUTO_CYCLE);
+stMachineStatus.bStandby 				:= (stMachineStatus.eMachineState = E_MachineState.SYSTEM_STANDBY);
+stMachineStatus.bStopping 				:= (stMachineStatus.eMachineState = E_MachineState.STOPPING);
+stMachineStatus.bCycleStopped 			:= (stMachineStatus.eMachineState = E_MachineState.CYCLE_STOPPED);
+stMachineStatus.bImmediateFault 		:= (stMachineStatus.eMachineState = E_MachineState.IMMEDIATE_FAULT);
+stMachineStatus.bCycleStopFault 		:= (stMachineStatus.eMachineState = E_MachineState.CYCLE_STOP_FAULT);
+stMachineStatus.bManualMode 			:= (stMachineStatus.eMachineState = E_MachineState.MANUAL_MODE);
+
+/////////////////////////////////////////////////////////////////////////////////////FLAGS/////////////////////////////////////////////////////////////////////////////////////
+stMasterCtrl.bAllStationsStopped		:= (B_1_1_PRG_Master_Station_1.STATUS.bReady AND B_2_1_PRG_Master_Station_2.STATUS.bReady AND B_3_1_PRG_Master_Station_3.STATUS.bReady ) OR
+										   (NOT B_1_1_PRG_Master_Station_1.STATUS.bBusy AND NOT B_2_1_PRG_Master_Station_2.STATUS.bBusy AND NOT B_3_1_PRG_Master_Station_3.STATUS.bBusy );
+										   
+stMasterCtrl.bAllStationsReady			:= B_1_1_PRG_Master_Station_1.bReady AND B_2_1_PRG_Master_Station_2.bReady AND B_3_1_PRG_Master_Station_3.bReady;
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="b_ACT_ProcessCycle" Id="{5e92037d-73c3-401d-956e-95e5929b3e1d}">
+      <Implementation>
+        <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////UTILITIES & TRIGGERS/////////////////////////////////////////////////////////////////////////////////////
+
+tonCMD_Done( IN := , PT := T#500MS);
+tonSave_Data( IN :=  eCycleState = E_ProcessCycle.SAVE_DATA2, PT := T#500MS);
+tonResetAllCMD( IN := eCycleState = E_ProcessCycle.RESET_ALL_CMD, PT := T#500MS);
+tonWriteToCsv( IN := eCycleState = E_ProcessCycle.CSV, PT := T#500MS);
+
+tonExecute( IN := 	eCycleState = E_ProcessCycle.STATION1_MOV1 OR
+					eCycleState = E_ProcessCycle.STATION2_MOV2 OR
+					eCycleState = E_ProcessCycle.STATION1_MOV3_STATION2_MOV2 OR
+					eCycleState = E_ProcessCycle.STATION3_MOV3,
+					PT := T#500MS);
+				
+
+rNoAutoCycle( CLK := stMachineStatus.bAutoCycle);
+
+/////////////////////////////////////////////////////////////////////////////////////CONDITIONS/////////////////////////////////////////////////////////////////////////////////////
+
+//bStartProcessCondition := ; //
+
+IF rNoAutoCycle.Q THEN
+	eCycleState												:= E_ProcessCycle.RESET_ALL_CMD;
+END_IF
+
+
+CASE eCycleState OF
+	
+E_ProcessCycle.RESET_ALL_CMD:
+
+				stStation1.Mov1								:= FALSE;
+				stStation1.Mov2								:= FALSE;
+				stStation1.Mov3								:= FALSE;
+				B_1_1_PRG_Master_Station_1.CMD.bExecute		:= FALSE;
+				B_1_1_PRG_Master_Station_1.CMD.bReady 		:= FALSE;
+				stStation2.Mov1								:= FALSE;
+				stStation2.Mov2								:= FALSE;
+				stStation2.Mov3								:= FALSE;
+				B_2_1_PRG_Master_Station_2.CMD.bExecute		:= FALSE;
+				B_2_1_PRG_Master_Station_2.CMD.bReady 		:= FALSE;
+				stStation3.Mov1								:= FALSE;
+				stStation3.Mov2								:= FALSE;
+				stStation3.Mov3								:= FALSE;
+				B_3_1_PRG_Master_Station_3.CMD.bExecute		:= FALSE;
+				B_3_1_PRG_Master_Station_3.CMD.bReady 		:= FALSE;
+				stCSVProcess.bWriteData						:= FALSE;
+				
+				//bIndexDataHistoryFlag						:= FALSE;
+				
+				
+				IF tonResetAllCMD.Q AND stMachineStatus.bAutoCycle THEN
+					eCycleState								:= E_ProcessCycle.IDLE;						
+				END_IF
+	
+E_ProcessCycle.IDLE:
+				
+				IF bStartProcessCondition AND B_1_1_PRG_Master_Station_1.STATUS.bReady THEN
+					eCycleState								:= E_ProcessCycle.STATION1_MOV1;
+				END_IF
+							
+E_ProcessCycle.STATION1_MOV1:
+
+				stStation1.Mov1								:= TRUE;
+				B_1_1_PRG_Master_Station_1.CMD.bExecute		:= TRUE;
+				
+				IF tonExecute.Q THEN
+					eCycleState								:= E_ProcessCycle.WAIT_STATION1_MOV1;	
+				END_IF
+
+E_ProcessCycle.WAIT_STATION1_MOV1:
+				
+				IF B_1_1_PRG_Master_Station_1.STATUS.bDone THEN
+					eCycleState								:= E_ProcessCycle.STATION2_MOV2;
+					stStation1.Mov1							:= FALSE;
+					B_1_1_PRG_Master_Station_1.CMD.bExecute	:= FALSE;
+					B_1_1_PRG_Master_Station_1.CMD.bReady 	:= TRUE;
+				END_IF
+
+E_ProcessCycle.STATION2_MOV2:
+
+				B_1_1_PRG_Master_Station_1.CMD.bReady 		:= FALSE;
+				
+				stStation2.Mov2								:= TRUE;
+				B_2_1_PRG_Master_Station_2.CMD.bExecute		:= TRUE;
+				
+				IF tonExecute.Q THEN
+					eCycleState								:= E_ProcessCycle.WAIT_STATION2_MOV2;	
+				END_IF
+
+E_ProcessCycle.WAIT_STATION2_MOV2:
+
+				IF B_2_1_PRG_Master_Station_2.STATUS.bDone THEN
+					stStation2.Mov2							:= FALSE;
+					B_2_1_PRG_Master_Station_2.CMD.bExecute	:= FALSE;
+					B_2_1_PRG_Master_Station_2.CMD.bReady 	:= TRUE;	
+					eCycleState								:= E_ProcessCycle.STATION1_MOV3_STATION2_MOV2;
+				END_IF
+
+E_ProcessCycle.STATION1_MOV3_STATION2_MOV2:
+
+				B_2_1_PRG_Master_Station_2.CMD.bReady 		:= FALSE;
+	
+				stStation1.Mov3								:= TRUE;
+				stStation2.Mov2								:= TRUE;
+				B_2_1_PRG_Master_Station_2.CMD.bExecute		:= TRUE;
+				B_1_1_PRG_Master_Station_1.CMD.bExecute		:= TRUE;
+				
+				IF tonExecute.Q THEN
+					eCycleState								:= E_ProcessCycle.WAIT_STATION1_MOV3_STATION2_MOV2;	
+				END_IF
+
+E_ProcessCycle.WAIT_STATION1_MOV3_STATION2_MOV2:
+			
+				IF B_2_1_PRG_Master_Station_2.STATUS.bDone AND B_1_1_PRG_Master_Station_1.STATUS.bDone THEN
+					stStation1.Mov3							:= FALSE;
+					stStation2.Mov2							:= FALSE;
+					B_2_1_PRG_Master_Station_2.CMD.bExecute	:= FALSE;
+					B_1_1_PRG_Master_Station_1.CMD.bExecute	:= FALSE;	
+					B_2_1_PRG_Master_Station_2.CMD.bReady 	:= TRUE;
+					B_1_1_PRG_Master_Station_1.CMD.bReady 	:= TRUE;
+					eCycleState								:= E_ProcessCycle.STATION3_MOV3;
+				END_IF	
+
+E_ProcessCycle.STATION3_MOV3:
+
+					B_2_1_PRG_Master_Station_2.CMD.bReady 	:= FALSE;
+					B_1_1_PRG_Master_Station_1.CMD.bReady 	:= FALSE;
+					
+					B_3_1_PRG_Master_Station_3.CMD.bExecute	:= TRUE;
+					stStation3.Mov3							:= TRUE;
+					
+				IF tonExecute.Q THEN
+					eCycleState								:= E_ProcessCycle.WAIT_STATION3_MOV3;	
+				END_IF
+
+E_ProcessCycle.WAIT_STATION3_MOV3:
+
+				IF B_3_1_PRG_Master_Station_3.STATUS.bDone THEN
+					stStation3.Mov3							:= FALSE;
+					B_3_1_PRG_Master_Station_3.CMD.bExecute	:= FALSE;
+					B_3_1_PRG_Master_Station_3.CMD.bReady 	:= TRUE;	
+					bIndexDataHistoryFlag					:= TRUE;
+					eCycleState								:= E_ProcessCycle.SAVE_DATA;
+				END_IF
+
+E_ProcessCycle.SAVE_DATA:
+
+				FOR i := 199 TO 0 BY -1 DO
+					aDataHistory[i+1] 						:= aDataHistory[i];
+				END_FOR			
+				eCycleState									:= E_ProcessCycle.SAVE_DATA2;
+					
+E_ProcessCycle.SAVE_DATA2:	
+				
+				c_ACT_SaveData();
+				IF tonSave_Data.Q THEN
+					eCycleState								:= E_ProcessCycle.CSV;
+				END_IF	
+
+E_ProcessCycle.CSV:
+			
+				stCSVProcess.bWriteData						:= TRUE;
+				IF tonWriteToCsv.Q THEN
+					stCSVProcess.bWriteData					:= FALSE;
+				END_IF
+				IF NOT stCSVProcess.bBusy AND tonWriteToCsv.Q THEN
+					eCycleState								:= E_ProcessCycle.RESET_ALL_CMD;
+					nIndexDataHistory						:= nIndexDataHistory +1;
+				END_IF
+				
+END_CASE
+
+
+
+
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="c_ACT_SaveData" Id="{5a28b6f2-a56d-4cef-8c15-c08642850884}">
+      <Implementation>
+        <ST><![CDATA[(*rIndexDataHistoryFlag( CLK := 	bIndexDataHistoryFlag);
+	IF rIndexDataHistoryFlag.Q THEN
+					nIndexDataHistory						:= nIndexDataHistory + 1;
+					bIndexDataHistoryFlag					:= FALSE;
+	END_IF*)
+
+				
+	//STATION 1
+	aDataHistory[0].sSetting1_1	:= stCycleDataStation1.sSetting1;
+	aDataHistory[0].nSetting2_1	:= stCycleDataStation1.nSetting2;
+	aDataHistory[0].bSetting3_1	:= stCycleDataStation1.bSetting3;
+	
+	aDataHistory[0].sDATA1_1	:= stCycleDataStation1.sDATA1;
+	aDataHistory[0].nDATA2_1	:= stCycleDataStation1.nDATA2;
+	aDataHistory[0].bDATA3_1	:= stCycleDataStation1.bDATA3;
+	
+	aDataHistory[0].bPass_1		:= stCycleDataStation1.bPass;
+	aDataHistory[0].bFail_1		:= stCycleDataStation1.bFail;
+	
+	//STATION 2
+	aDataHistory[0].sSetting1_2	:= stCycleDataStation2.sSetting1;
+	aDataHistory[0].nSetting2_2	:= stCycleDataStation2.nSetting2;
+	aDataHistory[0].bSetting3_2	:= stCycleDataStation2.bSetting3;
+	
+	aDataHistory[0].sDATA1_2	:= stCycleDataStation2.sDATA1;
+	aDataHistory[0].nDATA2_2	:= stCycleDataStation2.nDATA2;
+	aDataHistory[0].bDATA3_2	:= stCycleDataStation2.bDATA3;
+	
+	aDataHistory[0].bPass_2		:= stCycleDataStation2.bPass;
+	aDataHistory[0].bFail_2		:= stCycleDataStation2.bFail;
+	
+	//STATION 3
+	aDataHistory[0].sSetting1_3	:= stCycleDataStation3.sSetting1;
+	aDataHistory[0].nSetting2_3	:= stCycleDataStation3.nSetting2;
+	aDataHistory[0].bSetting3_3	:= stCycleDataStation3.bSetting3;
+	
+	aDataHistory[0].sDATA1_3	:= stCycleDataStation3.sDATA1;
+	aDataHistory[0].nDATA2_3	:= stCycleDataStation3.nDATA2;
+	aDataHistory[0].bDATA3_3	:= stCycleDataStation3.bDATA3;
+	
+	aDataHistory[0].bPass_3		:= stCycleDataStation3.bPass;
+	aDataHistory[0].bFail_3		:= stCycleDataStation3.bFail;
+ 
+	
+	
+	aDataHistory[0].bPass		:= bPASS;
+	aDataHistory[0].bFail		:= bFAIL;
+	aDataHistory[0].sData		:= sSystemDate;
+	aDataHistory[0].sTime		:= sSystemTime;
+	
+	]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="A_2_PRG_MachineCtrl">
+      <LineId Id="14" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+    <LineIds Name="A_2_PRG_MachineCtrl.a_ACT_MachineStatus">
+      <LineId Id="240" Count="0" />
+      <LineId Id="3" Count="1" />
+      <LineId Id="7" Count="2" />
+      <LineId Id="266" Count="0" />
+      <LineId Id="268" Count="1" />
+      <LineId Id="307" Count="2" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="313" Count="0" />
+      <LineId Id="316" Count="5" />
+      <LineId Id="315" Count="0" />
+      <LineId Id="314" Count="0" />
+      <LineId Id="310" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="277" Count="1" />
+      <LineId Id="280" Count="0" />
+      <LineId Id="282" Count="0" />
+      <LineId Id="281" Count="0" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="275" Count="0" />
+      <LineId Id="273" Count="0" />
+      <LineId Id="22" Count="13" />
+      <LineId Id="42" Count="3" />
+      <LineId Id="322" Count="0" />
+      <LineId Id="324" Count="1" />
+      <LineId Id="323" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="254" Count="3" />
+      <LineId Id="55" Count="3" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="75" Count="5" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="94" Count="9" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="270" Count="0" />
+      <LineId Id="117" Count="7" />
+      <LineId Id="326" Count="1" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="133" Count="2" />
+      <LineId Id="140" Count="4" />
+      <LineId Id="291" Count="0" />
+      <LineId Id="154" Count="4" />
+      <LineId Id="167" Count="9" />
+      <LineId Id="185" Count="1" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="283" Count="0" />
+      <LineId Id="208" Count="8" />
+      <LineId Id="218" Count="16" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="A_2_PRG_MachineCtrl.b_ACT_ProcessCycle">
+      <LineId Id="36" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="155" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="70" Count="2" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="6" Count="2" />
+      <LineId Id="41" Count="2" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="177" Count="16" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="198" Count="1" />
+      <LineId Id="194" Count="3" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="46" Count="3" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="76" Count="3" />
+      <LineId Id="51" Count="1" />
+      <LineId Id="80" Count="2" />
+      <LineId Id="86" Count="1" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="84" Count="1" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="96" Count="1" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="92" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="122" Count="1" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="102" Count="1" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="124" Count="2" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="115" Count="1" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="118" Count="1" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="129" Count="1" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="131" Count="4" />
+      <LineId Id="216" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="218" Count="2" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="223" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="249" Count="0" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="240" Count="1" />
+      <LineId Id="239" Count="0" />
+      <LineId Id="243" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="245" Count="1" />
+      <LineId Id="256" Count="2" />
+      <LineId Id="251" Count="1" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="253" Count="1" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="234" Count="4" />
+      <LineId Id="233" Count="0" />
+    </LineIds>
+    <LineIds Name="A_2_PRG_MachineCtrl.c_ACT_SaveData">
+      <LineId Id="2" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="5" Count="5" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="11" Count="5" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="21" Count="9" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="33" Count="9" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="43" Count="7" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

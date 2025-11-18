@@ -1,0 +1,103 @@
+<div id="Content1_10" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1260" data-tchmi-height="479">
+
+<div id="TcHmiUserManagement" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiUserManagement" data-tchmi-height="48" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="42" data-tchmi-top-unit="px" data-tchmi-width="1240" data-tchmi-width-unit="px">
+</div>
+<div id="TcHmiDatagrid_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="369" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="1240" data-tchmi-width-unit="px" data-tchmi-src-data="%s%PLC1.GVL_Persistent.stUserLog%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-cell-content-padding" type="application/json">
+{
+  "left": 3,
+  "leftUnit": "px",
+  "right": 3,
+  "rightUnit": "px",
+  "top": 0,
+  "topUnit": "px",
+  "bottom": 0,
+  "bottomUnit": "px"
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-column" type="application/json">
+[
+  {
+    "name": "sUser",
+    "label": "USER",
+    "control": "TextBox",
+    "width": 400,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "sGroup",
+    "label": "GROUP",
+    "control": "TextBox",
+    "width": 400,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "sDate",
+    "label": "DATE",
+    "control": "TextBox",
+    "width": 205,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  },
+  {
+    "name": "sTime",
+    "label": "TIME",
+    "control": "TextBox",
+    "width": 205,
+    "widthUnit": "px",
+    "resize": false,
+    "sortable": false,
+    "minWidth": 100,
+    "minWidthUnit": "px",
+    "editable": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "headerHorizontalAlignment": "Center",
+    "headerVerticalAlignment": "Center",
+    "ignoreEscapeSequences": false,
+    "autoFocusOut": true,
+    "autoSelectText": false
+  }
+]
+</script>
+</div>
+</div>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <GVL Name="GVL_HMI" Id="{7d424ba3-5d42-48e0-870b-7d749b127bab}">
+    <Declaration><![CDATA[VAR_GLOBAL
+////////////////////////////////////////:	///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////GENERIC/////////////////////////////////////////////////////////////////////////////////////
+
+	stHMI_IO							: ST_HMI_IO;
+	bQuitHMI							: BOOL;
+	bShutDown							: BOOL;
+	stStatusBanner						: ST_StatusBanner;
+	
+
+/////////////////////////////////////////////////////////////////////////////////////SYSTEM INFO/////////////////////////////////////////////////////////////////////////////////////
+
+	sSoftwareVersion					: STRING := ' 1.0 ';
+	sSoftwareDate						: STRING := ' 10.December.2024 ';
+	sTC3Version							: STRING := ' v3.1.4024.53, Runtime v3.1.4024.40 ';
+	sHMIVersion							: STRING := ' TcXaeShell Version 15.0.28010.2050 D15.8 ';
+	sSystemName							: STRING := ' Print & Applay Labeller ' ;
+	sProjectID							: STRING := ' TE 1099 PAL' ;
+	sAplication                     	: STRING := ' Print & Applay Labeller ';
+	sHMIServer                			: STRING := ' ---- ';
+	
+	NetAmsId        	       			: T_AmsNetId := ''; // AMS-ID for com port setup 
+	
+/////////////////////////////////////////////////////////////////////////////////////USER LOG/////////////////////////////////////////////////////////////////////////////////////
+
+	sUserGroupIn						: STRING;
+	sUserGroupOut						: STRING;
+	sUserName							: STRING;
+	bUserLoggedIn						: BOOL;			
+	bLogOut								: BOOL;	
+	rUserLoggedIn						: R_TRIG;
+
+/////////////////////////////////////////////////////////////////////////////////////MANUAL/////////////////////////////////////////////////////////////////////////////////////
+
+	bEnableManual						: BOOL;
+	nMainRegion							: DINT;
+	bManualModeOffFlag					: BOOL;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

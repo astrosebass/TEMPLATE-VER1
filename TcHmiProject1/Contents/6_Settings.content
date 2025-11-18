@@ -1,0 +1,53 @@
+<div id="Content1_14" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1280" data-tchmi-height="479">
+
+<div id="SettingsTab" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTabNavigation" data-tchmi-height="459" data-tchmi-height-unit="px" data-tchmi-left="18" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="1242" data-tchmi-width-unit="px" data-tchmi-tab-alignment="Top">
+<script data-tchmi-target-attribute="data-tchmi-tabs" type="application/json">
+[
+  {
+    "name": "Settings Station 1",
+    "displayName": "Station 1",
+    "targetFile": {
+      "path": "Contents/Settings/1_SettingsStation1.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center",
+    "icon": {
+      "iconPath": "Images/Buttons/HomeButton.png",
+      "iconWidth": 32.0,
+      "iconWidthUnit": "px",
+      "iconHeight": 32.0,
+      "iconHeightUnit": "px"
+    }
+  },
+  {
+    "name": "Settings Station 2",
+    "displayName": "Station 2",
+    "targetFile": {
+      "path": "Contents/Manual/2_Station2.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center"
+  },
+  {
+    "name": "Settings Station 3",
+    "displayName": "Station 3",
+    "targetFile": {
+      "path": "Contents/Manual/3_Station3.content"
+    },
+    "targetFileHostPreload": false,
+    "targetFileHostPreAttach": false,
+    "targetFileHostKeepAlive": false,
+    "horizontalAlignment": "Left",
+    "verticalAlignment": "Center"
+  }
+]
+</script>
+
+</div>
+</div>

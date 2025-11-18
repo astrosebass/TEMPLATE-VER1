@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_TerminalInfo" Id="{decea96d-8577-4624-8a6c-67eeb1854b22}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TerminalInfo
+VAR_INPUT
+	 nTerminalState  : UINT;
+END_VAR
+VAR_OUTPUT
+	 sTerminalState  : STRING;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF nTerminalState = 1 THEN 
+   sTerminalState := 'Initialization';
+ELSIF  nTerminalState = 2 THEN 
+   sTerminalState := 'PREOP';  
+ELSIF  nTerminalState = 3 THEN 
+   sTerminalState := 'BOOT'; 
+ELSIF  nTerminalState = 4 THEN 
+   sTerminalState := 'SAFEOP';   
+ELSIF  nTerminalState = 8 THEN 
+   sTerminalState := 'OPERATIONAL';
+ELSIF  nTerminalState = 16#0010 THEN 
+   sTerminalState := 'Slave signals error';   
+ELSIF  nTerminalState = 16#0020 THEN 
+   sTerminalState := 'Invalid vendorId, productCode... read';  
+ELSIF  nTerminalState = 16#0040 THEN 
+   sTerminalState := 'Initialization error occurred';   
+ELSIF  nTerminalState = 16#0080 THEN 
+   sTerminalState := 'Slave disabled';   
+ELSIF  nTerminalState = 16#0100 THEN 
+   sTerminalState := 'Slave not present';    
+ELSIF  nTerminalState = 16#0200 THEN 
+   sTerminalState := 'Slave signals link error';    
+ELSIF  nTerminalState = 16#0400 THEN 
+   sTerminalState := 'Slave signals missing link'; 
+ELSIF  nTerminalState = 16#0800 THEN 
+   sTerminalState := 'Slave signals unexpected link';
+ELSIF  nTerminalState = 16#1000 THEN 
+   sTerminalState := 'Communication port A';
+ELSIF  nTerminalState = 16#2000 THEN 
+   sTerminalState := 'Communication port B';
+ELSIF  nTerminalState = 16#4000 THEN 
+   sTerminalState := 'Communication port C';
+ELSIF  nTerminalState = 16#8000 THEN 
+   sTerminalState := 'Communication port D'; 	
+END_IF
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TerminalInfo">
+      <LineId Id="12" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

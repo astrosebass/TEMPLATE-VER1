@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <GVL Name="GVL_IO" Id="{45216df1-d642-48c2-a25b-8ce51cdc643d}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	
+	
+
+	//	dw_T01_EK1100                                                	| EtherCAT Coupler 
+	//	dw_T02_EL6070-0033                                           	| EtherCAT Terminal, license key for TwinCAT 3.1
+	
+	dw_T03_EL1809                                                		: st_EL1809; //16 Channel Digital Input ( 24VDC ) 
+	dw_T04_EL2809                                                		: st_EL2809; // 16 Channel Digital Output ( 24VDC )
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

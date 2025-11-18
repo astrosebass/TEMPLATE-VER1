@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <DUT Name="ST_Station_3" Id="{be788ca4-1f59-4430-b468-666609eaa6c5}">
+    <Declaration><![CDATA[TYPE ST_Station_3 :
+STRUCT
+	
+	Mov1				: BOOL;		
+	Mov2				: BOOL;	
+	Mov3				: BOOL;		
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,239 @@
+<div id="Content1_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1280" data-tchmi-height="479">
+
+<div id="TcHmiButton_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="571" data-tchmi-left-unit="px" data-tchmi-text="MANAGE USERS" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administrator",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "Engineer",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "operate",
+    "group": "Operator",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administrator",
+    "permission": "Allow"
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_4.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%i%MainFrame%/i%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/DINT",
+          "value": 10
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="780" data-tchmi-left-unit="px" data-tchmi-text="SYSTEM INFO" data-tchmi-top="278" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_5.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%i%MainFrame%/i%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/DINT",
+          "value": 8
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="780" data-tchmi-left-unit="px" data-tchmi-text="QUIT HMI" data-tchmi-top="192" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_7.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL_HMI.bQuitHMI%/s%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Beckhoff.Logout",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Engineer",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="780" data-tchmi-left-unit="px" data-tchmi-text="LOG OUT" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_8.onPressed",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "TcHmi.Functions.Beckhoff.Logout",
+        "fnParams": [
+          {
+            "objectType": "StaticValue",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_10" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-text="MANUAL" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1" data-tchmi-opacity="1" data-tchmi-visibility="Visible" data-tchmi-is-enabled="%s%PLC1.GVL_HMI.bEnableManual%/s%">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_10.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%i%MainFrame%/i%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/DINT",
+          "value": 5
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Engineer",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "Administrator",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "operate",
+    "group": "Operator",
+    "permission": "Deny"
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_35" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="571" data-tchmi-left-unit="px" data-tchmi-text="STATISTICS" data-tchmi-top="278" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_35.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%i%MainFrame%/i%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/DINT",
+          "value": 7
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiButton_36" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="365" data-tchmi-left-unit="px" data-tchmi-text="SETTINGS" data-tchmi-top="278" data-tchmi-top-unit="px" data-tchmi-width="122" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="20" data-tchmi-zindex="1">
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_36.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%i%MainFrame%/i%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/DINT",
+          "value": 6
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+<div id="TcHmiTextblock_782" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="109" data-tchmi-height-unit="px" data-tchmi-left="497" data-tchmi-left-unit="px" data-tchmi-text="LOGO" data-tchmi-top="159" data-tchmi-top-unit="px" data-tchmi-width="273" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="40">
+</div>
+</div>
