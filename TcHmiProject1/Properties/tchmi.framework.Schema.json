@@ -14,7 +14,7 @@
           "propertiesMeta": [
             {
               "name": "accessright",
-              "displayName": "Access right",
+              "displayName": "Accessright",
               "category": "General",
               "displayPriority": 10,
               "description": "Right which this rule defines."
@@ -70,7 +70,7 @@
         {
           "name": "topLeft",
           "category": "general",
-          "displayName": "TopLeft",
+          "displayName": "Top Left",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -80,7 +80,7 @@
           "name": "topLeftUnit",
           "category": "general",
           "refTo": "topLeft",
-          "displayName": "TopLeftUnit",
+          "displayName": "Top Left Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -89,7 +89,7 @@
         {
           "name": "topRight",
           "category": "general",
-          "displayName": "TopRight",
+          "displayName": "Top Right",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -99,7 +99,7 @@
           "name": "topRightUnit",
           "category": "general",
           "refTo": "topRight",
-          "displayName": "TopRightUnit",
+          "displayName": "Top Right Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -108,7 +108,7 @@
         {
           "name": "bottomRight",
           "category": "general",
-          "displayName": "BottomRight",
+          "displayName": "Bottom Right",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -118,7 +118,7 @@
           "name": "bottomRightUnit",
           "category": "general",
           "refTo": "bottomRight",
-          "displayName": "BottomRightUnit",
+          "displayName": "Bottom Right Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -127,7 +127,7 @@
         {
           "name": "bottomLeft",
           "category": "general",
-          "displayName": "BottomLeft",
+          "displayName": "Bottom Left",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -137,7 +137,7 @@
           "name": "bottomLeftUnit",
           "category": "general",
           "refTo": "bottomLeft",
-          "displayName": "BottomLeftUnit",
+          "displayName": "Bottom Left Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -257,7 +257,7 @@
           "name": "leftUnit",
           "category": "general",
           "refTo": "left",
-          "displayName": "LeftUnit",
+          "displayName": "Left Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -276,7 +276,7 @@
           "name": "topUnit",
           "category": "general",
           "refTo": "top",
-          "displayName": "TopUnit",
+          "displayName": "Top Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -285,7 +285,7 @@
         {
           "name": "right",
           "category": "general",
-          "displayName": "right",
+          "displayName": "Right",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -295,7 +295,7 @@
           "name": "rightUnit",
           "category": "general",
           "refTo": "right",
-          "displayName": "rightUnit",
+          "displayName": "Right Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -314,7 +314,7 @@
           "name": "bottomUnit",
           "category": "general",
           "refTo": "bottom",
-          "displayName": "BottomUnit",
+          "displayName": "Bottom Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -401,7 +401,7 @@
           {
             "name": "offsetX",
             "category": "General",
-            "displayName": "OffsetX",
+            "displayName": "Offset X",
             "displayPriority": 10,
             "description": "The Shadow Offset.",
             "defaultValue": null,
@@ -411,7 +411,7 @@
             "name": "offsetXUnit",
             "refTo": "offsetX",
             "category": "General",
-            "displayName": "OffsetX Unit",
+            "displayName": "Offset X Unit",
             "displayPriority": 10,
             "description": "The Shadow Offset.",
             "defaultValue": null,
@@ -420,7 +420,7 @@
           {
             "name": "offsetY",
             "category": "General",
-            "displayName": "OffsetY",
+            "displayName": "Offset Y",
             "displayPriority": 10,
             "description": "The Shadow Offset.",
             "defaultValue": null,
@@ -430,7 +430,7 @@
             "name": "offsetYUnit",
             "refTo": "offsetY",
             "category": "General",
-            "displayName": "OffsetY Unit",
+            "displayName": "Offset Y Unit",
             "displayPriority": 10,
             "description": "The Shadow Offset.",
             "defaultValue": null,
@@ -458,7 +458,7 @@
             "name": "blurUnit",
             "refTo": "blur",
             "category": "General",
-            "displayName": "BlurUnit",
+            "displayName": "Blur Unit",
             "displayPriority": 10,
             "description": "The larger this value, the bigger the blur, so the shadow becomes bigger and lighter.",
             "defaultValue": null,
@@ -477,7 +477,7 @@
             "name": "spreadUnit",
             "refTo": "spread",
             "category": "General",
-            "displayName": "SpreadUnit",
+            "displayName": "Spread Unit",
             "displayPriority": 10,
             "description": "Positive values will cause the shadow to expand and grow bigger, negative values will cause the shadow to shrink.",
             "defaultValue": null,
@@ -931,7 +931,7 @@
           "name": "leftUnit",
           "category": "general",
           "refTo": "left",
-          "displayName": "LeftUnit",
+          "displayName": "Left Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -950,7 +950,7 @@
           "name": "topUnit",
           "category": "general",
           "refTo": "top",
-          "displayName": "TopUnit",
+          "displayName": "Top Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -969,7 +969,7 @@
           "name": "rightUnit",
           "category": "general",
           "refTo": "right",
-          "displayName": "RightUnit",
+          "displayName": "Right Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -988,7 +988,7 @@
           "name": "bottomUnit",
           "category": "general",
           "refTo": "bottom",
-          "displayName": "BottomUnit",
+          "displayName": "Bottom Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -1076,7 +1076,7 @@
           "name": "leftUnit",
           "category": "general",
           "refTo": "left",
-          "displayName": "LeftUnit",
+          "displayName": "Left Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -1095,7 +1095,7 @@
           "name": "topUnit",
           "category": "general",
           "refTo": "top",
-          "displayName": "TopUnit",
+          "displayName": "Top Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -1114,7 +1114,7 @@
           "name": "rightUnit",
           "category": "general",
           "refTo": "right",
-          "displayName": "RightUnit",
+          "displayName": "Right Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -1133,7 +1133,7 @@
           "name": "bottomUnit",
           "category": "general",
           "refTo": "bottom",
-          "displayName": "BottomUnit",
+          "displayName": "Bottom Unit",
           "displayPriority": 10,
           "description": "",
           "defaultValue": null,
@@ -1574,7 +1574,7 @@
                 {
                   "name": "transformType",
                   "category": "general",
-                  "displayName": "TransformType",
+                  "displayName": "Transform Type",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": "Translate",
@@ -1583,7 +1583,7 @@
                 {
                   "name": "x",
                   "category": "general",
-                  "displayName": "x",
+                  "displayName": "X",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1593,7 +1593,7 @@
                   "name": "xUnit",
                   "category": "general",
                   "refTo": "x",
-                  "displayName": "xUnit",
+                  "displayName": "X Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1602,7 +1602,7 @@
                 {
                   "name": "y",
                   "category": "general",
-                  "displayName": "y",
+                  "displayName": "Y",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1612,7 +1612,7 @@
                   "name": "yUnit",
                   "category": "general",
                   "refTo": "y",
-                  "displayName": "yUnit",
+                  "displayName": "Y Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1621,7 +1621,7 @@
                 {
                   "name": "z",
                   "category": "general",
-                  "displayName": "z",
+                  "displayName": "Z",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1631,7 +1631,7 @@
                   "name": "zUnit",
                   "category": "general",
                   "refTo": "z",
-                  "displayName": "zUnit",
+                  "displayName": "Z Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1666,7 +1666,8 @@
               },
               "required": [
                 "transformType"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Rotate",
@@ -1675,7 +1676,7 @@
                 {
                   "name": "transformType",
                   "category": "general",
-                  "displayName": "TransformType",
+                  "displayName": "Transform Type",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": "Rotate",
@@ -1694,11 +1695,20 @@
                   "name": "angleUnit",
                   "category": "general",
                   "refTo": "angle",
-                  "displayName": "AngleUnit",
+                  "displayName": "Angle Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
                   "defaultValueInternal": "deg"
+                },
+                {
+                  "name": "vector",
+                  "category": "General",
+                  "displayName": "Vector",
+                  "displayPriority": 10,
+                  "description": "",
+                  "defaultValue": null,
+                  "defaultValueInternal": null
                 }
               ],
               "properties": {
@@ -1715,7 +1725,37 @@
                   "$ref": "#/definitions/TransformList/definitions/angleUnit"
                 },
                 "vector": {
+                  "title": "Vector",
                   "type": "object",
+                  "propertiesMeta": [
+                    {
+                      "name": "x",
+                      "category": "general",
+                      "displayName": "X",
+                      "displayPriority": 10,
+                      "description": "",
+                      "defaultValue": null,
+                      "defaultValueInternal": null
+                    },
+                    {
+                      "name": "y",
+                      "category": "general",
+                      "displayName": "Y",
+                      "displayPriority": 10,
+                      "description": "",
+                      "defaultValue": null,
+                      "defaultValueInternal": null
+                    },
+                    {
+                      "name": "z",
+                      "category": "general",
+                      "displayName": "Z",
+                      "displayPriority": 10,
+                      "description": "",
+                      "defaultValue": null,
+                      "defaultValueInternal": null
+                    }
+                  ],
                   "properties": {
                     "x": {
                       "type": "number"
@@ -1731,13 +1771,15 @@
                     "x",
                     "y",
                     "z"
-                  ]
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
                 "transformType",
                 "angle"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Scale",
@@ -1799,7 +1841,8 @@
               },
               "required": [
                 "transformType"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Skew",
@@ -1808,7 +1851,7 @@
                 {
                   "name": "transformType",
                   "category": "general",
-                  "displayName": "TransformType",
+                  "displayName": "Transform Type",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": "Skew",
@@ -1817,7 +1860,7 @@
                 {
                   "name": "xAngle",
                   "category": "general",
-                  "displayName": "xAngle",
+                  "displayName": "X Angle",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1827,7 +1870,7 @@
                   "name": "xAngleUnit",
                   "category": "general",
                   "refTo": "xAngle",
-                  "displayName": "xAngleUnit",
+                  "displayName": "X Angle Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1836,7 +1879,7 @@
                 {
                   "name": "yAngle",
                   "category": "general",
-                  "displayName": "yAngle",
+                  "displayName": "Y Angle",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1846,7 +1889,7 @@
                   "name": "yAngleUnit",
                   "category": "general",
                   "refTo": "yAngle",
-                  "displayName": "yAngleUnit",
+                  "displayName": "Y Angle Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1875,7 +1918,8 @@
               },
               "required": [
                 "transformType"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Origin",
@@ -1884,7 +1928,7 @@
                 {
                   "name": "transformType",
                   "category": "general",
-                  "displayName": "TransformType",
+                  "displayName": "Transform Type",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": "Origin",
@@ -1893,7 +1937,7 @@
                 {
                   "name": "x",
                   "category": "general",
-                  "displayName": "x",
+                  "displayName": "X",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1903,7 +1947,7 @@
                   "name": "xUnit",
                   "category": "general",
                   "refTo": "x",
-                  "displayName": "xUnit",
+                  "displayName": "X Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1912,7 +1956,7 @@
                 {
                   "name": "y",
                   "category": "general",
-                  "displayName": "y",
+                  "displayName": "Y",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1922,7 +1966,7 @@
                   "name": "yUnit",
                   "category": "general",
                   "refTo": "y",
-                  "displayName": "yUnit",
+                  "displayName": "Y Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1931,7 +1975,7 @@
                 {
                   "name": "z",
                   "category": "general",
-                  "displayName": "z",
+                  "displayName": "Z",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1941,7 +1985,7 @@
                   "name": "zUnit",
                   "category": "general",
                   "refTo": "z",
-                  "displayName": "zUnit",
+                  "displayName": "Z Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
@@ -1976,7 +2020,8 @@
               },
               "required": [
                 "transformType"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Perspective",
@@ -1985,7 +2030,7 @@
                 {
                   "name": "transformType",
                   "category": "general",
-                  "displayName": "TransformType",
+                  "displayName": "Transform Type",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": "Perspective",
@@ -2004,11 +2049,20 @@
                   "name": "distanceUnit",
                   "category": "general",
                   "refTo": "distance",
-                  "displayName": "DistanceUnit",
+                  "displayName": "Distance Unit",
                   "displayPriority": 10,
                   "description": "",
                   "defaultValue": null,
                   "defaultValueInternal": "px"
+                },
+                {
+                  "name": "origin",
+                  "category": "General",
+                  "displayName": "Origin",
+                  "displayPriority": 10,
+                  "description": "",
+                  "defaultValue": null,
+                  "defaultValueInternal": null
                 }
               ],
               "properties": {
@@ -2025,12 +2079,13 @@
                   "$ref": "#/definitions/MeasurementUnit"
                 },
                 "origin": {
+                  "title": "Origin",
                   "type": "object",
                   "propertiesMeta": [
                     {
                       "name": "x",
                       "category": "general",
-                      "displayName": "x",
+                      "displayName": "X",
                       "displayPriority": 10,
                       "description": "",
                       "defaultValue": null,
@@ -2040,7 +2095,7 @@
                       "name": "xUnit",
                       "category": "general",
                       "refTo": "x",
-                      "displayName": "xUnit",
+                      "displayName": "X Unit",
                       "displayPriority": 10,
                       "description": "",
                       "defaultValue": null,
@@ -2049,7 +2104,7 @@
                     {
                       "name": "y",
                       "category": "general",
-                      "displayName": "y",
+                      "displayName": "Y",
                       "displayPriority": 10,
                       "description": "",
                       "defaultValue": null,
@@ -2059,7 +2114,7 @@
                       "name": "yUnit",
                       "category": "general",
                       "refTo": "y",
-                      "displayName": "yUnit",
+                      "displayName": "Y Unit",
                       "displayPriority": 10,
                       "description": "",
                       "defaultValue": null,
@@ -2079,13 +2134,15 @@
                     "yUnit": {
                       "$ref": "#/definitions/MeasurementUnit"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 }
               },
               "required": [
                 "transformType",
                 "distance"
-              ]
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -2140,7 +2197,8 @@
                             "type": "boolean",
                             "description": "Holds the current state of the Trigger GUI. Not used in runtime"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       {
                         "type": "object",
@@ -2158,7 +2216,8 @@
                             "type": "boolean",
                             "description": "Holds the current state of the Trigger GUI. Not used in runtime"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       },
                       {
                         "type": "object",
@@ -2173,7 +2232,8 @@
                             "type": "boolean",
                             "description": "Holds the current state of the Trigger GUI. Not used in runtime"
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     ]
                   }
@@ -2207,10 +2267,9 @@
                 }
               },
               "required": [
-                "objectType",
-                "true",
-                "false"
-              ]
+                "objectType"
+              ],
+              "additionalProperties": false
             },
             {
               "title": "SwitchCase",
@@ -2261,6 +2320,7 @@
                   "type": "boolean"
                 }
               },
+              "additionalProperties": false,
               "required": [
                 "objectType",
                 "compare",
@@ -2271,7 +2331,7 @@
             {
               "title": "WriteToSymbol",
               "type": "object",
-              "description": "Write To Symbol",
+              "description": "Write to Symbol",
               "properties": {
                 "objectType": {
                   "type": "string",
@@ -2315,7 +2375,8 @@
                 "objectType",
                 "symbolExpression",
                 "value"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Function",
@@ -2366,7 +2427,8 @@
                 "objectType",
                 "fn",
                 "fnParams"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "JavaScript",
@@ -2384,10 +2446,6 @@
                   "items": {
                     "type": "string"
                   }
-                },
-                "injectContextObject": {
-                  "type": "boolean",
-                  "description": "Inject context object.\nCall ctx.success() or ctx.error(TcHmi.Errors.ERROR)"
                 },
                 "waitMode": {
                   "type": "string",
@@ -2429,7 +2487,8 @@
               "required": [
                 "objectType",
                 "sourceLines"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "ActionTemplate",
@@ -2484,7 +2543,8 @@
                 "objectType",
                 "templateName",
                 "fnParams"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "ControlApiFunction",
@@ -2539,7 +2599,8 @@
                 "objectType",
                 "control",
                 "fn"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "FunctionExpression",
@@ -2583,7 +2644,8 @@
               "required": [
                 "objectType",
                 "functionExpression"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Comment",
@@ -2627,7 +2689,8 @@
               },
               "required": [
                 "objectType"
-              ]
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -2670,7 +2733,8 @@
                 "objectType",
                 "value",
                 "valueType"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "Symbol",
@@ -2689,7 +2753,8 @@
               "required": [
                 "objectType",
                 "symbolExpression"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "EventDataObject",
@@ -2708,7 +2773,8 @@
               "required": [
                 "objectType",
                 "propertyPath"
-              ]
+              ],
+              "additionalProperties": false
             },
             {
               "title": "FunctionExpression",
@@ -2727,7 +2793,8 @@
               "required": [
                 "objectType",
                 "functionExpression"
-              ]
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -2754,7 +2821,8 @@
               },
               "required": [
                 "objectType"
-              ]
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -2800,7 +2868,8 @@
             "compare1",
             "compare2",
             "compareOperator"
-          ]
+          ],
+          "additionalProperties": false
         },
         "vCase": {
           "title": "VCase",
@@ -2819,7 +2888,8 @@
           "required": [
             "actions",
             "caseValue"
-          ]
+          ],
+          "additionalProperties": false
         },
         "dCase": {
           "title": "DCase",
@@ -2834,7 +2904,8 @@
           },
           "required": [
             "actions"
-          ]
+          ],
+          "additionalProperties": false
         },
         "symbolExpression": {
           "title": "SymbolExpression",
@@ -10453,6 +10524,25 @@
     },
     "TcHmiUserControlHost": {
       "$ref": "tchmi:framework#/definitions/TcHmi.Controls.System.TcHmiUserControlHost"
+    },
+    "TcHmi.Controls.Beckhoff.TcHmiPdfViewer": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "type": "object",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkControlType": "TcHmiPdfViewer",
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff"
+    },
+    "TcHmiPdfViewer": {
+      "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.TcHmiPdfViewer"
+    },
+    "TcHmi.Controls.Beckhoff.TcHmiPdfViewer.PageMode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "thumbs",
+        "bookmarks",
+        "attachments"
+      ]
     },
     "TcHmi.Functions.Beckhoff.Increment.IncrementValueSymbol": {
       "allOf": [

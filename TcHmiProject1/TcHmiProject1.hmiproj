@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Clean;Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -27,11 +28,13 @@
     <HmiViewportUserScaleable>Default</HmiViewportUserScaleable>
     <HmiPostProcessing>True</HmiPostProcessing>
     <Name>TcHmiProject1</Name>
-    <HmiCommunicationRouterPort>10101</HmiCommunicationRouterPort>
+    <HmiCommunicationRouterPort>10102</HmiCommunicationRouterPort>
     <HmiCommunicationServerAuthPort>13001</HmiCommunicationServerAuthPort>
     <HmiInitial>1.12.762.46</HmiInitial>
     <HmiRecent>1.12.762.46</HmiRecent>
     <HmiServerNodeAdvancedView>False</HmiServerNodeAdvancedView>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
     <TwinCATHmi_Tasks>$(TcHmiDirectory)\MSBuild\Beckhoff.TwinCAT.HMI.tasks</TwinCATHmi_Tasks>
@@ -112,6 +115,8 @@
   <ItemGroup>
     <Folder Include="Contents\IO" />
     <Folder Include="Contents\Manual" />
+    <Folder Include="Contents\CSS_JAVA" />
+    <Folder Include="Contents\pdf" />
     <Folder Include="Contents\Settings" />
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
@@ -135,13 +140,35 @@
     <Content Include=".eslintrc.json">
       <Visible>false</Visible>
     </Content>
+    <Content Include="Contents\12_Operatinal_Manual.content">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Contents\6_Settings.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\11_Electric_Drawings.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\8_Info.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\10_Manage_Users.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\CSS_JAVA\MyRowClassesProvider.function.json">
+      <SubType>Content</SubType>
+      <DependentUpon>Contents\CSS_JAVA\MyRowClassesProvider.ts</DependentUpon>
+    </Content>
+    <Content Include="Contents\CSS_JAVA\MyRowClassesProvider.ts">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\CSS_JAVA\Stylesheet1.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\IO\3_Test.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\IO\2_Test.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\IO\1_Overview.content">
@@ -175,6 +202,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Manual\1_Station1.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\pdf\TE1096_ EMALC_Stopper_Insertion.SDS.pdf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\pdf\TM429-EMALC-4_StopperInsertion_ScrewStation_Rev_1.0.pdf">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Settings\3_SettingsStation3.content">
@@ -494,6 +527,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.props'))" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.4.9.5\build\Microsoft.TypeScript.MSBuild.targets')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.9.3\build\Microsoft.TypeScript.MSBuild.targets')" />
 </Project>

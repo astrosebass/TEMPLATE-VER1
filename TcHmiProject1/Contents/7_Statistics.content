@@ -1,6 +1,6 @@
 <div id="Content1_6" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1280" data-tchmi-height="479">
 
-<div id="TcHmiDatagrid_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="284" data-tchmi-height-unit="px" data-tchmi-left="163" data-tchmi-left-unit="px" data-tchmi-top="86" data-tchmi-top-unit="px" data-tchmi-width="885" data-tchmi-width-unit="px" data-tchmi-src-data="%s%PLC1.GVL_Persistent.stStatisticsHMI|BindingMode=TwoWay%/s%" data-tchmi-row-height="60" data-tchmi-grid-font-style="Normal" data-tchmi-grid-font-weight="Bold" data-tchmi-grid-font-size="25">
+<div id="TcHmiDatagrid_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiDatagrid" data-tchmi-height="284" data-tchmi-height-unit="px" data-tchmi-left="164" data-tchmi-left-unit="px" data-tchmi-top="85" data-tchmi-top-unit="px" data-tchmi-width="885" data-tchmi-width-unit="px" data-tchmi-src-data="%s%PLC1.GVL_Persistent.stStatisticsHMI|BindingMode=TwoWay%/s%" data-tchmi-row-height="60" data-tchmi-grid-font-style="Normal" data-tchmi-grid-font-weight="Bold" data-tchmi-grid-font-size="25">
 <script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
 [
   {

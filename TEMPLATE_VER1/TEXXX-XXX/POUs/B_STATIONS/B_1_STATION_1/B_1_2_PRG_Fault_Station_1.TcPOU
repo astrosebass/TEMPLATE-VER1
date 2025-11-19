@@ -57,7 +57,7 @@ END_FOR
 
 //Immediate Fault
 GVL_MASTER.stAlarms[1].aEventTimers[0]
-(IN := ,PT:= T#500MS );
+(IN := bStatisticsTest[0],PT:= T#500MS );
 IF GVL_MASTER.stAlarms[1].aEventTimers[0].Q  THEN 
 	GVL_MASTER.stAlarms[1].aEventFlags[0] := TRUE;
 END_IF
@@ -66,7 +66,7 @@ END_IF
 
 ////Cycle stop fault
 GVL_MASTER.stAlarms[1].aEventTimers[33]
-(IN := ,PT:= T#500MS );
+(IN :=  bStatisticsTest[1],PT:= T#500MS );
 IF GVL_MASTER.stAlarms[1].aEventTimers[33].Q THEN 
 	GVL_MASTER.stAlarms[1].aEventFlags[33] := TRUE;
 END_IF
@@ -75,7 +75,7 @@ END_IF
 
 ////Cycle stop Request
 GVL_MASTER.stAlarms[1].aEventTimers[80]
-(IN := ,PT:= T#500MS );
+(IN :=  bStatisticsTest[3],PT:= T#500MS );
 IF GVL_MASTER.stAlarms[1].aEventTimers[80].Q THEN 
 	GVL_MASTER.stAlarms[1].aEventFlags[80] := TRUE;
 END_IF

@@ -1,0 +1,33 @@
+
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.HeightFail td[data-column-name="sHeightHMI"] {
+    background-color: red;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.HeightPass td[data-column-name="sHeightHMI"] {
+    background-color: greenyellow;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.LeakFail td[data-column-name="sLeakHMI"] {
+    background-color: red;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.LeakPass td[data-column-name="sLeakHMI"] {
+    background-color: greenyellow;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.VisionFail td[data-column-name="sVisionHMI"] {
+    background-color: red;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.VisionPass td[data-column-name="sVisionHMI"] {
+    background-color: greenyellow;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.PieceFail td[data-column-name="sPieceHMI"] {
+    background-color: red;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.PiecePass td[data-column-name="sPieceHMI"] {
+    background-color: greenyellow;
+}

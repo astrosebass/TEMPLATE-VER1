@@ -1,3 +1,5 @@
-<div id="Content1_7" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="800" data-tchmi-height="640">
+<div id="Content1_7" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1240" data-tchmi-height="438" data-tchmi-creator-viewport-width="800" data-tchmi-creator-viewport-height="600">
 
+<div id="TcHmiTextblock_783" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="242" data-tchmi-height-unit="px" data-tchmi-left="436" data-tchmi-left-unit="px" data-tchmi-text="1" data-tchmi-top="89" data-tchmi-top-unit="px" data-tchmi-width="304" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="50" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center">
+</div>
 </div>
