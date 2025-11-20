@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="FB_EventsManager" Id="{a5f89ae0-d262-4bc0-baad-f557f917db4a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EventsManager
+
+VAR_INPUT
+	
+	bPulse					: BOOL;
+	sSystemTime				: STRING(255);
+	sSystemDate				: STRING(255);
+
+	
+END_VAR
+
+VAR_OUTPUT
+
+	astActiveEvents			: ARRAY [0..50] OF ST_ActiveEvents;
+	astEventsHistory		: ARRAY[0..200] OF ST_EventsHistory;;
+
+END_VAR
+
+VAR
+	
+	i								: ARRAY [0..1] OF DINT;
+	j								: ARRAY [0..1] OF DINT;
+	m								: ARRAY [0..3] OF DINT;
+	k								: ARRAY [0..1] OF DINT;
+	l								: DINT;
+	n								: DINT;
+	
+	bEventsAssigmentSignal			: BOOL		:= TRUE;
+	
+
+	
+END_VAR
+
+VAR_IN_OUT
+	
+	stStationEvents			: ARRAY[0..3] OF ST_StationEvents;
+	bResetFaults			: BOOL;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[ACT_FaultTrig();
+ACT_ActiveEvents_DataHistory();
+
+
+IF bEventsAssigmentSignal THEN
+	ACT_EventTextAssigment();
+	bEventsAssigmentSignal := FALSE;
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_ActiveEvents_DataHistory" Id="{189c7dfd-f9f1-43a8-9266-a00a732d0443}">
+      <Implementation>
+        <ST><![CDATA[IF bPulse THEN
+
+FOR k[0] := 0 TO 3 DO
+	
+	FOR k[1] := 0 TO 100 DO
+		
+		IF stStationEvents[k[0]].aEvents[k[1]].bImmediateFault AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
+			
+			//ACTIVE EVENTS
+			astActiveEvents[l].sEventTex				:= 	stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astActiveEvents[l].sType					:= 'Immediate Fault';						
+			astActiveEvents[l].abType					:= 1; 
+			astActiveEvents[l].sSolution				:= stStationEvents[k[0]].aEvents[k[1]].sSolution;
+			stStationEvents[k[0]].aEvents[k[1]].bActive := TRUE;
+			
+			//EVENTS HISTORY
+			FOR n := 199 TO 0 BY -1 DO
+							
+				astEventsHistory[n+1].sEventTex				:= astEventsHistory[n].sEventTex;
+				astEventsHistory[n+1].sType					:= astEventsHistory[n].sType;
+				astEventsHistory[n+1].abType				:= astEventsHistory[n].abType;
+				astEventsHistory[n+1].sDate					:= astEventsHistory[n].sDate;										
+				astEventsHistory[n+1].sTime					:= astEventsHistory[n].sTime;
+				
+			END_FOR
+
+			astEventsHistory[0].sEventTex				:= stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astEventsHistory[0].sType					:= 'Immediate Fault';
+			astEventsHistory[0].abType					:= 1;
+			astEventsHistory[0].sDate					:= 	sSystemTime;										
+			astEventsHistory[0].sTime					:= 	sSystemDate;
+				
+			l											:= l + 1;					
+		END_IF
+		
+		IF stStationEvents[k[0]].aEvents[k[1]].bCycleStopFault AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
+			
+			//ACTIVE EVENTS
+			astActiveEvents[l].sEventTex				:= 	stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astActiveEvents[l].sType					:= 'Cycle Stop Fault';						
+			astActiveEvents[l].abType					:= 1; 
+			astActiveEvents[l].sSolution				:= stStationEvents[k[0]].aEvents[k[1]].sSolution;
+			stStationEvents[k[0]].aEvents[k[1]].bActive := TRUE;
+			
+			//EVENTS HISTORY
+			FOR n := 199 TO 0 BY -1 DO
+							
+				astEventsHistory[n+1].sEventTex				:= astEventsHistory[n].sEventTex;
+				astEventsHistory[n+1].sType					:= astEventsHistory[n].sType;
+				astEventsHistory[n+1].abType				:= astEventsHistory[n].abType;
+				astEventsHistory[n+1].sDate					:= astEventsHistory[n].sDate;										
+				astEventsHistory[n+1].sTime					:= astEventsHistory[n].sTime;
+				
+			END_FOR
+			
+			astEventsHistory[0].sEventTex				:= stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astEventsHistory[0].sType					:= 'Cycle Stop Fault';
+			astEventsHistory[0].abType					:= 1;
+			astEventsHistory[0].sDate					:= 	sSystemTime;										
+			astEventsHistory[0].sTime					:= 	sSystemDate;
+															
+			l											:= l + 1;						
+		END_IF
+		
+		IF stStationEvents[k[0]].aEvents[k[1]].bCycleStopRequest AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
+			
+			//ACTIVE EVENTS
+			astActiveEvents[l].sEventTex				:= 	stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astActiveEvents[l].sType					:= 'Cycle Stop Request';						
+			astActiveEvents[l].abType					:= 2; 
+			astActiveEvents[l].sSolution				:= stStationEvents[k[0]].aEvents[k[1]].sSolution;
+			stStationEvents[k[0]].aEvents[k[1]].bActive := TRUE;
+			
+			//EVENTS HISTORY
+			FOR n := 199 TO 0 BY -1 DO
+							
+				astEventsHistory[n+1].sEventTex				:= astEventsHistory[n].sEventTex;
+				astEventsHistory[n+1].sType					:= astEventsHistory[n].sType;
+				astEventsHistory[n+1].abType				:= astEventsHistory[n].abType;
+				astEventsHistory[n+1].sDate					:= astEventsHistory[n].sDate;										
+				astEventsHistory[n+1].sTime					:= astEventsHistory[n].sTime;
+				
+			END_FOR
+
+			astEventsHistory[0].sEventTex				:= stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astEventsHistory[0].sType					:= 'Cycle Stop Request';
+			astEventsHistory[0].abType					:= 2;
+			astEventsHistory[0].sDate					:= 	sSystemTime;										
+			astEventsHistory[0].sTime					:= 	sSystemDate;
+															
+															
+			l											:= l + 1;							
+		END_IF
+		
+		IF stStationEvents[k[0]].aEvents[k[1]].bMessage AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
+			
+			//ACTIVE EVENTS
+			astActiveEvents[l].sEventTex				:= 	stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astActiveEvents[l].sType					:= 'Message';						
+			astActiveEvents[l].abType					:= 3; 
+			astActiveEvents[l].sSolution				:= stStationEvents[k[0]].aEvents[k[1]].sSolution;
+			stStationEvents[k[0]].aEvents[k[1]].bActive := TRUE;
+			
+			//EVENTS HISTORY
+			FOR n := 199 TO 0 BY -1 DO
+							
+				astEventsHistory[n+1].sEventTex				:= astEventsHistory[n].sEventTex;
+				astEventsHistory[n+1].sType					:= astEventsHistory[n].sType;
+				astEventsHistory[n+1].abType				:= astEventsHistory[n].abType;
+				astEventsHistory[n+1].sDate					:= astEventsHistory[n].sDate;										
+				astEventsHistory[n+1].sTime					:= astEventsHistory[n].sTime;
+				
+			END_FOR
+
+			astEventsHistory[0].sEventTex				:= stStationEvents[k[0]].aEvents[k[1]].bEventTextHMI;
+			astEventsHistory[0].sType					:= 'Message';
+			astEventsHistory[0].abType					:= 3;
+			astEventsHistory[0].sDate					:= 	sSystemTime;										
+			astEventsHistory[0].sTime					:= 	sSystemDate;
+															
+			l											:= l + 1;
+										
+		END_IF
+		
+		
+	END_FOR
+
+END_FOR
+ELSIF bResetFaults THEN
+	FOR l := 0 TO 50 DO
+	
+			astActiveEvents[l].sEventTex			:= 	'';
+			astActiveEvents[l].sType				:= '';						
+			astActiveEvents[l].abType				:= 0; 
+			astActiveEvents[l].sSolution			:= '';
+			
+	END_FOR	
+	
+	FOR k[0] := 0 TO 3 DO
+	
+		FOR k[1] := 0 TO 100 DO
+	
+			stStationEvents[k[0]].aEvents[k[1]].bActive	:= FALSE;
+		END_FOR
+	END_FOR
+	
+	l												:= 0;
+	k[0]											:= 0;
+	k[1]											:= 0;	
+	bResetFaults									:= FALSE;
+ELSE
+	
+	k[0]											:= 0;
+	k[1]											:= 0;
+	
+END_IF
+
+
+//
+
+
+
+																		//0:Immediate Fault
+																		//1:Cycle Stop Fault
+																		//2: Cycle Stop Request
+																		//3: Message]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_EventTextAssigment" Id="{2f99a514-df71-4979-86ed-664674c281e4}">
+      <Implementation>
+        <ST><![CDATA[
+FOR j[0] := 0 TO 3 DO
+	
+	FOR j[1] := 0 TO 100 DO 
+		
+		IF stStationEvents[j[0]].aEvents[j[1]].bImmediateFault THEN
+			
+			m[0]											:= m[0]+1;
+			
+			stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI	:= 		CONCAT( STR1 := 'Immediate Fault N ', STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(m[0]), str2 := 
+																CONCAT( STR1 :=' - Station ' , STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(j[0]), STR2 := 
+																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
+			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[0];				
+			
+		
+		ELSIF stStationEvents[j[0]].aEvents[j[1]].bCycleStopFault THEN
+			
+			m[1]											:= m[1]+1;
+			
+			stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI	:= 		CONCAT( STR1 := 'Cycle Stop Fault N ', STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(m[1]), str2 := 
+																CONCAT( STR1 :=' - Station ' , STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(j[0]), STR2 := 
+																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
+			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[1];													
+			
+			
+		ELSIF stStationEvents[j[0]].aEvents[j[1]].bCycleStopRequest THEN
+		
+			m[2]											:= m[2]+1;	
+			
+			stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI	:= 		CONCAT( STR1 := 'Cycle Stop Request N ', STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(m[2]), str2 := 
+																CONCAT( STR1 :=' - Station ' , STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(j[0]), STR2 := 
+																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
+			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[2];													
+					
+			
+		ELSIF stStationEvents[j[0]].aEvents[j[1]].bMessage THEN
+			
+			m[3]											:= m[3]+1;
+			
+			stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI	:= 		CONCAT( STR1 := 'Message N ', STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(m[3]), str2 := 
+																CONCAT( STR1 :=' - Station ' , STR2 := 
+																CONCAT( STR1 := DINT_TO_STRING(j[0]), STR2 := 
+																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
+			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[3];													
+				
+			
+			
+		END_IF
+		
+	END_FOR
+	
+	
+END_FOR
+j[0]														:= 0;
+j[1]														:= 0;
+m[0]														:= 0;
+m[1]														:= 0;
+m[2]														:= 0;
+m[3]														:= 0;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_FaultTrig" Id="{59fc2b1d-e7a6-4423-afcc-b6b44fcfba0f}">
+      <Implementation>
+        <ST><![CDATA[IF bPulse THEN
+	
+
+	FOR i[0] := 0 TO 3 DO
+	//IMMEDIATE FAULT
+		FOR i[1] :=0 TO 100 DO
+			
+			//IMMEDIATE FAULT
+			IF stStationEvents[i[0]].aEvents[i[1]].bImmediateFault AND stStationEvents[i[0]].aEvents[i[1]].bEventFlag THEN
+	
+				stStationEvents[i[0]].bImmediateFault						:= TRUE;
+		
+			ELSIF bResetFaults THEN
+				stStationEvents[i[0]].bImmediateFault						:= FALSE;
+			END_IF
+			//STOP FAULT
+			IF stStationEvents[i[0]].aEvents[i[1]].bCycleStopFault AND stStationEvents[i[0]].aEvents[i[1]].bEventFlag THEN
+	
+				stStationEvents[i[0]].bCycleStopFault						:= TRUE;
+		
+			ELSIF bResetFaults THEN
+				stStationEvents[i[0]].bCycleStopFault						:= FALSE;
+			END_IF
+		
+			//STOP REQUEST
+			IF stStationEvents[i[0]].aEvents[i[1]].bCycleStopRequest AND stStationEvents[i[0]].aEvents[i[1]].bEventFlag THEN
+	
+				stStationEvents[i[0]].bCycleStopRequest						:= TRUE;
+		
+			ELSIF bResetFaults THEN
+				stStationEvents[i[0]].bCycleStopRequest						:= FALSE;
+			END_IF
+		
+		END_FOR
+	END_FOR
+
+ELSE 	i[0]														:= 0;
+		i[1]														:= 0;	
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="FB_EventsManager">
+      <LineId Id="83" Count="7" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="112" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EventsManager.ACT_ActiveEvents_DataHistory">
+      <LineId Id="99" Count="1" />
+      <LineId Id="2" Count="1" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="177" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="166" Count="1" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="146" Count="1" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="160" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="71" Count="1" />
+      <LineId Id="179" Count="0" />
+      <LineId Id="73" Count="2" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="180" Count="0" />
+      <LineId Id="182" Count="10" />
+      <LineId Id="194" Count="2" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="81" Count="1" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="83" Count="2" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="204" Count="0" />
+      <LineId Id="206" Count="9" />
+      <LineId Id="217" Count="3" />
+      <LineId Id="261" Count="0" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="256" Count="1" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="91" Count="1" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="93" Count="2" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="229" Count="0" />
+      <LineId Id="232" Count="9" />
+      <LineId Id="243" Count="3" />
+      <LineId Id="262" Count="0" />
+      <LineId Id="253" Count="0" />
+      <LineId Id="258" Count="1" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="101" Count="1" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="108" Count="1" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="130" Count="1" />
+      <LineId Id="127" Count="2" />
+      <LineId Id="132" Count="1" />
+      <LineId Id="136" Count="1" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="117" Count="1" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="115" Count="1" />
+      <LineId Id="19" Count="6" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EventsManager.ACT_EventTextAssigment">
+      <LineId Id="19" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="21" Count="4" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="82" Count="1" />
+      <LineId Id="46" Count="5" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="85" Count="2" />
+      <LineId Id="59" Count="5" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="1" />
+      <LineId Id="88" Count="1" />
+      <LineId Id="69" Count="5" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="6" Count="1" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="75" Count="3" />
+    </LineIds>
+    <LineIds Name="FB_EventsManager.ACT_FaultTrig">
+      <LineId Id="2" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="4" Count="1" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="6" Count="6" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="46" Count="5" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="59" Count="5" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="36" Count="1" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

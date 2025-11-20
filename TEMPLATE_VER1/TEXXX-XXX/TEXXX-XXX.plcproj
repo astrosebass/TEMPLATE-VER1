@@ -96,13 +96,16 @@
     <Compile Include="DUTs\STATIONS\STATION_3\ST_Station_3.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_ActiveEventsHMI.TcDUT">
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_ActiveEvents.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_AlarmHistory.TcDUT">
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_EventsHistory.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_Events.TcDUT">
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_EVENT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_StationEvents.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\USER_ALARMS_EVENTS\ST_UserLogHMI.TcDUT">
@@ -150,19 +153,10 @@
     <Compile Include="POUs\B_STATIONS\B_1_STATION_1\B_1_1_PRG_Master_Station_1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\B_STATIONS\B_1_STATION_1\B_1_2_PRG_Fault_Station_1.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\B_STATIONS\B_2_STATION_2\B_2_1_PRG_Master_Station_2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\B_STATIONS\B_2_STATION_2\B_2_2_PRG_Fault_Station_2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\B_STATIONS\B_3_STATION_3\B_3_1_PRG_Master_Station_3.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\B_STATIONS\B_3_STATION_3\B_3_2_PRG_Fault_Station_3.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\C_HMI\C_1_PRG_MainHMI.TcPOU">
@@ -174,7 +168,7 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Utilities\FB_EventLog.TcPOU">
+    <Compile Include="POUs\Utilities\FB_EventsManager.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Utilities\FB_UserLog.TcPOU">
@@ -205,6 +199,7 @@
     <Folder Include="DUTs\STATIONS\STATION_2" />
     <Folder Include="DUTs\STATIONS\STATION_3" />
     <Folder Include="DUTs\USER_ALARMS_EVENTS" />
+    <Folder Include="DUTs\USER_ALARMS_EVENTS\EVENTS" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\A_MASTER" />
     <Folder Include="POUs\B_STATIONS" />

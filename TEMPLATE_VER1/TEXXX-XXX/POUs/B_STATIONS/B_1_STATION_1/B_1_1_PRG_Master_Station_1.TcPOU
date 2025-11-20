@@ -12,7 +12,9 @@ VAR
 	rBadStatistics						: R_TRIG;
 	rEfficency							: STRING(510);
 	
-	bPersistentError					: bool;
+	bPersistentError					: BOOL;
+	
+	bEventsFlag							: ARRAY [0..100] OF BOOL;
 /////////////////////////////////////////////////////////////////////////////////////I O/////////////////////////////////////////////////////////////////////////////////////	
 	bStopped							: BOOL;
 	bError								: BOOL;
@@ -36,10 +38,10 @@ VAR_OUTPUT
 	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[B_1_2_PRG_Fault_Station_1( aAlarms := stAlarms );
-a_ACT_Ctrl_Station_1();
+      <ST><![CDATA[a_ACT_Ctrl_Station_1();
 b_ACT_IO();
-c_ACT_Statistics_Station_1();]]></ST>
+c_ACT_Statistics_Station_1();
+d_ACT_Set_Events_Station_1();]]></ST>
     </Implementation>
     <Action Name="a_ACT_Ctrl_Station_1" Id="{ce5dd8ea-9899-4a9f-bde8-defccc1c38a2}">
       <Implementation>
@@ -238,9 +240,42 @@ END_IF
 ]]></ST>
       </Implementation>
     </Action>
+    <Action Name="d_ACT_Set_Events_Station_1" Id="{e78af74f-1632-4c5a-a6d8-e4aea7d2a011}">
+      <Implementation>
+        <ST><![CDATA[//IMMEDIATE FAULTS
+
+stStationEvents[1].aEvents[0].bImmediateFault				:= TRUE;
+stStationEvents[1].aEvents[0].bEventFlag					:= bEventsFlag[0];
+stStationEvents[1].aEvents[0].bEventText					:= 'ST1 EVENT 0';
+stStationEvents[1].aEvents[0].sSolution						:= 'Solution 1';
+
+
+//CYCLE STOP FAULT
+
+stStationEvents[1].aEvents[1].bCycleStopFault				:= TRUE;
+stStationEvents[1].aEvents[1].bEventFlag					:= bEventsFlag[1];
+stStationEvents[1].aEvents[1].bEventText					:= 'ST1 EVENT 1';
+stStationEvents[1].aEvents[1].sSolution						:= 'Solution 2';
+
+
+//CYCLE STOP REQUEST
+
+stStationEvents[1].aEvents[2].bCycleStopRequest			:= TRUE;
+stStationEvents[1].aEvents[2].bEventFlag					:= bEventsFlag[2];
+stStationEvents[1].aEvents[2].bEventText					:= 'ST1 EVENT 2';
+stStationEvents[1].aEvents[2].sSolution						:= '';
+
+//Message
+
+stStationEvents[1].aEvents[3].bMessage						:= TRUE;
+stStationEvents[1].aEvents[3].bEventFlag					:= bEventsFlag[3];
+stStationEvents[1].aEvents[3].bEventText					:= 'Message 3';
+stStationEvents[1].aEvents[3].sSolution						:= '';]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="B_1_1_PRG_Master_Station_1">
-      <LineId Id="87" Count="2" />
-      <LineId Id="119" Count="0" />
+      <LineId Id="157" Count="2" />
+      <LineId Id="154" Count="0" />
     </LineIds>
     <LineIds Name="B_1_1_PRG_Master_Station_1.a_ACT_Ctrl_Station_1">
       <LineId Id="121" Count="0" />
@@ -357,6 +392,10 @@ END_IF
       <LineId Id="33" Count="0" />
       <LineId Id="49" Count="7" />
       <LineId Id="38" Count="0" />
+    </LineIds>
+    <LineIds Name="B_1_1_PRG_Master_Station_1.d_ACT_Set_Events_Station_1">
+      <LineId Id="2" Count="27" />
+      <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -8,14 +8,13 @@ VAR
 	ftrigButton             				: ARRAY[1..3] OF Tc2_Standard.F_TRIG; 
 	
 	fbStringFormatter       				: Tc2_Utilities.FB_FormatString;
-	fbEventLogger							: FB_EventLog;
+	fbEventsManager							: FB_EventsManager;
 	
 	ntShutdown								: TC2_Utilities.NT_Shutdown;
 	closeChrome 							: NT_StartProcess;
 	tonUserLogOut							: TON;
 	fbUserLog								: FB_UserLog;
-	bTest									: BOOL;
-	bTest2									: BOOL;
+	
 	nFindAdm								: INT;
 	nFindEng								: INT;
 	nFindOpe								: INT;
@@ -23,19 +22,19 @@ VAR
 	sAdmGroup								: STRING (255)							:= 'Administrator';
 	sEngGroup								: STRING (255)							:= 'Engineer';
 	sOpeGroup								: STRING (255)							:= 'Operator';
+	
 	rEfficency								: STRING(510);
 	
-	j										: DINT;
-	l										: DINT;
+	fbSystemTime							: NT_GetTime;
 	
+	bResetTest								: BOOL;
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////GENERAL/////////////////////////////////////////////////////////////////////////////////////
-
+A_3_PRG_FaultHandling();
 a_ACT_ButtonsLamps();
-b_Meth_MapUnitEventsToHMI();
 d_ACT_ShutdownAndQuit();
 e_ACT_UserLog();
 f_ACT_TerminalInfo();
@@ -53,7 +52,7 @@ IF tonSystemPowerUP.Q THEN
 bSystemPoweringUP:=FALSE;
 END_IF
 
-A_3_PRG_FaultHandling( aAlarms := stAlarms );
+
 A_4_PRG_MasterSystemTime();
 /////////////////////////////////////////////////////////////////////////////////////STATIONS/////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,36 +66,32 @@ A_2_PRG_MachineCtrl();
 
 /////////////////////////////////////////////////////////////////////////////////////EVENT LOG/////////////////////////////////////////////////////////////////////////////////////
 
-fbEventLogger(	bEnable       	:= A_4_PRG_MasterSystemTime.bReadyToRead,
-			    sDateTime     	:= A_4_PRG_MasterSystemTime.sDateTimeSpaces,
-			    aEventFlags   	:= aEventFlags,
-			    aEventTexts   	:= aEventTexts,
-			    aActiveEvents 	:= aActiveEvents,
-			    aEventLog     	:= aEventLog,
-				siDate			:= sSystemDate,
-				siTime			:= sSystemTime,
-				soDate			:= aDateLog,
-				soTime			:= aTimeLog
-);
+fbEventsManager	(			//INPUTS
+							bPulse 							:= stPuls.bFlash10Hz, 
+							bResetFaults 					:= stButtonsLamps.bResetButtonFallingEdge, 
+							stStationEvents 				:= stStationEvents,
+							sSystemTime						:= sSystemTime,
+							sSystemDate						:= sSystemDate,
+ 
+							//OUTPUTS
+							astActiveEvents 				=> astActiveEvents,
+							astEventsHistory				=> astEventsHistory
+							);
 
-IF stPuls.bFlash10Hz THEN	
-	FOR j := 0 TO 39 DO
-		stActiveEventsHMI[j].sActiveEvents 				:= aActiveEvents[j];		
-	END_FOR
+
+
+////////////////////////////////////////////////////////////////////////////////////SYSTEM DATE & TIME/////////////////////////////////////////////////////////////////////////////////////
+
+fbSystemTime( START := stPuls.bFlash10Hz, TIMESTR => stSystemTime);
 	
-	FOR l:=0 TO 250 DO	
-		stAlarmHistory[l].sEventlog 					:= aEventLog[l];
-		stAlarmHistory[l].sDate							:= aDateLog[l];
-		stAlarmHistory[l].sTime							:= aTimeLog[l];
-	END_FOR
-ELSE
-	j													:= 0;
-	l													:= 0;
-END_IF
 
-////////////////////////////////////////////////////////////////////////////////////ALARMS HISTORY/////////////////////////////////////////////////////////////////////////////////////
-
-
+sSystemTime					:= 	CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wHour), STR2 := CONCAT( STR1 := ':', STR2 := 
+								CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wMinute), STR2 := 
+								CONCAT(STR1 := ':', STR2 := WORD_TO_STRING(stSystemTime.wSecond)))));
+								
+sSystemDate					:= 	CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wDay), STR2 := 
+								CONCAT(STR1 := '/', STR2 := CONCAT(STR1 := WORD_TO_STRING(stSystemTime.wMonth), STR2 := 
+								CONCAT(STR1 := '/', STR2 := WORD_TO_STRING(stSystemTime.wYear)))));
 
 
 
@@ -123,7 +118,7 @@ ftrigButton[1](CLK :=);
 rtrigButton[1](CLK						:=);
 ftrigButton[2](CLK						:=);
 rtrigButton[2](CLK						:=);
-ftrigButton[3](CLK	:= bTest			);
+ftrigButton[3](CLK	:=bResetTest 		);
 rtrigButton[3](CLK						:=);
 
 
@@ -131,80 +126,6 @@ rtrigButton[3](CLK						:=);
 //GVL_IO.dw_T11_EL2809.qStartButton_Indicator := (stPuls.bFlash2Hz AND stMachineStatus.bReadyToStart) OR (stMachineStatus.bManualMode AND stPuls.bFlash4Hz ) ;]]></ST>
       </Implementation>
     </Action>
-    <Method Name="b_Meth_MapUnitEventsToHMI" Id="{32e71418-dd66-4dd1-85c6-b068060c43f0}">
-      <Declaration><![CDATA[METHOD b_Meth_MapUnitEventsToHMI : BOOL
-VAR_INPUT
-END_VAR
-
-VAR
-	i		:INT; 	//Unit index
-	j		:INT;	//Unit event index
-	k		:INT; 	//HMI event index	
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[//Set event texts first
-IF GVL_Master.stAlarms[0].bEventTextsSet AND
-   GVL_Master.stAlarms[1].bEventTextsSet AND
-   GVL_Master.stAlarms[2].bEventTextsSet AND
-   GVL_Master.stAlarms[3].bEventTextsSet AND
-   NOT bEventTextsSet 
-THEN
-	c_Meth_SetEventTexts();
-		
-	bEventTextsSet := TRUE;
-END_IF
-
-//Map events from master and stations into HMI events
-IF bEventTextsSet THEN
-	k := 0; 
-	FOR i := 0 TO 4 DO
-		FOR j := 0 TO 128 - 1 DO
-			aEventFlags[k] := GVL_Master.stAlarms[i].aEventFlags[j];
-			k := k + 1;
-		END_FOR
-	END_FOR
-END_IF
-]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="c_Meth_SetEventTexts" Id="{f9e7d27e-a7a1-45ef-b32f-52dcb6509272}">
-      <Declaration><![CDATA[METHOD c_Meth_SetEventTexts : BOOL
-VAR_INPUT
-END_VAR
-VAR
-	i				:INT; 	//Unit index
-	j				:INT;	//HMI event index
-	k				:INT;	//
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[//Set global event texts based on unit event texts (master and stations
-k := 0;
-FOR i := 0 TO 3 DO
-	//For each unit (master, station1, station2)
-	//Alarm texts
-	FOR j := 0 TO 99 DO
-		fbStringFormatter(	sFormat := 'Alarm No. %d - %s', 
-					 	arg1 := F_INT(k), 
-						arg2 := F_String(GVL_Master.stAlarms[i].aEventTexts[j]),
-						sOut => aEventTexts[k]);
-						
-		k := k + 1; //Increment global events index
-	END_FOR
-	
-	//Messages
-	FOR j := 100 TO 127 DO
-		fbStringFormatter(	sFormat := 'Message No. %d - %s', 
-					 		arg1 := F_INT(k), 
-							arg2 := F_String(GVL_Master.stAlarms[i].aEventTexts[j]),
-							sOut => aEventTexts[k]);
-							
-		k := k + 1; //Increment global events index
-	END_FOR
-END_FOR]]></ST>
-      </Implementation>
-    </Method>
     <Action Name="d_ACT_ShutdownAndQuit" Id="{b7dac9a1-fefc-426e-a57f-b21e21205edc}">
       <Implementation>
         <ST><![CDATA[closeChrome(
@@ -325,16 +246,24 @@ END_IF
       </Implementation>
     </Action>
     <LineIds Name="A_1_PRG_Main_Master">
-      <LineId Id="443" Count="7" />
+      <LineId Id="443" Count="2" />
+      <LineId Id="447" Count="3" />
       <LineId Id="579" Count="0" />
       <LineId Id="521" Count="0" />
       <LineId Id="451" Count="0" />
       <LineId Id="550" Count="0" />
       <LineId Id="519" Count="0" />
       <LineId Id="518" Count="0" />
-      <LineId Id="452" Count="48" />
+      <LineId Id="452" Count="20" />
+      <LineId Id="636" Count="9" />
+      <LineId Id="483" Count="1" />
+      <LineId Id="498" Count="2" />
       <LineId Id="513" Count="0" />
       <LineId Id="501" Count="0" />
+      <LineId Id="625" Count="0" />
+      <LineId Id="628" Count="0" />
+      <LineId Id="630" Count="5" />
+      <LineId Id="626" Count="0" />
       <LineId Id="512" Count="0" />
       <LineId Id="508" Count="2" />
       <LineId Id="502" Count="3" />
@@ -343,16 +272,6 @@ END_IF
     <LineIds Name="A_1_PRG_Main_Master.a_ACT_ButtonsLamps">
       <LineId Id="2" Count="18" />
       <LineId Id="1" Count="0" />
-    </LineIds>
-    <LineIds Name="A_1_PRG_Main_Master.b_Meth_MapUnitEventsToHMI">
-      <LineId Id="6" Count="2" />
-      <LineId Id="47" Count="1" />
-      <LineId Id="12" Count="16" />
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="A_1_PRG_Main_Master.c_Meth_SetEventTexts">
-      <LineId Id="6" Count="22" />
-      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.d_ACT_ShutdownAndQuit">
       <LineId Id="2" Count="8" />
