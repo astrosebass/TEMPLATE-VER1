@@ -52,12 +52,12 @@
       "type": "Stylesheet"
     },
     {
-      "name": "Contents/CSS_JAVA/Stylesheet1.css",
+      "name": "Contents/CSS_JAVA/CssBehind1.css",
       "description": "",
       "type": "Stylesheet"
     },
     {
-      "name": "Contents/CSS_JAVA/MyRowClassesProvider.js",
+      "name": "Contents/CSS_JAVA/RowClassesProvider.js",
       "description": "",
       "type": "JavaScript"
     }
@@ -100,27 +100,6 @@
       "preloadBindings": false
     },
     {
-      "url": "Contents/IO/3_Test.content",
-      "preload": false,
-      "keepAlive": false,
-      "loadSync": false,
-      "preloadBindings": false
-    },
-    {
-      "url": "Contents/IO/2_Test.content",
-      "preload": false,
-      "keepAlive": false,
-      "loadSync": false,
-      "preloadBindings": false
-    },
-    {
-      "url": "Contents/IO/1_Overview.content",
-      "preload": false,
-      "keepAlive": false,
-      "loadSync": false,
-      "preloadBindings": false
-    },
-    {
       "url": "Contents/3_IO.content",
       "preload": false,
       "keepAlive": false,
@@ -136,13 +115,6 @@
     },
     {
       "url": "Contents/9_Data_History.content",
-      "preload": false,
-      "keepAlive": false,
-      "loadSync": false,
-      "preloadBindings": false
-    },
-    {
-      "url": "Contents/4_Alarms.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
@@ -210,6 +182,41 @@
       "keepAlive": false,
       "loadSync": false,
       "preloadBindings": false
+    },
+    {
+      "url": "Contents/4_Events.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Events/History.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Events/ImmediateFaults.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Events/CycleStopFaults.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Events/Messages_CycleStopReq.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
     }
   ],
   "views": [
@@ -222,7 +229,7 @@
   ],
   "userFunctions": [
     {
-      "url": "Contents/CSS_JAVA/MyRowClassesProvider.js"
+      "url": "Contents/CSS_JAVA/RowClassesProvider.js"
     }
   ],
   "symbols": {
@@ -234,6 +241,12 @@
         "readonly": false
       },
       "nIOScreen": {
+        "value": 0,
+        "type": "tchmi:general#/definitions/INT",
+        "persist": false,
+        "readonly": false
+      },
+      "nEventsScreen": {
         "value": 0,
         "type": "tchmi:general#/definitions/INT",
         "persist": false,

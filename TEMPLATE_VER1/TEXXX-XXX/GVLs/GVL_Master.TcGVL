@@ -21,7 +21,6 @@
 																	//1: STATION 1
 																	//1: STATION 2
 																	//3: STATION 3
-	fbEventsManager				: FB_EventsManager;
 	astActiveEvents				: ARRAY [0..50] OF ST_ActiveEvents;
 	astEventsHistory			: ARRAY[0..200] OF ST_EventsHistory;
 	
@@ -35,6 +34,11 @@
 	stSystemTime				: TIMESTRUCT;
 	sSystemTime					: STRING(255);
 	sSystemDate					: STRING(255);
+	
+	bResetTest								: BOOL;
+	tonResetTest							: TON;
+	
+	stEventsAssigment						: ST_EventsAssigmentGeneral;	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

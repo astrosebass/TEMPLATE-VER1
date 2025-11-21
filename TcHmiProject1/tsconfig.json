@@ -28,8 +28,5 @@
   ],
   "include": [
     "../Packages/Beckhoff.TwinCAT.HMI.Framework.12.762.54/runtimes/native1.12-tchmi/TcHmi.d.ts"
-  ],
-  "files": [
-    "Contents/CSS_JAVA/MyRowClassesProvider.ts"
   ]
 }

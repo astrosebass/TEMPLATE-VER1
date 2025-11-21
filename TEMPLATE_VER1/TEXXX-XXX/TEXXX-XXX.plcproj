@@ -99,6 +99,12 @@
     <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_ActiveEvents.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_EventsAssigment.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_EventsAssigmentGeneral.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\USER_ALARMS_EVENTS\EVENTS\ST_EventsHistory.TcDUT">
       <SubType>Code</SubType>
     </Compile>

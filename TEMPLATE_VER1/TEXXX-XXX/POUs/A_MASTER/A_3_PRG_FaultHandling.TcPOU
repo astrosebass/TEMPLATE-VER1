@@ -12,7 +12,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////MASTER FAULT MONITORS////////////////////////////////////////////////////////////////////////////////////
+      <ST><![CDATA[a_ACT_Set_Events();
+/////////////////////////////////////////////////////////////////////////////////////MASTER FAULT MONITORS////////////////////////////////////////////////////////////////////////////////////
 
 
 stMasterCtrl.bNoImmediateFault 										:= 	NOT stStationEvents[0].bImmediateFault AND NOT stStationEvents[1].bImmediateFault AND
@@ -53,6 +54,7 @@ stStationEvents[0].aEvents[2].bEventText					:= 'ST1 EVENT 7';]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="A_3_PRG_FaultHandling">
+      <LineId Id="317" Count="0" />
       <LineId Id="278" Count="0" />
       <LineId Id="306" Count="0" />
       <LineId Id="279" Count="2" />

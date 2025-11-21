@@ -1,8 +1,8 @@
 {
   "function": {
-    "name": "MyRowClassesProvider",
-    "namespace": "TcHmi.Functions.LeakTestersHMI",
-    "displayName": "MyRowClassesProvider",
+    "name": "RowClassesProvider",
+    "namespace": "TcHmi.Functions.TcHmiProject1",
+    "displayName": "RowClassesProvider",
     "description": "",
     "waitMode": "Synchronous",
     "category": "Other",
@@ -13,8 +13,8 @@
     "injectContextObject": false,
     "arguments": [
       {
-        "name": "rowValue",
-        "displayName": "rowValue",
+        "name": "RowData",
+        "displayName": "RowData",
         "type": "tchmi:general#/definitions/Any",
         "description": "This is an important Parameter which does... This text is used in a tooltip.",
         "defaultValue": null,
@@ -25,8 +25,8 @@
         "allowControlAttributeBindingOptions": false
       },
       {
-        "name": "dataIndex",
-        "displayName": "dataIndex",
+        "name": "RowIndex",
+        "displayName": "RowIndex",
         "type": "tchmi:general#/definitions/Integer",
         "description": "",
         "defaultValue": "",
@@ -37,8 +37,8 @@
         "allowControlAttributeBindingOptions": false
       },
       {
-        "name": "rowNumber",
-        "displayName": "rowNumber",
+        "name": "RowNumber",
+        "displayName": "RowNumber",
         "type": "tchmi:general#/definitions/Integer",
         "description": "",
         "defaultValue": "",
@@ -61,7 +61,7 @@
   },
   "dependencyFiles": [
     {
-      "name": "MyRowClassesProvider.js",
+      "name": "RowClassesProvider.js",
       "type": "JavaScript",
       "description": ""
     }

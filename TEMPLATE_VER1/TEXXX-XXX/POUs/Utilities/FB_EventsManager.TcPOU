@@ -37,6 +37,7 @@ END_VAR
 VAR_IN_OUT
 	
 	stStationEvents			: ARRAY[0..3] OF ST_StationEvents;
+	stEventsAssigment		: ST_EventsAssigmentGeneral;
 	bResetFaults			: BOOL;
 	
 END_VAR
@@ -243,7 +244,10 @@ FOR j[0] := 0 TO 3 DO
 																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
 			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[0];				
 			
-		
+			//EVENTS ASSIGMENT
+			stEventsAssigment.astImmediateFaultEvents[m[0]].sEventText	:= stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI;
+			stEventsAssigment.astImmediateFaultEvents[m[0]].sSolution	:= stStationEvents[j[0]].aEvents[j[1]].sSolution;
+			
 		ELSIF stStationEvents[j[0]].aEvents[j[1]].bCycleStopFault THEN
 			
 			m[1]											:= m[1]+1;
@@ -255,6 +259,9 @@ FOR j[0] := 0 TO 3 DO
 																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
 			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[1];													
 			
+			//EVENTS ASSIGMENT
+			stEventsAssigment.astCycleStopFaultEvents[m[1]].sEventText	:= stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI;
+			stEventsAssigment.astCycleStopFaultEvents[m[1]].sSolution	:= stStationEvents[j[0]].aEvents[j[1]].sSolution;
 			
 		ELSIF stStationEvents[j[0]].aEvents[j[1]].bCycleStopRequest THEN
 		
@@ -266,7 +273,10 @@ FOR j[0] := 0 TO 3 DO
 																CONCAT( STR1 := DINT_TO_STRING(j[0]), STR2 := 
 																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
 			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[2];													
-					
+
+			//EVENTS ASSIGMENT
+			stEventsAssigment.astCycleStopRequestEvents[m[2]].sEventText	:= stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI;
+			stEventsAssigment.astCycleStopRequestEvents[m[2]].sSolution	:= stStationEvents[j[0]].aEvents[j[1]].sSolution;
 			
 		ELSIF stStationEvents[j[0]].aEvents[j[1]].bMessage THEN
 			
@@ -279,7 +289,9 @@ FOR j[0] := 0 TO 3 DO
 																CONCAT( STR1 :=' - ', str2 := stStationEvents[j[0]].aEvents[j[1]].bEventText )))));
 			stStationEvents[j[0]].aEvents[j[1]].bAssignedID	:= 	m[3];													
 				
-			
+			//EVENTS ASSIGMENT
+			stEventsAssigment.astMessage[m[3]].sEventText	:= stStationEvents[j[0]].aEvents[j[1]].bEventTextHMI;
+			stEventsAssigment.astMessage[m[3]].sSolution	:= stStationEvents[j[0]].aEvents[j[1]].sSolution;	
 			
 		END_IF
 		
@@ -457,21 +469,29 @@ END_IF]]></ST>
       <LineId Id="84" Count="0" />
       <LineId Id="15" Count="0" />
       <LineId Id="21" Count="4" />
-      <LineId Id="16" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="94" Count="1" />
+      <LineId Id="92" Count="0" />
       <LineId Id="43" Count="1" />
       <LineId Id="82" Count="1" />
       <LineId Id="46" Count="5" />
       <LineId Id="45" Count="0" />
+      <LineId Id="112" Count="1" />
+      <LineId Id="98" Count="0" />
       <LineId Id="55" Count="0" />
       <LineId Id="57" Count="0" />
       <LineId Id="85" Count="2" />
       <LineId Id="59" Count="5" />
-      <LineId Id="56" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="114" Count="1" />
       <LineId Id="65" Count="0" />
+      <LineId Id="116" Count="0" />
       <LineId Id="67" Count="1" />
       <LineId Id="88" Count="1" />
       <LineId Id="69" Count="5" />
       <LineId Id="66" Count="0" />
+      <LineId Id="117" Count="1" />
       <LineId Id="42" Count="0" />
       <LineId Id="54" Count="0" />
       <LineId Id="9" Count="0" />

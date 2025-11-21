@@ -113,13 +113,14 @@
   <Target Name="Clean" DependsOnTargets="$(CleanDependsOn)" />
   <Target Name="ReBuild" DependsOnTargets="Clean; Build" />
   <ItemGroup>
-    <Folder Include="Contents\IO" />
     <Folder Include="Contents\Manual" />
     <Folder Include="Contents\CSS_JAVA" />
+    <Folder Include="Contents\Events" />
     <Folder Include="Contents\pdf" />
     <Folder Include="Contents\Settings" />
     <Folder Include="Fonts\" />
     <Folder Include="Images" />
+    <Folder Include="Images\Icons\events" />
     <Folder Include="Images\Manifest" />
     <Folder Include="Images\Buttons" />
     <Folder Include="Images\Icons" />
@@ -155,23 +156,14 @@
     <Content Include="Contents\10_Manage_Users.content">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\CSS_JAVA\MyRowClassesProvider.function.json">
-      <SubType>Content</SubType>
-      <DependentUpon>Contents\CSS_JAVA\MyRowClassesProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="Contents\CSS_JAVA\MyRowClassesProvider.ts">
+    <Content Include="Contents\CSS_JAVA\CssBehind1.css">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\CSS_JAVA\Stylesheet1.css">
+    <Content Include="Contents\CSS_JAVA\RowClassesProvider.function.json">
       <SubType>Content</SubType>
+      <DependentUpon>Contents\CSS_JAVA\RowClassesProvider.js</DependentUpon>
     </Content>
-    <Content Include="Contents\IO\3_Test.content">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Contents\IO\2_Test.content">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Contents\IO\1_Overview.content">
+    <Content Include="Contents\CSS_JAVA\RowClassesProvider.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\3_IO.content">
@@ -183,7 +175,7 @@
     <Content Include="Contents\9_Data_History.content">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\4_Alarms.content">
+    <Content Include="Contents\4_Events.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\7_Statistics.content">
@@ -193,6 +185,18 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\1_Main.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Events\Messages_CycleStopReq.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Events\CycleStopFaults.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Events\ImmediateFaults.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Events\History.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Manual\3_Station3.content">
@@ -244,6 +248,15 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Images\Icons\clock.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Icons\events\alarm.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Icons\events\alert.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Icons\events\message.png">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Images\Icons\user.svg">

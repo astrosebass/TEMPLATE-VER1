@@ -36,7 +36,8 @@ VAR_OUTPUT
 	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[a_ACT_Ctrl_Station_3();
+      <ST><![CDATA[d_ACT_Set_Events_Station_3();
+a_ACT_Ctrl_Station_3();
 b_ACT_IO();
 c_ACT_Statistics_Station_3();]]></ST>
     </Implementation>
@@ -250,6 +251,7 @@ stStationEvents[3].aEvents[2].bEventText					:= 'ST1 EVENT 7';]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="B_3_1_PRG_Master_Station_3">
+      <LineId Id="185" Count="0" />
       <LineId Id="150" Count="1" />
       <LineId Id="41" Count="0" />
     </LineIds>

@@ -27,7 +27,7 @@ VAR
 	
 	fbSystemTime							: NT_GetTime;
 	
-	bResetTest								: BOOL;
+
 	
 END_VAR
 ]]></Declaration>
@@ -68,11 +68,12 @@ A_2_PRG_MachineCtrl();
 
 fbEventsManager	(			//INPUTS
 							bPulse 							:= stPuls.bFlash10Hz, 
-							bResetFaults 					:= stButtonsLamps.bResetButtonFallingEdge, 
+							bResetFaults 					:= bResetTest, 
 							stStationEvents 				:= stStationEvents,
 							sSystemTime						:= sSystemTime,
 							sSystemDate						:= sSystemDate,
- 
+ 							stEventsAssigment				:= stEventsAssigment,
+							
 							//OUTPUTS
 							astActiveEvents 				=> astActiveEvents,
 							astEventsHistory				=> astEventsHistory
@@ -120,6 +121,7 @@ ftrigButton[2](CLK						:=);
 rtrigButton[2](CLK						:=);
 ftrigButton[3](CLK	:=bResetTest 		);
 rtrigButton[3](CLK						:=);
+
 
 
 //GVL_IO.dw_T11_EL2809.qRESETButton_Indicator := stPuls.bFlash2Hz AND (NOT stMachineStatus.bInitialising AND NOT stMachineStatus.bAutoCycle AND NOT stMachineStatus.bManualMode AND NOT stMachineStatus.bReadyToStart) ;
@@ -255,7 +257,9 @@ END_IF
       <LineId Id="519" Count="0" />
       <LineId Id="518" Count="0" />
       <LineId Id="452" Count="20" />
-      <LineId Id="636" Count="9" />
+      <LineId Id="636" Count="6" />
+      <LineId Id="676" Count="0" />
+      <LineId Id="643" Count="2" />
       <LineId Id="483" Count="1" />
       <LineId Id="498" Count="2" />
       <LineId Id="513" Count="0" />
@@ -270,7 +274,10 @@ END_IF
       <LineId Id="373" Count="0" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.a_ACT_ButtonsLamps">
-      <LineId Id="2" Count="18" />
+      <LineId Id="2" Count="15" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="19" Count="1" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.d_ACT_ShutdownAndQuit">

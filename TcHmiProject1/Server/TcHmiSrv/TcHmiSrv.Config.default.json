@@ -28,6 +28,14 @@
     "DEFAULTTIMEZONE": "client",
     "DEFAULTUSERGROUP": "__SystemUsers",
     "DEFINITIONS": {
+        "PLC1.ARRAY_0..200_OF-ST_EventsHistory": {
+            "items": {
+                "$ref": "#/definitions/PLC1.ST_EventsHistory"
+            },
+            "maxItems": 201,
+            "minItems": 201,
+            "type": "array"
+        },
         "PLC1.ARRAY_0..250_OF-ST_AlarmHistory": {
             "items": {
                 "$ref": "#/definitions/PLC1.ST_AlarmHistory"
@@ -59,6 +67,72 @@
             "maxItems": 4,
             "minItems": 4,
             "type": "array"
+        },
+        "PLC1.ARRAY_0..50_OF-ST_ActiveEvents": {
+            "items": {
+                "$ref": "#/definitions/PLC1.ST_ActiveEvents"
+            },
+            "maxItems": 51,
+            "minItems": 51,
+            "type": "array"
+        },
+        "PLC1.ARRAY_1..100_OF-ST_EventsAssigment": {
+            "items": {
+                "$ref": "#/definitions/PLC1.ST_EventsAssigment"
+            },
+            "maxItems": 100,
+            "minItems": 100,
+            "startOffset": 1,
+            "type": "array"
+        },
+        "PLC1.ST_ActiveEvents": {
+            "properties": {
+                "abType": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "comment": "1:Alarm",
+                            "propertyOrder": 4
+                        }
+                    ]
+                },
+                "sEventTex": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 1
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sSolution": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 3
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sType": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 2
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
         },
         "PLC1.ST_ActiveEventsHMI": {
             "properties": {
@@ -105,6 +179,93 @@
                         {
                             "maxLength": 255,
                             "propertyOrder": 3
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "PLC1.ST_EventsAssigment": {
+            "properties": {
+                "sEventText": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 1
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sSolution": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 2
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "PLC1.ST_EventsHistory": {
+            "properties": {
+                "abType": {
+                    "allOf": [
+                        {
+                            "$ref": "tchmi:general#/definitions/DINT"
+                        },
+                        {
+                            "comment": "1:Alarm",
+                            "propertyOrder": 5
+                        }
+                    ]
+                },
+                "sDate": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 3
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sEventTex": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 1
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sTime": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 4
+                        },
+                        {
+                            "$ref": "tchmi:general#/definitions/String"
+                        }
+                    ]
+                },
+                "sType": {
+                    "allOf": [
+                        {
+                            "maxLength": 255,
+                            "propertyOrder": 2
                         },
                         {
                             "$ref": "tchmi:general#/definitions/String"
@@ -2770,6 +2931,16 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.A_1_PRG_Main_Master.bResetTest": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::A_1_PRG_Main_Master::bResetTest",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_HMI.bEnableManual": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2971,6 +3142,36 @@
             },
             "USEMAPPING": true
         },
+        "PLC1.GVL_Master.astActiveEvents": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::astActiveEvents",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..50_OF-ST_ActiveEvents"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.astEventsHistory": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::astEventsHistory",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..200_OF-ST_EventsHistory"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.bResetTest": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::bResetTest",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "PLC1.GVL_Master.sSystemDate": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2998,6 +3199,74 @@
             "MAPPING": "PLC1::GVL_Master::stActiveEventsHMI",
             "SCHEMA": {
                 "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..39_OF-ST_ActiveEventsHMI"
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.stEventsAssigment.astCycleStopFaultEvents": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::stEventsAssigment::astCycleStopFaultEvents",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_1..100_OF-ST_EventsAssigment"
+                    },
+                    {
+                        "propertyOrder": 2
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.stEventsAssigment.astCycleStopRequestEvents": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::stEventsAssigment::astCycleStopRequestEvents",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_1..100_OF-ST_EventsAssigment"
+                    },
+                    {
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.stEventsAssigment.astImmediateFaultEvents": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::stEventsAssigment::astImmediateFaultEvents",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_1..100_OF-ST_EventsAssigment"
+                    },
+                    {
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "PLC1.GVL_Master.stEventsAssigment.astMessage": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_Master::stEventsAssigment::astMessage",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_1..100_OF-ST_EventsAssigment"
+                    },
+                    {
+                        "propertyOrder": 4
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -4013,6 +4282,7 @@
                 "Login": 3,
                 "Logout": 3,
                 "PLC1.A_1_PRG_Main_Master.bManualModeOff": 3,
+                "PLC1.A_1_PRG_Main_Master.bResetTest": 3,
                 "PLC1.A_1_PRG_Main_Master.rTrigManualModeOff.Q": 3,
                 "PLC1.GVL_HMI.bEnableManual": 3,
                 "PLC1.GVL_HMI.bManualModeOffFlag": 3,
@@ -4032,9 +4302,16 @@
                 "PLC1.GVL_HMI.sUserGroupOut": 3,
                 "PLC1.GVL_HMI.sUserName": 3,
                 "PLC1.GVL_HMI.stStatusBanner": 3,
+                "PLC1.GVL_Master.astActiveEvents": 3,
+                "PLC1.GVL_Master.astEventsHistory": 3,
+                "PLC1.GVL_Master.bResetTest": 3,
                 "PLC1.GVL_Master.sSystemDate": 3,
                 "PLC1.GVL_Master.sSystemTime": 3,
                 "PLC1.GVL_Master.stActiveEventsHMI": 3,
+                "PLC1.GVL_Master.stEventsAssigment.astCycleStopFaultEvents": 3,
+                "PLC1.GVL_Master.stEventsAssigment.astCycleStopRequestEvents": 3,
+                "PLC1.GVL_Master.stEventsAssigment.astImmediateFaultEvents": 3,
+                "PLC1.GVL_Master.stEventsAssigment.astMessage": 3,
                 "PLC1.GVL_Persistent.stAlarmHistory": 3,
                 "PLC1.GVL_Persistent.stStatisticsHMI": 3,
                 "PLC1.GVL_Persistent.stUserLog": 3,

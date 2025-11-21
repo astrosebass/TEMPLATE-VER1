@@ -1,0 +1,12 @@
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.Alarm td {
+    background-color: #f87c7c; 
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.Alert td {
+    background-color: #f8f1a1;
+}
+
+.TcHmi_Controls_Beckhoff_TcHmiDatagrid tr.Message td {
+    background-color: #85fe77; 
+}
