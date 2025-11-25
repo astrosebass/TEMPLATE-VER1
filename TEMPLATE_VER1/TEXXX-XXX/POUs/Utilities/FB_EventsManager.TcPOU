@@ -8,14 +8,17 @@ VAR_INPUT
 	bPulse					: BOOL;
 	sSystemTime				: STRING(255);
 	sSystemDate				: STRING(255);
-
+	bDataWritedInCSV		: BOOL;
 	
 END_VAR
 
 VAR_OUTPUT
 
 	astActiveEvents			: ARRAY [0..50] OF ST_ActiveEvents;
-	astEventsHistory		: ARRAY[0..200] OF ST_EventsHistory;;
+	astEventsHistory		: ARRAY[0..200] OF ST_EventsHistory;
+	bWriteDataInCSV			: BOOL;
+	nDataHistoryIndex		: DINT;
+	
 
 END_VAR
 
@@ -29,6 +32,7 @@ VAR
 	n								: DINT;
 	
 	bEventsAssigmentSignal			: BOOL		:= TRUE;
+	
 	
 
 	
@@ -58,7 +62,7 @@ END_IF
     </Implementation>
     <Action Name="ACT_ActiveEvents_DataHistory" Id="{189c7dfd-f9f1-43a8-9266-a00a732d0443}">
       <Implementation>
-        <ST><![CDATA[IF bPulse THEN
+        <ST><![CDATA[IF bPulse AND NOT bWriteDataInCSV THEN
 
 FOR k[0] := 0 TO 3 DO
 	
@@ -90,7 +94,9 @@ FOR k[0] := 0 TO 3 DO
 			astEventsHistory[0].sDate					:= 	sSystemTime;										
 			astEventsHistory[0].sTime					:= 	sSystemDate;
 				
-			l											:= l + 1;					
+			l											:= l + 1;			
+			nDataHistoryIndex							:= 1 + nDataHistoryIndex;		
+			
 		END_IF
 		
 		IF stStationEvents[k[0]].aEvents[k[1]].bCycleStopFault AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
@@ -119,7 +125,9 @@ FOR k[0] := 0 TO 3 DO
 			astEventsHistory[0].sDate					:= 	sSystemTime;										
 			astEventsHistory[0].sTime					:= 	sSystemDate;
 															
-			l											:= l + 1;						
+			l											:= l + 1;		
+			nDataHistoryIndex							:= 1 + nDataHistoryIndex;	
+					
 		END_IF
 		
 		IF stStationEvents[k[0]].aEvents[k[1]].bCycleStopRequest AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
@@ -149,7 +157,9 @@ FOR k[0] := 0 TO 3 DO
 			astEventsHistory[0].sTime					:= 	sSystemDate;
 															
 															
-			l											:= l + 1;							
+			l											:= l + 1;	
+			nDataHistoryIndex							:= 1 + nDataHistoryIndex;	
+						
 		END_IF
 		
 		IF stStationEvents[k[0]].aEvents[k[1]].bMessage AND stStationEvents[k[0]].aEvents[k[1]].bEventFlag AND NOT stStationEvents[k[0]].aEvents[k[1]].bActive THEN
@@ -179,6 +189,7 @@ FOR k[0] := 0 TO 3 DO
 			astEventsHistory[0].sTime					:= 	sSystemDate;
 															
 			l											:= l + 1;
+			nDataHistoryIndex							:= 1 + nDataHistoryIndex;
 										
 		END_IF
 		
@@ -186,6 +197,7 @@ FOR k[0] := 0 TO 3 DO
 	END_FOR
 
 END_FOR
+
 ELSIF bResetFaults THEN
 	FOR l := 0 TO 50 DO
 	
@@ -212,6 +224,19 @@ ELSE
 	
 	k[0]											:= 0;
 	k[1]											:= 0;
+	
+END_IF
+
+IF nDataHistoryIndex = 201 THEN
+	
+	bWriteDataInCSV									:= TRUE;
+
+END_IF 
+	
+IF bDataWritedInCSV THEN
+	
+	bWriteDataInCSV									:= FALSE;
+	nDataHistoryIndex								:= 0;
 	
 END_IF
 
@@ -386,6 +411,7 @@ END_IF]]></ST>
       <LineId Id="160" Count="0" />
       <LineId Id="27" Count="0" />
       <LineId Id="254" Count="0" />
+      <LineId Id="265" Count="1" />
       <LineId Id="9" Count="0" />
       <LineId Id="51" Count="0" />
       <LineId Id="71" Count="1" />
@@ -400,6 +426,7 @@ END_IF]]></ST>
       <LineId Id="203" Count="0" />
       <LineId Id="255" Count="0" />
       <LineId Id="78" Count="0" />
+      <LineId Id="268" Count="1" />
       <LineId Id="62" Count="0" />
       <LineId Id="79" Count="0" />
       <LineId Id="81" Count="1" />
@@ -414,6 +441,7 @@ END_IF]]></ST>
       <LineId Id="227" Count="0" />
       <LineId Id="256" Count="1" />
       <LineId Id="88" Count="0" />
+      <LineId Id="270" Count="1" />
       <LineId Id="80" Count="0" />
       <LineId Id="89" Count="0" />
       <LineId Id="91" Count="1" />
@@ -427,6 +455,7 @@ END_IF]]></ST>
       <LineId Id="262" Count="0" />
       <LineId Id="253" Count="0" />
       <LineId Id="258" Count="1" />
+      <LineId Id="272" Count="0" />
       <LineId Id="98" Count="0" />
       <LineId Id="90" Count="0" />
       <LineId Id="30" Count="0" />
@@ -434,6 +463,7 @@ END_IF]]></ST>
       <LineId Id="5" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="6" Count="0" />
+      <LineId Id="273" Count="0" />
       <LineId Id="101" Count="1" />
       <LineId Id="105" Count="0" />
       <LineId Id="108" Count="1" />
@@ -454,7 +484,20 @@ END_IF]]></ST>
       <LineId Id="103" Count="0" />
       <LineId Id="121" Count="0" />
       <LineId Id="18" Count="0" />
-      <LineId Id="115" Count="1" />
+      <LineId Id="275" Count="0" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="278" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="287" Count="0" />
+      <LineId Id="282" Count="0" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="281" Count="0" />
+      <LineId Id="283" Count="1" />
+      <LineId Id="286" Count="0" />
+      <LineId Id="280" Count="0" />
+      <LineId Id="277" Count="0" />
+      <LineId Id="263" Count="0" />
+      <LineId Id="116" Count="0" />
       <LineId Id="19" Count="6" />
       <LineId Id="17" Count="0" />
     </LineIds>

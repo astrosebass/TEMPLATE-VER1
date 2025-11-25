@@ -6,16 +6,18 @@ STRUCT
 	
 	//INPUTS
 	bWriteData			: BOOL;
-	bWriteCSV			: BOOL;
 	sFileNamePath		: STRING(255);
 	sDate				: STRING(255);
 	aDataHistoryArrayLength : DINT;
 	nMAX_CSV_ROWS		: UDINT;
 	nMAX_CSV_COLUMNS	: UDINT;
+	nDataHistoryIndex	: DINT;
+	
 
 	//OUTPUTS
 	bError				: BOOL;
 	bBusy				: BOOL;
+	bDataWrited			: BOOL;
 	
 	
 	

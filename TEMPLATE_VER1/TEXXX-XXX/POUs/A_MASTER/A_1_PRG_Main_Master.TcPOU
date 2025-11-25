@@ -81,10 +81,13 @@ fbEventsManager	(			//INPUTS
 							sSystemTime						:= sSystemTime,
 							sSystemDate						:= sSystemDate,
  							stEventsAssigment				:= stEventsAssigment,
+							bDataWritedInCSV				:=stEventsCSVProcess.bDataWrited,
 							
 							//OUTPUTS
 							astActiveEvents 				=> astActiveEvents,
-							astEventsHistory				=> astEventsHistory
+							astEventsHistory				=> astEventsHistory,
+							bWriteDataInCSV					=> stEventsCSVProcess.bWriteData,
+							nDataHistoryIndex				=> stEventsCSVProcess.nDataHistoryIndex
 							);
 
 
@@ -101,6 +104,8 @@ sSystemTime					:= 	CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wHour), STR2 := 
 sSystemDate					:= 	CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wDay), STR2 := 
 								CONCAT(STR1 := '/', STR2 := CONCAT(STR1 := WORD_TO_STRING(stSystemTime.wMonth), STR2 := 
 								CONCAT(STR1 := '/', STR2 := WORD_TO_STRING(stSystemTime.wYear)))));
+
+
 
 
 
@@ -138,25 +143,32 @@ rtrigButton[3](CLK						:=);
     </Action>
     <Action Name="b_ACT_CSV" Id="{eda48c17-c939-4052-a903-aa51ced32374}">
       <Implementation>
-        <ST><![CDATA[
-stEventsCSVProcess.sFileNamePath						:= 'C:\Users\Sebastian.Ulloa\Desktop\GIT PROJECTS\TEMPLATES\TEMPLATE_VER1\CSV\EVENTS\';
-
-
-
+        <ST><![CDATA[//EVENTS TO CSV
 
 fbWriteDataToCSV_Events( 	bWriteData					:= stEventsCSVProcess.bWriteData,
-							bWriteCSV					:= stEventsCSVProcess.bWriteCSV,
 							sFileNamePath				:= stEventsCSVProcess.sFileNamePath,
 							sDate						:= stEventsCSVProcess.sDate,
 							aDataHistoryArrayLength		:= stEventsCSVProcess.aDataHistoryArrayLength,
 							nMAX_CSV_ROWS				:= stEventsCSVProcess.nMAX_CSV_ROWS,
 							nMAX_CSV_COLUMNS			:= stEventsCSVProcess.nMAX_CSV_COLUMNS,
+							nDataHistoryIndex			:= stEventsCSVProcess.nDataHistoryIndex,
 							
 							bBusy						=> stEventsCSVProcess.bBusy,
 							bError						=> stEventsCSVProcess.bError,
 							nErrId						=>,
+							bDataWrited					=> stEventsCSVProcess.bDataWrited,
 							aDataHistory				:= astEventsHistory);
-							]]></ST>
+							
+
+(*stEventsCSVProcess.sDate	:= 	CONCAT( STR1 := WORD_TO_STRING(stSystemTime.wDay), STR2 := 
+								CONCAT(STR1 := '_', STR2 := CONCAT(STR1 := WORD_TO_STRING(stSystemTime.wMonth), STR2 := 
+								CONCAT(STR1 := '_', STR2 := WORD_TO_STRING(stSystemTime.wYear)))));		*)				
+								
+
+stEventsCSVProcess.sFileNamePath						:= 'C:\Users\Sebastian.Ulloa\Desktop\GIT PROJECTS\TEMPLATES\TEMPLATE_VER1\CSV\EVENTS\';								
+stEventsCSVProcess.aDataHistoryArrayLength				:= 200;
+stEventsCSVProcess.nMAX_CSV_ROWS						:= 1000;
+stEventsCSVProcess.nMAX_CSV_COLUMNS						:= 4;]]></ST>
       </Implementation>
     </Action>
     <Action Name="d_ACT_ShutdownAndQuit" Id="{b7dac9a1-fefc-426e-a57f-b21e21205edc}">
@@ -283,7 +295,15 @@ END_IF
       <LineId Id="753" Count="0" />
       <LineId Id="680" Count="7" />
       <LineId Id="746" Count="0" />
-      <LineId Id="688" Count="57" />
+      <LineId Id="688" Count="29" />
+      <LineId Id="789" Count="0" />
+      <LineId Id="718" Count="3" />
+      <LineId Id="790" Count="0" />
+      <LineId Id="792" Count="0" />
+      <LineId Id="722" Count="15" />
+      <LineId Id="794" Count="0" />
+      <LineId Id="793" Count="0" />
+      <LineId Id="738" Count="7" />
       <LineId Id="373" Count="0" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.a_ACT_ButtonsLamps">
@@ -294,19 +314,21 @@ END_IF
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.b_ACT_CSV">
-      <LineId Id="16" Count="1" />
-      <LineId Id="31" Count="0" />
-      <LineId Id="33" Count="0" />
-      <LineId Id="32" Count="0" />
+      <LineId Id="16" Count="0" />
       <LineId Id="4" Count="0" />
       <LineId Id="3" Count="0" />
-      <LineId Id="40" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="36" Count="3" />
+      <LineId Id="41" Count="0" />
       <LineId Id="34" Count="0" />
       <LineId Id="10" Count="2" />
+      <LineId Id="42" Count="0" />
       <LineId Id="14" Count="0" />
+      <LineId Id="43" Count="3" />
       <LineId Id="13" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="48" Count="3" />
     </LineIds>
     <LineIds Name="A_1_PRG_Main_Master.d_ACT_ShutdownAndQuit">
       <LineId Id="2" Count="8" />

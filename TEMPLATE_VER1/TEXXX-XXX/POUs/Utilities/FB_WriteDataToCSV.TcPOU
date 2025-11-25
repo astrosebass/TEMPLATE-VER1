@@ -4,7 +4,6 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_WriteDataToCSV
 VAR_INPUT
 	
-	bWriteCSV		: BOOL;(* Rising edge starts program execution *)
 	bWriteData		: BOOL;
 	sFileNamePath	: STRING(255);
 	aDataHistory	: ARRAY[0..200] OF ST_EventsHistory;
@@ -14,6 +13,8 @@ VAR_INPUT
 	nMAX_CSV_ROWS	: UDINT;
 	nMAX_CSV_COLUMNS: UDINT;
 	
+	nDataHistoryIndex : DINT;
+	
 
 END_VAR
 VAR_OUTPUT
@@ -21,6 +22,7 @@ VAR_OUTPUT
 	bBusy			: BOOL;
 	bError			: BOOL;
 	nErrId			: UDINT;
+	bDataWrited		: BOOL;
 	
 END_VAR
 VAR
@@ -45,6 +47,8 @@ VAR
 	rWriteData		: R_TRIG;
 	
 	sFileName		: T_MaxString ;(* CSV destination file path and name *)
+	bResetCSVData	: BOOL;
+	bWriteCSV		: BOOL;(* Rising edge starts program execution *)
 	
 	
 END_VAR
@@ -54,12 +58,9 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//TO USE THIS FUNCTION DEFINE "MAX ROWS", "MAX COLUMS" AND "MAX STRING LENGTH". THEY SHOULD BE EQUAL TO INPUTS
-
 ACT_Write();
 ACT_CSVSettings();
 
-
-rWriteData( CLK := bWriteData);
 
 IF NOT bFirstScan THEN
 	
@@ -70,11 +71,13 @@ END_IF]]></ST>
     </Implementation>
     <Action Name="ACT_CSVSettings" Id="{eaa016a4-e454-449a-b9d6-9441c13de3af}">
       <Implementation>
-        <ST><![CDATA[
+        <ST><![CDATA[rWriteData( CLK := bWriteData);
+
 IF sCSVDate <> sDate THEN
 	
+	bWriteCSV							:= TRUE;
 	sCSVDate							:= sDate;
-
+	
 END_IF
 
 sFileName 								:= CONCAT(sFileNamePath,CONCAT( STR1 := '_', STR2 := CONCAT( STR1:= sCSVDate, STR2 := '.csv')));
@@ -83,24 +86,42 @@ sFileName 								:= CONCAT(sFileNamePath,CONCAT( STR1 := '_', STR2 := CONCAT( S
 IF rWriteData.Q THEN
 	
 	FOR i := 0 TO aDataHistoryArrayLength DO
-		
-		IF aDataHistory[i].sEventTex <> '' THEN
-			
-					database[nRowIndex,0]				:= 	aDataHistory[i].sEventTex;
-					database[nRowIndex,1]				:= 	aDataHistory[i].sType;
-					database[nRowIndex,2]				:= 	aDataHistory[i].sDate;
-					database[nRowIndex,3]				:= 	aDataHistory[i].sTime;
-					nRowIndex							:= nRowIndex + 1;
-		END_IF
-					
-
+				
+					database[nRowIndex + i,0]					:= 	aDataHistory[i].sEventTex;
+					database[nRowIndex + i,1]					:= 	aDataHistory[i].sType;
+					database[nRowIndex + i,2]					:= 	aDataHistory[i].sDate;
+					database[nRowIndex + i,3]					:= 	aDataHistory[i].sTime;
 				
 	END_FOR
 	
 	i													:= 0;
+	
+	bDataWrited											:= TRUE;
+	nRowIndex											:= nRowIndex + 201;
 
 	
 
+END_IF
+
+IF nDataHistoryIndex = 0 THEN
+	
+	bDataWrited											:= FALSE;
+
+END_IF
+
+IF bResetCSVData THEN
+	
+	FOR i := 0 TO nMAX_CSV_ROWS DO
+				
+					database[i,0]					:= 	'';
+					database[i,1]					:=  '';
+					database[i,2]					:= 	'';
+					database[i,3]					:= 	'';
+				
+	END_FOR
+	nRowIndex 										:= 0;		
+	bResetCSVData									:= FALSE;
+	i												:= 0;
 END_IF
 
 
@@ -115,7 +136,7 @@ END_IF
         <ST><![CDATA[rWriteCSV( CLK := bWriteCSV);
 CASE step OF
 	0:	(* Wait for rising edge at bWrite variable *)
-		IF rWriteCSV.Q THEN
+		IF bWriteCSV THEN
 				
 			bBusy 	:= TRUE;
 			bError	:= FALSE;
@@ -132,6 +153,7 @@ CASE step OF
 		fbFileOpen( sNetId := NetAmsId , sPathName := sFileName, nMode := FOPEN_MODEWRITE OR FOPEN_MODETEXT,(* Open file in TEXT mode! *)
 					ePath := PATH_GENERIC, bExecute := TRUE );
 		step := 2;
+		bWriteCSV	:= FALSE;
 
 	2:(* Wait until open not busy *)
 		fbFileOpen( bExecute := FALSE, bError => bError, nErrID => nErrID, hFile => hFile );
@@ -153,8 +175,8 @@ CASE step OF
 				sCSVField := STRING_TO_CSVFIELD( database[ nRow, nColumn ], FALSE );(* TODO: Get field value from your application *)
 
 				(* Add new field to the record buffer *)
-				fbWriter( 	pBuffer := ADR( sCSVLine ), cbBuffer := SIZEOF( sCSVLine ) - 1, putValue := sCSVField, pValue := 0, cbValue := 0(*,
-							bCRLF := ( nColumn = nMAX_CSV_COLUMNS )*) );(* bCRLF == TRUE => Write CRLF after the last field value *)
+				fbWriter( 	pBuffer := ADR( sCSVLine ), cbBuffer := SIZEOF( sCSVLine ) - 1, putValue := sCSVField, pValue := 0, cbValue := 0,
+							bCRLF := ( nColumn = nMAX_CSV_COLUMNS ) );(* bCRLF == TRUE => Write CRLF after the last field value *)
 				IF fbWriter.bOk THEN
 					fbWriter.eCmd := eEnumCmd_Next;(* Write next field value *)
 				ELSE(* Error *)
@@ -175,6 +197,7 @@ CASE step OF
 
 		ELSE(* All rows written => Close file *)
 			step := 10;
+			bResetCSVData := TRUE;
 		END_IF
 
 	4:	(* Write single text line *)
@@ -217,10 +240,9 @@ END_CASE
       </Implementation>
     </Action>
     <LineIds Name="FB_WriteDataToCSV">
-      <LineId Id="213" Count="1" />
+      <LineId Id="213" Count="0" />
       <LineId Id="155" Count="0" />
       <LineId Id="157" Count="0" />
-      <LineId Id="220" Count="1" />
       <LineId Id="227" Count="0" />
       <LineId Id="207" Count="0" />
       <LineId Id="9" Count="0" />
@@ -231,9 +253,11 @@ END_CASE
     </LineIds>
     <LineIds Name="FB_WriteDataToCSV.ACT_CSVSettings">
       <LineId Id="213" Count="0" />
+      <LineId Id="267" Count="0" />
       <LineId Id="13" Count="0" />
       <LineId Id="214" Count="0" />
-      <LineId Id="218" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="300" Count="0" />
       <LineId Id="216" Count="0" />
       <LineId Id="215" Count="0" />
       <LineId Id="16" Count="1" />
@@ -241,20 +265,34 @@ END_CASE
       <LineId Id="18" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="233" Count="0" />
-      <LineId Id="240" Count="1" />
-      <LineId Id="248" Count="1" />
+      <LineId Id="240" Count="0" />
+      <LineId Id="279" Count="0" />
       <LineId Id="252" Count="2" />
       <LineId Id="251" Count="0" />
-      <LineId Id="255" Count="0" />
-      <LineId Id="250" Count="0" />
-      <LineId Id="242" Count="0" />
-      <LineId Id="246" Count="1" />
+      <LineId Id="282" Count="0" />
       <LineId Id="239" Count="0" />
       <LineId Id="257" Count="1" />
+      <LineId Id="269" Count="0" />
+      <LineId Id="268" Count="0" />
+      <LineId Id="286" Count="0" />
       <LineId Id="236" Count="1" />
       <LineId Id="235" Count="0" />
       <LineId Id="234" Count="0" />
-      <LineId Id="207" Count="0" />
+      <LineId Id="270" Count="2" />
+      <LineId Id="275" Count="0" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="273" Count="0" />
+      <LineId Id="287" Count="0" />
+      <LineId Id="259" Count="0" />
+      <LineId Id="298" Count="0" />
+      <LineId Id="290" Count="5" />
+      <LineId Id="297" Count="0" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="302" Count="0" />
+      <LineId Id="299" Count="0" />
+      <LineId Id="301" Count="0" />
+      <LineId Id="289" Count="0" />
+      <LineId Id="261" Count="0" />
       <LineId Id="231" Count="0" />
       <LineId Id="230" Count="0" />
       <LineId Id="209" Count="0" />
@@ -267,7 +305,11 @@ END_CASE
       <LineId Id="106" Count="0" />
       <LineId Id="6" Count="6" />
       <LineId Id="113" Count="0" />
-      <LineId Id="13" Count="87" />
+      <LineId Id="13" Count="6" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="20" Count="42" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="63" Count="37" />
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>

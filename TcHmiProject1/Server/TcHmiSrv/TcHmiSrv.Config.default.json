@@ -478,6 +478,13 @@
             "REQUIRED": true,
             "STARTUPTYPE": 0
         },
+        "TcHmiReporting": {
+            "ENABLED": true,
+            "NAME": "TcHmiReporting",
+            "PATH": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Reporting.14.2.7066\\runtimes\\any\\net8.0\\",
+            "REQUIRED": false,
+            "STARTUPTYPE": 1
+        },
         "TcHmiSqliteLogger": {
             "ENABLED": true,
             "NAME": "TcHmiSqliteLogger",
