@@ -478,13 +478,6 @@
             "REQUIRED": true,
             "STARTUPTYPE": 0
         },
-        "TcHmiReporting": {
-            "ENABLED": true,
-            "NAME": "TcHmiReporting",
-            "PATH": "..\\..\\Packages\\Beckhoff.TwinCAT.HMI.Reporting.14.2.7066\\runtimes\\any\\net8.0\\",
-            "REQUIRED": false,
-            "STARTUPTYPE": 1
-        },
         "TcHmiSqliteLogger": {
             "ENABLED": true,
             "NAME": "TcHmiSqliteLogger",
@@ -2938,16 +2931,6 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.A_1_PRG_Main_Master.bResetTest": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::A_1_PRG_Main_Master::bResetTest",
-            "SCHEMA": {
-                "$ref": "tchmi:general#/definitions/BOOL"
-            },
-            "USEMAPPING": true
-        },
         "PLC1.GVL_HMI.bEnableManual": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3159,16 +3142,6 @@
             },
             "USEMAPPING": true
         },
-        "PLC1.GVL_Master.astEventsHistory": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Master::astEventsHistory",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..200_OF-ST_EventsHistory"
-            },
-            "USEMAPPING": true
-        },
         "PLC1.GVL_Master.bResetTest": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3176,36 +3149,6 @@
             "MAPPING": "PLC1::GVL_Master::bResetTest",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/BOOL"
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_Master.sSystemDate": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Master::sSystemDate",
-            "SCHEMA": {
-                "$ref": "tchmi:general#/definitions/STRING%2880%29"
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_Master.sSystemTime": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Master::sSystemTime",
-            "SCHEMA": {
-                "$ref": "tchmi:general#/definitions/STRING%2880%29"
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_Master.stActiveEventsHMI": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Master::stActiveEventsHMI",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..39_OF-ST_ActiveEventsHMI"
             },
             "USEMAPPING": true
         },
@@ -3272,40 +3215,6 @@
                     },
                     {
                         "propertyOrder": 4
-                    }
-                ]
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_Persistent.stAlarmHistory": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Persistent::stAlarmHistory",
-            "SCHEMA": {
-                "allOf": [
-                    {
-                        "comment": "//////////////////////////////////////////////////////////////////////////////////Event Log/////////////////////////////////////////////////////////////////////////////////////"
-                    },
-                    {
-                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..250_OF-ST_AlarmHistory"
-                    }
-                ]
-            },
-            "USEMAPPING": true
-        },
-        "PLC1.GVL_Persistent.stStatisticsHMI": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_Persistent::stStatisticsHMI",
-            "SCHEMA": {
-                "allOf": [
-                    {
-                        "comment": "0: GENERAL"
-                    },
-                    {
-                        "$ref": "tchmi:server#/definitions/PLC1.ARRAY_0..3_OF-ST_StatisticsHMI"
                     }
                 ]
             },

@@ -60,6 +60,26 @@
       "name": "Contents/CSS_JAVA/RowClassesProvider.js",
       "description": "",
       "type": "JavaScript"
+    },
+    {
+      "name": "Contents/CSS_JAVA/relatori.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Contents/CSS_JAVA/filterFunc.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Contents/CSS_JAVA/CodeBehindJs1.js",
+      "description": "",
+      "type": "JavaScript"
+    },
+    {
+      "name": "Contents/CSS_JAVA/jspdf.min.js",
+      "description": "",
+      "type": "JavaScript"
     }
   ],
   "userControls": [],
