@@ -11,9 +11,12 @@ VAR
 	bOpenDoor							: BOOL;
 	bCloseDoor							: BOOL;
 	bCloseDoorHMI						: BOOL;
+	bOpenDoorHMI						: BOOL;
 	bDoorClosed							: BOOL;
 	tonDoorOpened						: TON;
 	bDoorOpened							: BOOL;
+	
+
 	
 	
 END_VAR
@@ -162,7 +165,7 @@ bDoorOpened								:= tonDoorOpened.Q;
 
 bDoorOpenedFlag							:= bDoorOpened;
 
-dw_T09_EL2809.qOpenProcessDoor	:= bOpenDoor OR bProcessDoor_Up OR stTwinSAFE.iInitSafety;	
+dw_T09_EL2809.qOpenProcessDoor	:= bOpenDoor OR bOpenDoorHMI OR stTwinSAFE.iInitSafety OR bOpenDoorCycleFault;	
 dw_T09_EL2809.qCloseProcessDoor	:= bCloseDoor OR bCloseDoorHMI;
 
 
@@ -172,12 +175,29 @@ dw_T09_EL2809.qCloseProcessDoor	:= bCloseDoor OR bCloseDoorHMI;
     <Action Name="c_Manual" Id="{af74f668-26ed-493a-861d-9af0f131bf72}">
       <Implementation>
         <ST><![CDATA[
-IF bProcessDoor_Down AND dw_T05_EL1918.iLeftTouchButtonNO AND dw_T05_EL1918.iRightTouchButtonNO THEN
+
+IF bProcessDoor_Down AND stTwinSAFE.qTwoHandsSafe THEN
 	
 	bCloseDoorHMI					:= TRUE;
 	bProcessDoor_Down				:= FALSE;
 	
-ELSE bCloseDoorHMI					:= FALSE;
+ELSIF bDoorClosed  OR NOT stMachineStatus.bManualMode THEN
+
+	 bCloseDoorHMI					:= FALSE;
+	 bProcessDoor_Down				:= FALSE;
+
+END_IF
+
+IF bProcessDoor_UP THEN
+	
+	bOpenDoorHMI					:= TRUE;
+	bProcessDoor_UP					:= FALSE;
+	
+ELSIF bDoorOpened OR  NOT stMachineStatus.bManualMode THEN
+
+	bOpenDoorHMI					:= FALSE;	 
+	bProcessDoor_UP					:= FALSE;
+	
 
 END_IF
 
@@ -188,13 +208,13 @@ END_IF
       <Implementation>
         <ST><![CDATA[//IMMEDIATE FAULTS
 
-stStationEvents[4].aEvents[0].bEventTimer( IN := bCloseDoor AND NOT bDoorClosed, PT := T#2S);
+stStationEvents[4].aEvents[0].bEventTimer( IN :=  (bCloseDoor OR bCloseDoorHMI) AND NOT bDoorClosed, PT := T#2S);
 stStationEvents[4].aEvents[0].bFault						:= TRUE;
 stStationEvents[4].aEvents[0].bEventFlag					:= stStationEvents[4].aEvents[0].bEventTimer.Q;
 stStationEvents[4].aEvents[0].bEventText					:= 'Process Door extend timeout';
 stStationEvents[4].aEvents[0].sSolution						:= 'Check cylinder, neumatic connections and sensors';
 
-stStationEvents[4].aEvents[1].bEventTimer( IN := bOpenDoor AND NOT bDoorOpened, PT := T#2S);
+stStationEvents[4].aEvents[1].bEventTimer( IN :=  (bOpenDoor OR  bProcessDoor_Up  OR bOpenDoorHMI) AND NOT bDoorOpened, PT := T#2S);
 stStationEvents[4].aEvents[1].bFault						:= TRUE;
 stStationEvents[4].aEvents[1].bEventFlag					:= stStationEvents[4].aEvents[1].bEventTimer.Q;
 stStationEvents[4].aEvents[1].bEventText					:= 'Process Door Retract timeout';

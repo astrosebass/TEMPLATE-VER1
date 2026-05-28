@@ -92,6 +92,17 @@
       },
       {
         "Name": "Probes set"
+      },
+      {
+        "Name": "Cameras",
+        "children": [
+          {
+            "Name": "Camera 1"
+          },
+          {
+            "Name": "Camera 2"
+          }
+        ]
       }
     ]
   }

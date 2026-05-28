@@ -157,6 +157,14 @@ tonStopped(IN := stMachineStatus.eMachineState = E_MachineState.STOPPED);
 					
 				END_IF
 				
+				IF stMachineStatus.eMachineState		= E_MachineState.FAULT THEN
+					
+					bOpenDoorCycleFault						:= TRUE;
+					
+				ELSE bOpenDoorCycleFault					:= FALSE;
+					
+				END_IF
+				
 /////////////////////////////////////////////////////////////////////////////////////MACHINE CONTROL/////////////////////////////////////////////////////////////////////////////////////
 
 CASE stMachineStatus.eMachineState OF
@@ -554,11 +562,11 @@ E_General_ProcessCycle.WAIT_EXTEND_PROCESS_CYLINDER:
 						
 						eCycleState							:= E_General_ProcessCycle.LEAK_TESTS_HEIGHT_TEST;	
 						
-					ELSIF 	stMACHINE.bHeightTest AND NOT stMACHINE.bLeakTest AND NOT stMACHINE.bVisionTest THEN
+					ELSIF 	stMACHINE.bHeightTest AND NOT stMACHINE.bLeakTest  THEN
 						
 						eCycleState							:= E_General_ProcessCycle.HEIGHT_TEST;
 					
-					ELSIF 	NOT stMACHINE.bHeightTest AND stMACHINE.bLeakTest AND NOT stMACHINE.bVisionTest THEN
+					ELSIF 	NOT stMACHINE.bHeightTest AND stMACHINE.bLeakTest  THEN
 						
 						eCycleState							:= E_General_ProcessCycle.LEAK_TESTS;
 					END_IF
@@ -847,11 +855,11 @@ E_General_ProcessCycle.WAIT_REJECT_PART:
 					
 					sMachineMessage								:= 'REMOVE PART FROM NEST 1 AND PUT IN REJECT CHUTE';
 					
-					IF ctuRejectPart.CV = 1 AND NOT bPartPresentNest1 AND (bPartPresentNest2 OR NOT bProcessedPart[1])  THEN
+					IF ctuRejectPart.CV > 0 AND NOT bPartPresentNest1 AND (bPartPresentNest2 OR NOT bProcessedPart[1])  THEN
 						
 						eCycleState								:= E_General_ProcessCycle.RESET_ALL_CMD;
 						
-					ELSIF ctuRejectPart.CV = 1 AND (bPartPresentNest1 OR (NOT bPartPresentNest2 AND bProcessedPart[1])) THEN
+					ELSIF ctuRejectPart.CV > 0 AND (bPartPresentNest1 OR (NOT bPartPresentNest2 AND bProcessedPart[1])) THEN
 						
 						bRejectPartFault						:= TRUE; 
 					
@@ -872,11 +880,11 @@ E_General_ProcessCycle.WAIT_REJECT_PART:
 					
 					sMachineMessage								:= 'REMOVE PART FROM NEST 2 AND PUT IN REJECT CHUTE';
 					
-					IF ctuRejectPart.CV = 1 AND NOT bPartPresentNest2 AND (bPartPresentNest1 OR NOT bProcessedPart[0])  THEN
+					IF ctuRejectPart.CV > 0 AND NOT bPartPresentNest2 AND (bPartPresentNest1 OR NOT bProcessedPart[0])  THEN
 						
 						eCycleState								:= E_General_ProcessCycle.RESET_ALL_CMD;
 						
-					ELSIF ctuRejectPart.CV = 1 AND (bPartPresentNest1 OR (NOT bPartPresentNest1 AND bProcessedPart[0])) THEN
+					ELSIF ctuRejectPart.CV > 0 AND (bPartPresentNest1 OR (NOT bPartPresentNest1 AND bProcessedPart[0])) THEN
 						
 						bRejectPartFault						:= TRUE; 
 					
@@ -895,11 +903,11 @@ E_General_ProcessCycle.WAIT_REJECT_PART:
 				
 				ELSIF stCycleDataNest1.bFail AND stCycleDataNest2.bFail THEN
 					
-					IF ctuRejectPart.CV = 2 AND NOT bPartPresentNest1 AND NOT bPartPresentNest1 THEN
+					IF ctuRejectPart.CV > 1 AND NOT bPartPresentNest1 AND NOT bPartPresentNest1 THEN
 						
 						eCycleState								:= E_General_ProcessCycle.RESET_ALL_CMD;
 					
-					ELSIF ctuRejectPart.CV = 2 AND ( bPartPresentNest1 OR bPartPresentNest1) THEN
+					ELSIF ctuRejectPart.CV > 1 AND ( bPartPresentNest1 OR bPartPresentNest1) THEN
 						
 						bRejectPartFault						:= TRUE; 		
 					
@@ -1089,7 +1097,7 @@ bProcessDoorClosedConditionFlag		:= eCycleState = E_General_ProcessCycle.PROCESS
 										
 
 										
-tonTwoHandsSignal( IN := (dw_T05_EL1918.iLeftTouchButtonNO AND dw_T05_EL1918.iRightTouchButtonNO) , PT := stTimers.tTwoHandsSignal);						
+tonTwoHandsSignal( IN := stTwinSAFE.qTwoHandsSafe , PT := stTimers.tTwoHandsSignal);						
 				
 bTwoHandsSignal						:= tonTwoHandsSignal.Q;
 		

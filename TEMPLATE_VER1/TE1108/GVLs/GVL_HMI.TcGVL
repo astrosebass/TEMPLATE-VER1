@@ -12,8 +12,8 @@
 	nPopUp								: DINT;
 	
 	bPartPresent						: ARRAY [0..1] OF BOOL;
-	stStatisticsWH						: ARRAY [0..2] OF ST_StatisticsHMI;
-	stStatisticsLT						: ARRAY [0..2] OF ST_StatisticsHMI;
+	stStatisticsWH						: ARRAY [0..5] OF ST_StatisticsHMI;
+	stStatisticsLT						: ARRAY [0..3] OF ST_StatisticsHMI;
 	
 	bRejectPartDialog					: ARRAY [0..2] OF BOOL;
 	bOpenRejectDialog					: BOOL;
@@ -53,10 +53,8 @@
 	rMachineDefinitionSet2				: R_TRIG;
 	fMachineDefinitionSet2				: F_TRIG;
 	
-	bProcessCylinder1_Up				: BOOL;
-	bProcessCylinder1_Down				: BOOL;
-	bProcessCylinder2_Up				: BOOL;
-	bProcessCylinder2_Down				: BOOL;
+	bProcessCylinder_Up					: BOOL;
+	bProcessCylinder_Down2				: BOOL;
 	
 	bProcessDoor_Up						: BOOL;
 	bProcessDoor_Down					: BOOL;
@@ -72,6 +70,8 @@
 	bCameraSettingVal					: ARRAY[1..4] OF UDINT;
 	bCameraSetTreshold					: ARRAY[1..4] OF BOOL;
 	bCameraTrigger						: ARRAY[1..4] OF BOOL;
+	
+	bProcessCylinderDownEnable			: BOOL;
 	
 	//Probes
 	bSetTolerances						: BOOL;
@@ -90,13 +90,14 @@ END_VAR
 VAR_GLOBAL PERSISTENT
 	
 	stTimers							: ST_Timers;
-	stStatisticsHMI						: ARRAY [0..6] OF ST_StatisticsHMI;	//0: GENERAL
-																	//1: Leak Tester 1
-																	//2: Leak Tester 2
-																	//3: Height Test 1
-																	//4: Height Test 2
-																	//5: Camera set 1
-																	//6: camera set 2
+	stStatisticsHMI						: ARRAY [0..7] OF ST_StatisticsHMI;	//0: Nest1
+																	//1: Nest2
+																	//2: Leak Tester 1
+																	//3: Leak Tester 2
+																	//4: Height Test 1
+																	//5: Height Test 2
+																	//6: Camera set 1
+																	//7: camera set 2
 														
 	/////////////////////////////////////////////////////////////////////////////////////SETTINGS/////////////////////////////////////////////////////////////////////////////////////	
 	

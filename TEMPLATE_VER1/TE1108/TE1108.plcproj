@@ -271,10 +271,10 @@
     <Compile Include="POUs\B_STATIONS\B_3_CAMERA\B_3_1_PRG_Master_Camera.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLICE_DOOR\B_4_1_PRG_Master_ProcessCylinder.TcPOU">
+    <Compile Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLIDE_DOOR\B_4_1_PRG_Master_ProcessCylinder.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLICE_DOOR\B_4_2_PRG_Master_ProcessDoor.TcPOU">
+    <Compile Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLIDE_DOOR\B_4_2_PRG_Master_ProcessDoor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\C_HMI\C_1_PRG_MainHMI.TcPOU">
@@ -338,7 +338,7 @@
     <Folder Include="POUs\B_STATIONS\B_1_LEAK_TEST" />
     <Folder Include="POUs\B_STATIONS\B_2_HEIGHT_TEST" />
     <Folder Include="POUs\B_STATIONS\B_3_CAMERA" />
-    <Folder Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLICE_DOOR" />
+    <Folder Include="POUs\B_STATIONS\B_4_PROCESS_CYLINDER__SLIDE_DOOR" />
     <Folder Include="POUs\C_HMI" />
     <Folder Include="POUs\D_CSV" />
     <Folder Include="POUs\Utilities" />
@@ -379,8 +379,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-        <Data>
-          <o xml:space="preserve" t="OptionKey">
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -438,14 +438,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-        </Data>
-        <TypeList>
-          <Type n="Boolean">System.Boolean</Type>
-          <Type n="Hashtable">System.Collections.Hashtable</Type>
-          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-          <Type n="String">System.String</Type>
-        </TypeList>
-      </XmlArchive>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

@@ -145,8 +145,18 @@ stProcessCylinder.Status.bStopped	:= 	NOT stProcessCylinder.Status.bBusy;]]></ST
 bExtended								:= dw_T08_EL1809.iProcessCylinderExtended;
 bRetracted								:= stTwinSAFE.qProcessCylinderRetracted;
 
-dw_T09_EL2809.qExtendProcessCylinder	:= bExtend OR bProcessCylinder1_Down ;	
-dw_T09_EL2809.qRetractProcessCylinder	:= bRetract OR bProcessCylinder1_Up OR stTwinSAFE.iInitSafety;
+IF bExtend OR bProcessCylinder_Down2 THEN
+	
+	dw_T09_EL2809.qExtendProcessCylinder	:= TRUE ;
+	dw_T09_EL2809.qRetractProcessCylinder	:= FALSE;
+
+ELSIF bRetract OR bProcessCylinder_Up OR stTwinSAFE.iInitSafety THEN
+	
+	dw_T09_EL2809.qExtendProcessCylinder	:= FALSE;
+	dw_T09_EL2809.qRetractProcessCylinder	:= TRUE;
+
+END_IF
+
 
 IF stStationEvents[3].aEvents[0].bEventTimer.Q THEN
 	
@@ -220,7 +230,7 @@ stStationEvents[3].aEvents[0].bEventFlag					:= stStationEvents[3].aEvents[0].bE
 stStationEvents[3].aEvents[0].bEventText					:= 'Process Cylinder 1 extend timeout';
 stStationEvents[3].aEvents[0].sSolution						:= 'Check cylinder, neumatic connections and sensors';
 
-stStationEvents[3].aEvents[1].bEventTimer( IN := (bRetract AND NOT bRetracted), PT := T#5S);
+stStationEvents[3].aEvents[1].bEventTimer( IN := (bRetract AND NOT bRetracted), PT := T#3S);
 stStationEvents[3].aEvents[1].bFault						:= TRUE;
 stStationEvents[3].aEvents[1].bEventFlag					:= stStationEvents[3].aEvents[1].bEventTimer.Q;
 stStationEvents[3].aEvents[1].bEventText					:= 'Process Cylinder retract timeout';

@@ -337,8 +337,8 @@ END_IF]]></ST>
     </Action>
     <Action Name="c_ACT_Statistics_Station_1" Id="{33f3666a-9a01-47bc-b17c-8cc705cb878c}">
       <Implementation>
-        <ST><![CDATA[stStatisticsHMI[1].sName			:= 'LEAK TESTER 1';
-stStatisticsHMI[2].sName			:= 'LEAK TESTER 2';
+        <ST><![CDATA[stStatisticsHMI[2].sName			:= 'LEAK TESTER 1';
+stStatisticsHMI[3].sName			:= 'LEAK TESTER 2';
 
 
 rGoodStatistics[0]( CLK := stCycleDataNest1.LeakTest_Pass );
@@ -348,38 +348,13 @@ rBadStatistics[1] ( CLK := stCycleDataNest2.LeakTest_Fail );
 
 IF 	rGoodStatistics[0].Q THEN
 	
-	stStatisticsHMI[1].nGood		:= stStatisticsHMI[1].nGood + 1;
-	stStatisticsHMI[1].nTotalGood	:= stStatisticsHMI[1].nTotalGood + 1;
+	stStatisticsHMI[2].nGood		:= stStatisticsHMI[2].nGood + 1;
 	
 END_IF
 								
 IF 	rBadStatistics[0].Q THEN
 	
-	stStatisticsHMI[1].nBad			:= stStatisticsHMI[1].nBad + 1;
-	stStatisticsHMI[1].nTotalBad	:= stStatisticsHMI[1].nTotalBad + 1;
-	
-END_IF
-
-IF stStatisticsHMI[1].bResetGood THEN
-	stStatisticsHMI[1].nGood		:= 0;
-END_IF
-
-IF stStatisticsHMI[1].bResetBad THEN
-	stStatisticsHMI[1].nBad			:= 0;
-END_IF
-
-
-IF 	rGoodStatistics[1].Q THEN
-	
-	stStatisticsHMI[2].nGood		:= stStatisticsHMI[2].nGood + 1;
-	stStatisticsHMI[2].nTotalGood	:= stStatisticsHMI[2].nTotalGood + 1;
-	
-END_IF
-								
-IF 	rBadStatistics[1].Q THEN
-	
 	stStatisticsHMI[2].nBad			:= stStatisticsHMI[2].nBad + 1;
-	stStatisticsHMI[2].nTotalBad	:= stStatisticsHMI[2].nTotalBad + 1;
 	
 END_IF
 
@@ -392,22 +367,43 @@ IF stStatisticsHMI[2].bResetBad THEN
 END_IF
 
 
-
-IF (( stStatisticsHMI[1].nGood + stStatisticsHMI[1].nBad) <> 0) THEN
+IF 	rGoodStatistics[1].Q THEN
 	
-	rEfficency[0]							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[1].nGood) /( DINT_TO_REAL(stStatisticsHMI[1].nGood) + DINT_TO_REAL(stStatisticsHMI[1].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
-	stStatisticsHMI[1].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency[0]));
-
-ELSE stStatisticsHMI[1].nEfficency		:= CONCAT(STR1 := '%', STR2 := (DINT_TO_STRING(0)));
+	stStatisticsHMI[3].nGood		:= stStatisticsHMI[3].nGood + 1;
+	
+END_IF
+								
+IF 	rBadStatistics[1].Q THEN
+	
+	stStatisticsHMI[3].nBad			:= stStatisticsHMI[3].nBad + 1;
 	
 END_IF
 
+IF stStatisticsHMI[3].bResetGood THEN
+	stStatisticsHMI[3].nGood		:= 0;
+END_IF
+
+IF stStatisticsHMI[3].bResetBad THEN
+	stStatisticsHMI[3].nBad			:= 0;
+END_IF
+
+
+
 IF (( stStatisticsHMI[2].nGood + stStatisticsHMI[2].nBad) <> 0) THEN
 	
-	rEfficency[1]							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[2].nGood) /( DINT_TO_REAL(stStatisticsHMI[2].nGood) + DINT_TO_REAL(stStatisticsHMI[2].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
-	stStatisticsHMI[2].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency[1]));
+	rEfficency[0]							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[2].nGood) /( DINT_TO_REAL(stStatisticsHMI[2].nGood) + DINT_TO_REAL(stStatisticsHMI[2].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
+	stStatisticsHMI[2].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency[0]));
 
 ELSE stStatisticsHMI[2].nEfficency		:= CONCAT(STR1 := '%', STR2 := (DINT_TO_STRING(0)));
+	
+END_IF
+
+IF (( stStatisticsHMI[3].nGood + stStatisticsHMI[3].nBad) <> 0) THEN
+	
+	rEfficency[1]							:= LREAL_TO_FMTSTR(in := (DINT_TO_REAL(stStatisticsHMI[3].nGood) /( DINT_TO_REAL(stStatisticsHMI[3].nGood) + DINT_TO_REAL(stStatisticsHMI[3].nBad))) * 100.0,iPrecision := 2, bRound := TRUE);
+	stStatisticsHMI[3].nEfficency		:= CONCAT(STR1 := '%', STR2 := (rEfficency[1]));
+
+ELSE stStatisticsHMI[3].nEfficency		:= CONCAT(STR1 := '%', STR2 := (DINT_TO_STRING(0)));
 	
 END_IF
 ]]></ST>
@@ -436,6 +432,18 @@ stStationEvents[1].aEvents[21].bCycleStopRequest				:= TRUE;
 stStationEvents[1].aEvents[21].bEventFlag					:= NOT bReady[1] AND (stLeakTesters.State = E_LeakTester_State.HOMING);// AND (stLeakTesters.State = E_LeakTester_State.HOMING);
 stStationEvents[1].aEvents[21].bEventText					:= 'Leak Tester 2 not ready';
 stStationEvents[1].aEvents[21].sSolution						:= 'Check Leak tester 2';
+
+stStationEvents[1].aEvents[22].bCycleStopRequest			:= TRUE;
+stStationEvents[1].aEvents[22].bEventFlag					:= bError[0] AND bNest1Flag;
+stStationEvents[1].aEvents[22].bEventText					:= 'Leak Tester 1 malfunction';
+stStationEvents[1].aEvents[22].sSolution					:= 'Check Leak tester 1';
+
+stStationEvents[1].aEvents[23].bCycleStopRequest			:= TRUE;
+stStationEvents[1].aEvents[23].bEventFlag					:=  bError[1] AND bNest2Flag;
+stStationEvents[1].aEvents[23].bEventText					:= 'Leak Tester 2 malfunction';
+stStationEvents[1].aEvents[23].sSolution					:= 'Check Leak tester 2';
+
+
 
 //Message
 (*

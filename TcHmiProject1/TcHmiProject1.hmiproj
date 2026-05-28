@@ -277,7 +277,10 @@
     <Content Include="Contents\Manual\Cameras\CameraInterface.content">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\Manual\Cameras.content">
+    <Content Include="Contents\Manual\Cameras_FPB.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Contents\Manual\Cameras_CAP.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Manual\Leak_Test.content">
@@ -328,7 +331,7 @@
     <Content Include="Contents\Screens\2_Menu.content">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\Screens\3_IO_HW.content">
+    <Content Include="Contents\Screens\3_IO_HW_VC.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Screens\3_IO_LT.content">
@@ -343,7 +346,7 @@
     <Content Include="Contents\Screens\5_Manual_LT.content">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Contents\Screens\5_Manual_HW.content">
+    <Content Include="Contents\Screens\5_Manual_HW_VC.content">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Contents\Screens\5_Manual_LT_HW_VC.content">

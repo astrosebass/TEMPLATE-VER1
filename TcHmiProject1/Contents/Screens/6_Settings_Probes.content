@@ -1,6 +1,6 @@
 <div id="Content1_31" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1340" data-tchmi-height="480">
 
-<div id="TcHmiTreeView_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTreeView" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="259" data-tchmi-width-unit="px" data-tchmi-hierarchical-data-property="children">
+<div id="TcHmiTreeView_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTreeView" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="259" data-tchmi-width-unit="px" data-tchmi-hierarchical-data-property="children">
 <script data-tchmi-target-attribute="data-tchmi-columns" type="application/json">
 [
   {
@@ -39,16 +39,16 @@
             "Name": "Probes",
             "children": [
               {
-                "Name": "Calibration Set 1"
-              },
-              {
-                "Name": "Calibration Set 2"
-              },
-              {
                 "Name": "Distances"
               },
               {
                 "Name": "Tolerances"
+              },
+              {
+                "Name": "Test Zone - LH"
+              },
+              {
+                "Name": "Test Zone - RH"
               }
             ]
           }
@@ -101,7 +101,7 @@
             "caseValue": {
               "objectType": "StaticValue",
               "valueType": "tchmi:general#/definitions/Any",
-              "value": "Calibration Set 1"
+              "value": "Test Zone - LH"
             },
             "actions": [
               {
@@ -161,7 +161,7 @@
             "caseValue": {
               "objectType": "StaticValue",
               "valueType": "tchmi:general#/definitions/Any",
-              "value": "Calibration Set 2"
+              "value": "Test Zone - RH"
             },
             "actions": [
               {
@@ -205,7 +205,7 @@
 ]
 </script>
 </div>
-<div id="IO_Region_18" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="259" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1080" data-tchmi-width-unit="px" data-tchmi-target-content="%i%Settings_Screen%/i%">
+<div id="IO_Region_18" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="259" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1081" data-tchmi-width-unit="px" data-tchmi-target-content="%i%Settings_Screen%/i%">
 
 
 

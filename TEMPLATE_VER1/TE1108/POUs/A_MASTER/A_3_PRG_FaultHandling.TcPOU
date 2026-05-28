@@ -127,6 +127,8 @@ stStationEvents[0].aEvents[19].sSolution					:= '';
 
 
 
+
+
 /////////////////////////////////////////////////////////////////////////////////////Cards status/////////////////////////////////////////////////////////////////////////////////////
 
 stStationEvents[0].aEvents[20].bFault						:= TRUE;
@@ -189,6 +191,7 @@ stStationEvents[0].aEvents[31].bEventFlag					:= NOT stMachineStatus.bSystemPowe
 stStationEvents[0].aEvents[31].bEventText					:= 'T12_EL6633 card in fault' ;
 stStationEvents[0].aEvents[31].sSolution					:= 'Reset System';
 
+//GENERAL
 stStationEvents[0].aEvents[32].bFault						:= TRUE;
 stStationEvents[0].aEvents[32].bEventFlag					:= bDoorClosingFlag AND (NOT dw_T05_EL1918.iLeftTouchButtonNO OR NOT dw_T05_EL1918.iRightTouchButtonNO);
 stStationEvents[0].aEvents[32].bEventText					:= 'Hands out before door was closed' ;
@@ -203,9 +206,10 @@ stStationEvents[0].aEvents[33].sSolution					:= 'Reset System';
 
 stStationEvents[0].aEvents[34].bFault						:= TRUE;
 stStationEvents[0].aEvents[34].bEventTimer(IN := (stMachineStatus.eMachineState = E_MachineState.SYSTEM_AUTO_CYCLE) AND NOT bAutocycleIDLE, PT := stTimers.tAutoCycleTimeOut );
-stStationEvents[0].aEvents[34].bEventFlag					:= stStationEvents[0].aEvents[26].bEventTimer.Q;
+stStationEvents[0].aEvents[34].bEventFlag					:= stStationEvents[0].aEvents[34].bEventTimer.Q;
 stStationEvents[0].aEvents[34].bEventText					:= 'Auto Cycle Timeout' ;
 stStationEvents[0].aEvents[34].sSolution					:= 'Reset System';
+
 
 
 

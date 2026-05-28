@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<safetyApplication Crc="692301950" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="b554177b-8ed9-482d-a64f-a71618096704" name="" mapState="false" mapDiag="false" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+<safetyApplication Crc="706615803" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="b554177b-8ed9-482d-a64f-a71618096704" name="" mapState="false" mapDiag="false" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
   <networks>
     <safetyApplicationHasNetworks Id="2c7ab9e7-cadf-45a1-8028-d940d0610258">
       <Network Id="d2dcfc47-a4f1-4dd3-9dfe-651bebdf9be0" name="Network2" networkName="SafeCondition" intId="2" networkOrderId="0">
@@ -1049,7 +1049,7 @@
               </outPorts>
               <parameterPorts>
                 <functionBlockHasParamPorts Id="024c4faa-9691-4122-94d3-2319f0a1bfa6">
-                  <parameterPort Id="04456209-2e02-40e0-8671-2a3595dd06dc" name="Delay Time (s)" portName="Delay Time (s)" portNum="4" objectIndex="0" varId="0" filter="0" portDataType="0" timing="1" userFbPortName="Delay Time (s)" useInUserFb="false" />
+                  <parameterPort Id="04456209-2e02-40e0-8671-2a3595dd06dc" name="Delay Time (s)" portName="Delay Time (s)" portNum="4" objectIndex="0" varId="0" filter="0" portDataType="0" timing="0.1" userFbPortName="Delay Time (s)" useInUserFb="false" />
                 </functionBlockHasParamPorts>
               </parameterPorts>
             </fBTon>
@@ -1119,12 +1119,18 @@
                   <outPort Id="3407af58-bac7-4051-86b8-52828bc168b4" name="Error" portName="Error" portNum="2" objectIndex="0" varId="5" filter="6" portDataType="1" replacementValue="0" />
                 </functionBlockHasOutPorts>
                 <functionBlockHasOutPorts Id="da74c465-1500-4577-bf74-26d49df690a2">
-                  <outPort Id="dfa73f8d-b415-4fb6-ace9-51cd9f1b4597" name="TwoHandOut" portName="TwoHandOut" portNum="10" objectIndex="1" varId="6" filter="6" portDataType="1" replacementValue="0" />
+                  <outPort Id="dfa73f8d-b415-4fb6-ace9-51cd9f1b4597" name="TwoHandOut" portName="TwoHandOut" portNum="10" objectIndex="1" varId="6" filter="6" portDataType="1" replacementValue="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="a199329e-c0b9-4a1c-a537-80645575e85e">
+                        <inPortMoniker name="//Network7/FBAnd1/AndIn2" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                  </outPort>
                 </functionBlockHasOutPorts>
               </outPorts>
               <parameterPorts>
                 <functionBlockHasParamPorts Id="59863729-1369-414b-bd4b-3b255592e06f">
-                  <parameterPort Id="25bb6f60-9df7-437a-9277-039ec95da63f" name="Discrepancy between groups (ms)" portName="Discrepancy between groups (ms)" portNum="7" objectIndex="0" varId="0" filter="0" portDataType="0" timing="0" userFbPortName="Discrepancy between groups (ms)" useInUserFb="false" />
+                  <parameterPort Id="25bb6f60-9df7-437a-9277-039ec95da63f" name="Discrepancy between groups (ms)" portName="Discrepancy between groups (ms)" portNum="7" objectIndex="0" varId="0" filter="0" portDataType="0" timing="500" userFbPortName="Discrepancy between groups (ms)" useInUserFb="false" />
                 </functionBlockHasParamPorts>
               </parameterPorts>
             </fBTwohand>
@@ -1161,13 +1167,7 @@
                   <inPort Id="9d2835c1-5f97-4b78-b988-45ba615ed72e" name="AndIn1" portName="AndIn1" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
                 </functioBlockHasInPorts>
                 <functioBlockHasInPorts Id="6afe0771-4738-4b73-bec6-be206da7428b">
-                  <inPort Id="1e4775e9-209b-4607-bffa-e958b5f3b4a2" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Make Contact (NO)" maxDeviation="0" resetTime="0">
-                    <targetFunctionBlockPorts>
-                      <wiredLink Id="d908fdfd-8a34-4c3c-a76a-e5d563969298">
-                        <outPortMoniker name="//Network7/FBTwohand1/TwoHandOut" />
-                      </wiredLink>
-                    </targetFunctionBlockPorts>
-                  </inPort>
+                  <inPort Id="1e4775e9-209b-4607-bffa-e958b5f3b4a2" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Make Contact (NO)" maxDeviation="0" resetTime="0" />
                 </functioBlockHasInPorts>
                 <functioBlockHasInPorts Id="fc5f79c5-4bac-4be4-95b5-5cdef2ae40c8">
                   <inPort Id="514ba009-35f5-4c9c-9cd5-2809d6863977" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
@@ -3388,6 +3388,38 @@
               <usages>
                 <variableUsagesHasUsages Id="d722c214-04ba-4204-952b-004dfb31d601">
                   <aliasDeviceIoUsage Id="31351466-a943-4fdb-8ff2-3f030b39a17f" sdsId="75" channelId="1" functionId="1131179972" />
+                </variableUsagesHasUsages>
+              </usages>
+            </variableUsages>
+          </variableHasTargetUsages>
+        </targetUsages>
+      </variable>
+    </safetyApplicationHasVariables>
+    <safetyApplicationHasVariables Id="83b4a4ee-d5dc-426e-a482-e1bc3a958a07">
+      <variable Id="ce2abab4-7f4c-4636-811f-bd8bc3ec0887" name="TwoHandsSafe" isLocal="false">
+        <sourceUsages>
+          <variableHasSourceUsages Id="78f37e76-ec92-4c93-aedc-1851642a5a85">
+            <variableUsages Id="a9e1d988-aefc-490c-b536-fc78f9226bfc">
+              <usages>
+                <variableUsagesHasUsages Id="f9c3ee71-bbb7-4c83-8458-356de70d28e6">
+                  <fbPortUsage Id="fb228f42-cf65-43f2-ab1a-b2f3f4deaac1">
+                    <functionBlockPort>
+                      <fbPortUsageReferencesFunctionBlockPort Id="64e281c3-c50a-4fb6-bd43-5ac0b47ee616">
+                        <outPortMoniker name="//Network7/FBTwohand1/TwoHandOut" />
+                      </fbPortUsageReferencesFunctionBlockPort>
+                    </functionBlockPort>
+                  </fbPortUsage>
+                </variableUsagesHasUsages>
+              </usages>
+            </variableUsages>
+          </variableHasSourceUsages>
+        </sourceUsages>
+        <targetUsages>
+          <variableHasTargetUsages Id="634904d3-35e4-441c-beac-7cf6d2d080f9">
+            <variableUsages Id="3545a36c-716a-49ad-931c-779412753612">
+              <usages>
+                <variableUsagesHasUsages Id="6417060b-c43d-4a45-abde-eeba454268db">
+                  <aliasDeviceIoUsage Id="b809b107-5447-43fc-812a-6cf6e4cab4cf" sdsId="77" channelId="1" functionId="1131179972" />
                 </variableUsagesHasUsages>
               </usages>
             </variableUsages>

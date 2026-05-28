@@ -334,13 +334,6 @@
       "preloadBindings": false
     },
     {
-      "url": "Contents/Manual/Cameras.content",
-      "preload": false,
-      "keepAlive": false,
-      "loadSync": false,
-      "preloadBindings": false
-    },
-    {
       "url": "Contents/Manual/Cameras/CameraInterface.content",
       "preload": false,
       "keepAlive": false,
@@ -349,6 +342,20 @@
     },
     {
       "url": "Contents/Manual/Cameras/CameraTriggerPopup.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Manual/Cameras_CAP.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Manual/Cameras_FPB.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
@@ -446,7 +453,7 @@
       "preloadBindings": false
     },
     {
-      "url": "Contents/Screens/3_IO_HW.content",
+      "url": "Contents/Screens/3_IO_HW_VC.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
@@ -474,7 +481,7 @@
       "preloadBindings": false
     },
     {
-      "url": "Contents/Screens/5_Manual_HW.content",
+      "url": "Contents/Screens/5_Manual_HW_VC.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
