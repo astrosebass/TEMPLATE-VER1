@@ -56,7 +56,7 @@
 	bProcessCylinder_Up					: BOOL;
 	bProcessCylinder_Down2				: BOOL;
 	
-	bProcessDoor_Up						: BOOL;
+	bProcessDoor_Up2					: BOOL;
 	bProcessDoor_Down					: BOOL;
 	
 	bLeaktester1_Start					: BOOL;

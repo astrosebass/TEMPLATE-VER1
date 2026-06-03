@@ -378,19 +378,7 @@ stStationEvents[2].aEvents[9].bEventFlag					:= stStationEvents[2].aEvents[9].bE
 stStationEvents[2].aEvents[9].bEventText					:= 'Height test cycle Timeout';
 stStationEvents[2].aEvents[9].sSolution						:= 'Reset System';
 
-(*//CYCLE STOP FAULT
-
-stStationEvents[2].aEvents[1].bFault						:= TRUE;
-stStationEvents[2].aEvents[1].bEventFlag					:= bEventsFlag[1];
-stStationEvents[2].aEvents[1].bEventText					:= 'ST1 EVENT 1';
-stStationEvents[2].aEvents[1].sSolution						:= 'Solution 4';
-
-
-//CYCLE STOP REQUEST
-
-stStationEvents[2].aEvents[2].bCycleStopRequest				:= TRUE;
-stStationEvents[2].aEvents[2].bEventFlag					:= bEventsFlag[2];
-stStationEvents[2].aEvents[2].bEventText					:= 'ST1 EVENT 2';*)]]></ST>
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="e_ACT_Measurement" Id="{4c79a236-7589-4d28-bfec-9644f041c168}">
@@ -570,6 +558,8 @@ IF bSetCalibrationBlock1 THEN
 	stProbesSettings.nDistanceOffset1[3]						:= stProbesSettings.anDistanceCalibrationBlock[3] - (Probes.stProbesSet[1].anScaledRawMeasurement[4] - Probes.stProbesSet[1].anScaledRawMeasurement[1]);
 	
 END_IF
+
+
 
 IF bSetCalibrationBlock2 THEN
 	

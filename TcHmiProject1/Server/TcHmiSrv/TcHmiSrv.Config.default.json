@@ -3200,6 +3200,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_HMI.bProcessDoor_Up2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::bProcessDoor_Up2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_HMI.bRejectPartDialog.0": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -11033,6 +11043,7 @@
                 "ADS.PLC1.GVL_HMI.bProcessCylinder_Up": 3,
                 "ADS.PLC1.GVL_HMI.bProcessDoor_Down": 3,
                 "ADS.PLC1.GVL_HMI.bProcessDoor_Up": 3,
+                "ADS.PLC1.GVL_HMI.bProcessDoor_Up2": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.0": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.1": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.2": 3,

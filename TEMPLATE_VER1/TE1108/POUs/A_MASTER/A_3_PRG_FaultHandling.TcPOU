@@ -247,7 +247,7 @@ stStationEvents[0].aEvents[44].sSolution					:= 'Enable at least one Nest';
 
 stStationEvents[0].aEvents[60].bMessage						:= TRUE;
 stStationEvents[0].aEvents[60].bEventFlag					:=  bCSVError;
-stStationEvents[0].aEvents[60].bEventText					:= 'CSV Not writted ' ;
+stStationEvents[0].aEvents[60].bEventText					:= 'CSV Not written ' ;
 stStationEvents[0].aEvents[60].sSolution					:= '';]]></ST>
       </Implementation>
     </Action>

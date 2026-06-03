@@ -205,7 +205,7 @@
 ]
 </script>
 </div>
-<div id="IO_Region_18" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="259" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1081" data-tchmi-width-unit="px" data-tchmi-target-content="%i%Settings_Screen%/i%">
+<div id="IO_Region_18" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-height="480" data-tchmi-height-unit="px" data-tchmi-left="259" data-tchmi-left-unit="px" data-tchmi-top="-10" data-tchmi-top-unit="px" data-tchmi-width="1081" data-tchmi-width-unit="px" data-tchmi-target-content="%i%Settings_Screen%/i%">
 
 
 
@@ -221,7 +221,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.0%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.0%/s%"
         },
         "asyncWait": true
       },
@@ -232,7 +232,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.1%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.1%/s%"
         },
         "asyncWait": true
       },
@@ -243,7 +243,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.2%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.2%/s%"
         },
         "asyncWait": true
       },
@@ -254,7 +254,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.0%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.0%/s%"
         },
         "asyncWait": true
       },
@@ -265,7 +265,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.1%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.1%/s%"
         },
         "asyncWait": true
       },
@@ -276,7 +276,7 @@
         "value": {
           "objectType": "Symbol",
           "valueType": "tchmi:general#/definitions/REAL",
-          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.2%/s%"
+          "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.2%/s%"
         },
         "asyncWait": true
       },

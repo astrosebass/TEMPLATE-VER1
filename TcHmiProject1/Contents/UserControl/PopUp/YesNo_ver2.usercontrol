@@ -485,6 +485,72 @@
                   "value": true
                 },
                 "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.0%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%FixedByCalibration1%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.1%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%FixedByCalibration2%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anDistanceCalibrationBlock.2%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%FixedByCalibration3%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.0%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%ExpectedByDrawing1%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.1%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%ExpectedByDrawing2%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anExpectedDistances.2%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%ExpectedByDrawing3%/i%"
+                },
+                "asyncWait": true
               }
             ]
           },
@@ -503,6 +569,39 @@
                   "objectType": "StaticValue",
                   "valueType": "tchmi:general#/definitions/String",
                   "value": true
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anTolerances.0%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%HeightTolerance1%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anTolerances.1%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%HeightTolerance2%/i%"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%ADS.PLC1.GVL_Persistent.stProbesSettings.anTolerances.2%/s%",
+                "value": {
+                  "objectType": "Symbol",
+                  "valueType": "tchmi:general#/definitions/REAL",
+                  "symbolExpression": "%i%HeightTolerance3%/i%"
                 },
                 "asyncWait": true
               }

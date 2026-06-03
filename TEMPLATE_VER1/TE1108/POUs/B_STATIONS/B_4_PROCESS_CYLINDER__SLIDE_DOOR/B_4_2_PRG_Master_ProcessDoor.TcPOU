@@ -188,17 +188,15 @@ ELSIF bDoorClosed  OR NOT stMachineStatus.bManualMode THEN
 
 END_IF
 
-IF bProcessDoor_UP THEN
+IF bProcessDoor_UP2 THEN
 	
 	bOpenDoorHMI					:= TRUE;
-	bProcessDoor_UP					:= FALSE;
+	
 	
 ELSIF bDoorOpened OR  NOT stMachineStatus.bManualMode THEN
 
 	bOpenDoorHMI					:= FALSE;	 
-	bProcessDoor_UP					:= FALSE;
 	
-
 END_IF
 
 ]]></ST>
@@ -214,7 +212,7 @@ stStationEvents[4].aEvents[0].bEventFlag					:= stStationEvents[4].aEvents[0].bE
 stStationEvents[4].aEvents[0].bEventText					:= 'Process Door extend timeout';
 stStationEvents[4].aEvents[0].sSolution						:= 'Check cylinder, neumatic connections and sensors';
 
-stStationEvents[4].aEvents[1].bEventTimer( IN :=  (bOpenDoor OR  bProcessDoor_Up  OR bOpenDoorHMI) AND NOT bDoorOpened, PT := T#2S);
+stStationEvents[4].aEvents[1].bEventTimer( IN :=  (bOpenDoor OR bOpenDoorHMI) AND NOT bDoorOpened, PT := T#2S);
 stStationEvents[4].aEvents[1].bFault						:= TRUE;
 stStationEvents[4].aEvents[1].bEventFlag					:= stStationEvents[4].aEvents[1].bEventTimer.Q;
 stStationEvents[4].aEvents[1].bEventText					:= 'Process Door Retract timeout';
