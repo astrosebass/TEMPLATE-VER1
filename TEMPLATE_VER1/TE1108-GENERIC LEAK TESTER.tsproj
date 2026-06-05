@@ -148,84 +148,93 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000004}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..3] OF BYTE</Name>
-			<BitSize>32</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000008}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..7] OF BYTE</Name>
+			<BitSize>64</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>4</Elements>
+				<Elements>8</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000010}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..15] OF BYTE</Name>
-			<BitSize>128</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000028}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..39] OF BYTE</Name>
+			<BitSize>320</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>16</Elements>
+				<Elements>40</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00030000001C}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..27] OF BYTE</Name>
-			<BitSize>224</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-00030000000A}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..9] OF BYTE</Name>
+			<BitSize>80</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>28</Elements>
+				<Elements>10</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000014}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..19] OF BYTE</Name>
-			<BitSize>160</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000070}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..111] OF BYTE</Name>
+			<BitSize>896</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>20</Elements>
+				<Elements>112</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00030000000C}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..11] OF BYTE</Name>
-			<BitSize>96</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000052}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..81] OF BYTE</Name>
+			<BitSize>656</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>12</Elements>
+				<Elements>82</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00030000005C}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..91] OF BYTE</Name>
-			<BitSize>736</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000034}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..51] OF BYTE</Name>
+			<BitSize>416</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>92</Elements>
+				<Elements>52</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-00030000003E}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..61] OF BYTE</Name>
-			<BitSize>496</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000016}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..21] OF BYTE</Name>
+			<BitSize>176</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>62</Elements>
+				<Elements>22</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000020}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..31] OF BYTE</Name>
-			<BitSize>256</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000051}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..80] OF BYTE</Name>
+			<BitSize>648</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>32</Elements>
+				<Elements>81</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-000300000002}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..1] OF BYTE</Name>
-			<BitSize>16</BitSize>
+			<Name GUID="{18071995-0000-0000-0000-000300000033}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..50] OF BYTE</Name>
+			<BitSize>408</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
 			<ArrayInfo>
 				<LBound>0</LBound>
-				<Elements>2</Elements>
+				<Elements>51</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000300000015}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..20] OF BYTE</Name>
+			<BitSize>168</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>21</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
@@ -1038,7 +1047,7 @@
 		<ImageData Id="1007">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1008">424de8000000000000007600000028000000100000000e000000010004000000000072000000120b0000120b00000000000000000000464646003333330012121200999999008080800044444400706262005e4545005252520000007a002d2d2d000000ab00008a2200b8b8b80045454500ff00ff00ff0ffff0ffffffff11112111121112ff134524345267722f18952889524772a218b5288b526772a21b9528b9524772a21cb528cb528d42a218952889528dd2a218e5238e528882a218852488828d42a254442444428dd2a2f544424444888822ff55552555533382fffffffffff888880000</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{AAED4EA2-0931-43D2-8590-E4ACDEB76CAB}" TargetNetId="172.18.236.164.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
+	<Project ProjectGUID="{AAED4EA2-0931-43D2-8590-E4ACDEB76CAB}" TargetNetId="172.18.238.230.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
 			<Settings MaxCpus="20" NonWinCpus="1">
 				<Cpu CpuId="3"/>
@@ -1061,7 +1070,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{997013A6-75D1-424B-98F5-A30289B2B96E}" Name="TE1108" PrjFilePath="TE1108\TE1108.plcproj" TmcFilePath="TE1108\TE1108.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{858DA0CA-42F0-1242-9424-974FEE51D2D2}" TmcPath="TE1108\TE1108.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{24FA52D9-4AD0-E041-2C1C-6DDB027BB6AC}" TmcPath="TE1108\TE1108.tmc">
 					<Name>TE1108 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -2670,13 +2679,13 @@
 			</Project>
 		</Safety>
 		<Io>
-			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.18.236.164.4.1" RemoteName="Device1(EtherCAT)" InfoImageId="3">
+			<Device Id="3" DevType="111" DevFlags="#x0003" AmsPort="28675" AmsNetId="172.18.238.230.4.1" RemoteName="Device1(EtherCAT)" InfoImageId="3">
 				<Name>Device1(EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
-						<DeviceDesc>EtherCat (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
-						<DeviceName>\DEVICE\{29D7BFD8-3B3C-4BAC-AB74-B6A9DFBF56F3}</DeviceName>
-						<DeviceData>000105a8eedd</DeviceData>
+						<DeviceDesc>EtherCAT (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
+						<DeviceName>\DEVICE\{03903D0B-DF52-4296-9A6F-FC5618506659}</DeviceName>
+						<DeviceData>000105a8f0e9</DeviceData>
 					</Pnp>
 				</AddressInfo>
 				<Image Id="2" AddrType="9" ImageType="3">
@@ -4074,11 +4083,11 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 					<Box Id="13" BoxType="9171" BoxFlags="#x00000020">
 						<Name>Term 12 (EL6633)</Name>
 						<ImageId>1001</ImageId>
-						<EtherCAT SlaveType="8" AdsServerAddress="ac12eca402010000" FixedAdsServerNetId="true" PdiType="#x0408" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x19e93052" RevisionNo="#x00110000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="60000" TimeoutStateChange2="30000" TimeoutStateChange3="30000" TimeoutStateChange4="300" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6633 PROFINET IO Controller" Desc="EL6633" PortABoxInfo="#x0100000c">
+						<EtherCAT SlaveType="8" AdsServerAddress="ac12eee602010000" FixedAdsServerNetId="true" PdiType="#x0408" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x19e93052" RevisionNo="#x00110000" InfoDataAddr="true" InfoDataNetId="true" OwnAddrExtern="true" TimeoutStateChange1="60000" TimeoutStateChange2="30000" TimeoutStateChange3="30000" TimeoutStateChange4="300" TimeoutMailbox2="2000" GenerateOwnNetId="true" InitializeOwnNetId="true" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6633 PROFINET IO Controller" Desc="EL6633" PortABoxInfo="#x0100000c">
 							<SyncMan>001000042600010001000000400000040004001026010000</SyncMan>
 							<SyncMan>001400042200010002000000400000040004001422010000</SyncMan>
-							<SyncMan>0018d8006400010003000000000000000000001864010000</SyncMan>
-							<SyncMan>702968012000010004000000000000000000702920010000</SyncMan>
+							<SyncMan>0018ba006400010003000000000000000000001864010000</SyncMan>
+							<SyncMan>702950012000010004000000000000000000702920010000</SyncMan>
 							<SyncMan>e03a00006400000003000000000000000000e03a64010000</SyncMan>
 							<SyncMan>e04000002000000004000000000000000000e04020010000</SyncMan>
 							<Fmmu>0000000000000000001800020100000001000000060000000200000000000000</Fmmu>
@@ -4089,122 +4098,98 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 							<BootStrapData>0010140200181402</BootStrapData>
 							<SuName>Term 13 (EL6633)_0</SuName>
 							<SuName>Term 13 (EL6633)_1</SuName>
-							<Pdo Name="camera-1_Inputs" Index="#x1a00" Flags="#x0001" SyncMan="3">
-								<Entry Name="camera-1_PnIoBoxState" Index="#x6000" Sub="#x01" Flags="#x00000100">
+							<Pdo Name="fpc1_Inputs" Index="#x1a00" Flags="#x0001" SyncMan="3">
+								<Entry Name="fpc1_PnIoBoxState" Index="#x6000" Sub="#x01" Flags="#x00000100">
 									<DefaultDataMask>1f001f00</DefaultDataMask>
 									<Type>UINT</Type>
 								</Entry>
-								<Entry Name="camera-1_PnIoBoxDiag" Index="#x6000" Sub="#x02" Flags="#x00000100">
+								<Entry Name="fpc1_PnIoBoxDiag" Index="#x6000" Sub="#x02" Flags="#x00000100">
 									<Type>UINT</Type>
 								</Entry>
-								<Entry Name="camera-1_SubmoduleData_1" Index="#x6001" Sub="#x01" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000004}">ARRAY [0..3] OF BYTE</Type>
+								<Entry Name="fpc1_SubmoduleData_1" Index="#x6001" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000008}">ARRAY [0..7] OF BYTE</Type>
 								</Entry>
-								<Entry Name="camera-1_SubmoduleData_2" Index="#x6001" Sub="#x02" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000004}">ARRAY [0..3] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_3" Index="#x6001" Sub="#x03" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000010}">ARRAY [0..15] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_4" Index="#x6001" Sub="#x04" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000001C}">ARRAY [0..27] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_5" Index="#x6001" Sub="#x05" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_6" Index="#x6001" Sub="#x06" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_7" Index="#x6001" Sub="#x07" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_8" Index="#x6001" Sub="#x08" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_9" Index="#x6001" Sub="#x09" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_10" Index="#x6001" Sub="#x0a" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="camera-1_Outputs" Index="#x1600" InOut="1" Flags="#x0001" SyncMan="2">
-								<Entry Name="camera-1_PnIoBoxCtrl" Index="#x7000" Sub="#x01" Flags="#x00000100">
-									<Type>UINT</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_1" Index="#x7001" Sub="#x01" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000000C}">ARRAY [0..11] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-1_SubmoduleData_2" Index="#x7001" Sub="#x02" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000005C}">ARRAY [0..91] OF BYTE</Type>
+								<Entry Name="fpc1_SubmoduleData_2" Index="#x6001" Sub="#x02" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000028}">ARRAY [0..39] OF BYTE</Type>
 								</Entry>
 								<Entry Name="SubIndex 003" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000003E}">ARRAY [0..61] OF BYTE</Type>
+									<Type GUID="{18071995-0000-0000-0000-00030000000A}">ARRAY [0..9] OF BYTE</Type>
 								</Entry>
-								<Entry Name="SubIndex 004" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000020}">ARRAY [0..31] OF BYTE</Type>
+								<Entry Name="fpc1_SubmoduleData_4" Index="#x6001" Sub="#x04" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000070}">ARRAY [0..111] OF BYTE</Type>
 								</Entry>
 								<Entry Name="SubIndex 005" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000002}">ARRAY [0..1] OF BYTE</Type>
+									<Type GUID="{18071995-0000-0000-0000-000300000052}">ARRAY [0..81] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 006" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000034}">ARRAY [0..51] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 007" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000016}">ARRAY [0..21] OF BYTE</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="camera-2_Inputs" Index="#x1a01" Flags="#x0001" SyncMan="3">
-								<Entry Name="camera-2_PnIoBoxState" Index="#x6000" Sub="#x01" Flags="#x00000100">
+							<Pdo Name="fpc1_Outputs" Index="#x1600" InOut="1" Flags="#x0001" SyncMan="2">
+								<Entry Name="fpc1_PnIoBoxCtrl" Index="#x7000" Sub="#x01" Flags="#x00000100">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="fpc1_SubmoduleData_1" Index="#x7001" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000008}">ARRAY [0..7] OF BYTE</Type>
+								</Entry>
+								<Entry Name="fpc1_SubmoduleData_2" Index="#x7001" Sub="#x02" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000051}">ARRAY [0..80] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 003" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000033}">ARRAY [0..50] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 004" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000015}">ARRAY [0..20] OF BYTE</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="fpc2_Inputs" Index="#x1a01" Flags="#x0001" SyncMan="3">
+								<Entry Name="fpc2_PnIoBoxState" Index="#x6000" Sub="#x01" Flags="#x00000100">
 									<DefaultDataMask>1f001f00</DefaultDataMask>
 									<Type>UINT</Type>
 								</Entry>
-								<Entry Name="camera-2_PnIoBoxDiag" Index="#x6000" Sub="#x02" Flags="#x00000100">
+								<Entry Name="fpc2_PnIoBoxDiag" Index="#x6000" Sub="#x02" Flags="#x00000100">
 									<Type>UINT</Type>
 								</Entry>
-								<Entry Name="camera-2_SubmoduleData_1" Index="#x6011" Sub="#x01" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000004}">ARRAY [0..3] OF BYTE</Type>
+								<Entry Name="fpc2_SubmoduleData_1" Index="#x6011" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000008}">ARRAY [0..7] OF BYTE</Type>
 								</Entry>
-								<Entry Name="camera-2_SubmoduleData_2" Index="#x6011" Sub="#x02" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000004}">ARRAY [0..3] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_3" Index="#x6011" Sub="#x03" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000010}">ARRAY [0..15] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_4" Index="#x6011" Sub="#x04" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000001C}">ARRAY [0..27] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_5" Index="#x6011" Sub="#x05" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_6" Index="#x6011" Sub="#x06" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_7" Index="#x6011" Sub="#x07" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_8" Index="#x6011" Sub="#x08" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_9" Index="#x6011" Sub="#x09" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_10" Index="#x6011" Sub="#x0a" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000014}">ARRAY [0..19] OF BYTE</Type>
-								</Entry>
-							</Pdo>
-							<Pdo Name="camera-2_Outputs" Index="#x1601" InOut="1" Flags="#x0001" SyncMan="2">
-								<Entry Name="camera-2_PnIoBoxCtrl" Index="#x7000" Sub="#x01" Flags="#x00000100">
-									<Type>UINT</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_1" Index="#x7011" Sub="#x01" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000000C}">ARRAY [0..11] OF BYTE</Type>
-								</Entry>
-								<Entry Name="camera-2_SubmoduleData_2" Index="#x7011" Sub="#x02" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000005C}">ARRAY [0..91] OF BYTE</Type>
+								<Entry Name="fpc2_SubmoduleData_2" Index="#x6011" Sub="#x02" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000028}">ARRAY [0..39] OF BYTE</Type>
 								</Entry>
 								<Entry Name="SubIndex 003" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-00030000003E}">ARRAY [0..61] OF BYTE</Type>
+									<Type GUID="{18071995-0000-0000-0000-00030000000A}">ARRAY [0..9] OF BYTE</Type>
 								</Entry>
-								<Entry Name="SubIndex 004" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000020}">ARRAY [0..31] OF BYTE</Type>
+								<Entry Name="fpc2_SubmoduleData_4" Index="#x6011" Sub="#x04" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000070}">ARRAY [0..111] OF BYTE</Type>
 								</Entry>
 								<Entry Name="SubIndex 005" Flags="#x00000100">
-									<Type GUID="{18071995-0000-0000-0000-000300000002}">ARRAY [0..1] OF BYTE</Type>
+									<Type GUID="{18071995-0000-0000-0000-000300000052}">ARRAY [0..81] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 006" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000034}">ARRAY [0..51] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 007" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000016}">ARRAY [0..21] OF BYTE</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="fpc2_Outputs" Index="#x1601" InOut="1" Flags="#x0001" SyncMan="2">
+								<Entry Name="fpc2_PnIoBoxCtrl" Index="#x7000" Sub="#x01" Flags="#x00000100">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="fpc2_SubmoduleData_1" Index="#x7011" Sub="#x01" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000008}">ARRAY [0..7] OF BYTE</Type>
+								</Entry>
+								<Entry Name="fpc2_SubmoduleData_2" Index="#x7011" Sub="#x02" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000051}">ARRAY [0..80] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 003" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000033}">ARRAY [0..50] OF BYTE</Type>
+								</Entry>
+								<Entry Name="SubIndex 004" Flags="#x00000100">
+									<Type GUID="{18071995-0000-0000-0000-000300000015}">ARRAY [0..20] OF BYTE</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Device_1_ProtocolState" Index="#x1bfe" Flags="#x0001" SyncMan="3">
@@ -4242,7 +4227,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 End Terminal" Desc="EL9011" PortABoxInfo="#x0100000d"/>
 					</Box>
 				</Box>
-				<Box Id="21" BoxType="9099" BoxFlags="#x00000020">
+				<Box Id="21" Disabled="true" BoxType="9099" BoxFlags="#x00000020">
 					<Name>Box 21 (DL-EC1A)</Name>
 					<ImageId>1008</ImageId>
 					<EtherCAT SlaveType="2" PdiType="#x0c08" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="39" VendorId="#x00000541" ProductCode="#x00001194" RevisionNo="#x00000002" InfoDataAddr="true" TimeoutMailbox2="20000" PortPhys="17" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="DL-EC1A" Desc="DL-EC1A" PortABoxInfo="#x02000001">
@@ -5173,7 +5158,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="1" DevType="164" AmsPort="28673" AmsNetId="172.18.236.164.2.1" RemoteName="Profinet1 (EL6633)">
+			<Device Id="1" DevType="164" AmsPort="28673" AmsNetId="172.18.238.230.2.1" RemoteName="Profinet1 (EL6633)">
 				<Name>Profinet1 (EL6633)</Name>
 				<AddressInfo>
 					<Ecat>
@@ -5181,7 +5166,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 						<EtherCATDeviceName>TIID^Device1(EtherCAT)^Term 1 (EK1100)^Term 12 (EL6633)</EtherCATDeviceName>
 					</Ecat>
 				</AddressInfo>
-				<Image Id="1" AddrType="4" ImageType="3" SizeIn="216" SizeOut="360">
+				<Image Id="1" AddrType="4" ImageType="3" SizeIn="186" SizeOut="336">
 					<Name>Image</Name>
 				</Image>
 				<Box Id="17" Disabled="true" BoxType="9121">
@@ -7534,7 +7519,7 @@ Submodule Info: Tool Result
 						</API>
 					</Profinet>
 				</Box>
-				<Box Id="19" BoxType="9121">
+				<Box Id="19" Disabled="true" BoxType="9121">
 					<Name>camera-1</Name>
 					<Comment><![CDATA[GSDML Name: GSDML-V2.42-Keyence-IV4-20240516.xml
 Path: $(TWINCAT3DIR)Config\Io\Profinet\
@@ -7567,6 +7552,7 @@ SW Release Version: V1.0.0]]></Comment>
 31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
 ]]></Comment>
 							<Type>WORD</Type>
+							<BitOffs>2816</BitOffs>
 						</Var>
 						<Var>
 							<Name>PnIoBoxDiag</Name>
@@ -7584,7 +7570,7 @@ SW Release Version: V1.0.0]]></Comment>
 0x4000 = At least one OutputCR Problemindicator is set
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>16</BitOffs>
+							<BitOffs>2832</BitOffs>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -7592,6 +7578,7 @@ SW Release Version: V1.0.0]]></Comment>
 						<Var>
 							<Name>PnIoBoxCtrl</Name>
 							<Type>WORD</Type>
+							<BitOffs>1696</BitOffs>
 						</Var>
 					</Vars>
 					<Profinet DeviceId="4004" VendorId="509" FrameOffset="32768" IPAdd="c0a8071f" ProtocolType="3" BoxOnDeviceTyp="164" MaxPhysSlotNr="72" AvailableSlots="0..72" InstanceServerPort="50000" InstanceClientPort="50001" InstanceId="1" InstanceNumberOfARs="1" InstanceNumberOfAPIs="1" MinDeviceInterval="128" SavePnIoBoxValues="0100" MultipleWriteSupported="true" Phase="3" WatchdogFaktor="3" ReductionRatio="16" SendClockFaktor="32" MaxInputLen="1440" MaxOutputLen="1440" SendClockFactorData="200040008000" RedRatio="0100020004000800100020004000800000010002" BoxTypeInfo="IV4-XXXX" MacAdd5="5" PDOmapping="1" OutputErrorBehavior="2" GSDMLPath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-V2.42-Keyence-IV4-20240516.xml" ImagePath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-01FD-0FA4-IV4.bmp" MainFamily="Sensors" ProductFamily="Keyence Vision Sensors" OrderNr="IV4-XXXX" DefaultDNSName="IV" VendorName="KEYENCE CORPORATION." FamDescription="IV4 Series Vision Sensor" GraphicFile="GSDML-01FD-0FA4-IV4" SWVersion="V1.0.0" HWVersion="1.0" AltLanguage="7">
@@ -7910,37 +7897,37 @@ Submodule Info: Command Controll device
 										<Var>
 											<Name>Command Control Register0</Name>
 											<Type GUID="{8DBA5F1D-F356-1DCA-701F-DF4079999D8D}">PN_Command_Control_Register0_5D322A42</Type>
-											<BitOffs>16</BitOffs>
+											<BitOffs>1712</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>24</BitOffs>
+											<BitOffs>1720</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Control Register1</Name>
 											<Type GUID="{2420D529-8961-6142-AD76-2935795CE658}">PN_Command_Control_Register1_28AD769C</Type>
-											<BitOffs>32</BitOffs>
+											<BitOffs>1728</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>40</BitOffs>
+											<BitOffs>1736</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>48</BitOffs>
+											<BitOffs>1744</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Setting No.</Name>
 											<Type>UINT</Type>
-											<BitOffs>64</BitOffs>
+											<BitOffs>1760</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value1</Name>
 											<Type>UDINT</Type>
-											<BitOffs>80</BitOffs>
+											<BitOffs>1776</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -7965,117 +7952,117 @@ Submodule Info: Additional Setting Value
 										<Var Swapping="#x3">
 											<Name>Setting Value2</Name>
 											<Type>UDINT</Type>
-											<BitOffs>112</BitOffs>
+											<BitOffs>1808</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value3</Name>
 											<Type>UDINT</Type>
-											<BitOffs>144</BitOffs>
+											<BitOffs>1840</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value4</Name>
 											<Type>UDINT</Type>
-											<BitOffs>176</BitOffs>
+											<BitOffs>1872</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value5</Name>
 											<Type>UDINT</Type>
-											<BitOffs>208</BitOffs>
+											<BitOffs>1904</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value6</Name>
 											<Type>UDINT</Type>
-											<BitOffs>240</BitOffs>
+											<BitOffs>1936</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value7</Name>
 											<Type>UDINT</Type>
-											<BitOffs>272</BitOffs>
+											<BitOffs>1968</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value8</Name>
 											<Type>UDINT</Type>
-											<BitOffs>304</BitOffs>
+											<BitOffs>2000</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value9</Name>
 											<Type>UDINT</Type>
-											<BitOffs>336</BitOffs>
+											<BitOffs>2032</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value10</Name>
 											<Type>UDINT</Type>
-											<BitOffs>368</BitOffs>
+											<BitOffs>2064</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value11</Name>
 											<Type>UDINT</Type>
-											<BitOffs>400</BitOffs>
+											<BitOffs>2096</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value12</Name>
 											<Type>UDINT</Type>
-											<BitOffs>432</BitOffs>
+											<BitOffs>2128</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value13</Name>
 											<Type>UDINT</Type>
-											<BitOffs>464</BitOffs>
+											<BitOffs>2160</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value14</Name>
 											<Type>UDINT</Type>
-											<BitOffs>496</BitOffs>
+											<BitOffs>2192</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value15</Name>
 											<Type>UDINT</Type>
-											<BitOffs>528</BitOffs>
+											<BitOffs>2224</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value16</Name>
 											<Type>UDINT</Type>
-											<BitOffs>560</BitOffs>
+											<BitOffs>2256</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value17</Name>
 											<Type>UDINT</Type>
-											<BitOffs>592</BitOffs>
+											<BitOffs>2288</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value18</Name>
 											<Type>UDINT</Type>
-											<BitOffs>624</BitOffs>
+											<BitOffs>2320</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value19</Name>
 											<Type>UDINT</Type>
-											<BitOffs>656</BitOffs>
+											<BitOffs>2352</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value20</Name>
 											<Type>UDINT</Type>
-											<BitOffs>688</BitOffs>
+											<BitOffs>2384</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value21</Name>
 											<Type>UDINT</Type>
-											<BitOffs>720</BitOffs>
+											<BitOffs>2416</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value22</Name>
 											<Type>UDINT</Type>
-											<BitOffs>752</BitOffs>
+											<BitOffs>2448</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value23</Name>
 											<Type>UDINT</Type>
-											<BitOffs>784</BitOffs>
+											<BitOffs>2480</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value24</Name>
 											<Type>UDINT</Type>
-											<BitOffs>816</BitOffs>
+											<BitOffs>2512</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -8097,22 +8084,22 @@ Submodule Info: Command Status Bits
 										<Var>
 											<Name>Command Status Bits Register0</Name>
 											<Type GUID="{48C7574E-6898-2FA2-6C62-043092E5BC29}">PN_Command_Status_Bits_Register0_7EDDB828</Type>
-											<BitOffs>32</BitOffs>
+											<BitOffs>2848</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register1</Name>
 											<Type GUID="{CF019500-84CB-FB33-2CC5-749EFC6561A2}">PN_Command_Status_Bits_Register1_0827B11B</Type>
-											<BitOffs>40</BitOffs>
+											<BitOffs>2856</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register2</Name>
 											<Type GUID="{86DCB71E-0F45-3E9E-6F58-EF99D54A899E}">PN_Command_Status_Bits_Register2_BF24AAE1</Type>
-											<BitOffs>48</BitOffs>
+											<BitOffs>2864</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register3</Name>
 											<Type GUID="{D99E76ED-DC6F-30FE-AFB6-9D3C07801D84}">PN_Command_Status_Bits_Register3_51E09C2A</Type>
-											<BitOffs>56</BitOffs>
+											<BitOffs>2872</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8137,22 +8124,22 @@ Submodule Info: Device Result Bits
 										<Var>
 											<Name>Device Result Bits Register0</Name>
 											<Type GUID="{B763185E-4AFC-111C-EE0D-D3DD57D9B4F5}">PN_Device_Result_Bits_Register0_8E18861B</Type>
-											<BitOffs>64</BitOffs>
+											<BitOffs>2880</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve</Name>
 											<Type>USINT</Type>
-											<BitOffs>72</BitOffs>
+											<BitOffs>2888</BitOffs>
 										</Var>
 										<Var>
 											<Name>Device Result Bits Register1</Name>
 											<Type GUID="{34E5C27A-E885-622E-1564-E9579EED4F55}">PN_Device_Result_Bits_Register1_546DA374</Type>
-											<BitOffs>80</BitOffs>
+											<BitOffs>2896</BitOffs>
 										</Var>
 										<Var>
 											<Name>Device Result Bits Register2</Name>
 											<Type GUID="{EC8137DF-8B06-C3F2-594F-65074BB766C7}">PN_Device_Result_Bits_Register2_EF7044CB</Type>
-											<BitOffs>88</BitOffs>
+											<BitOffs>2904</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8177,42 +8164,42 @@ Submodule Info: Device Status Words
 										<Var Swapping="#x1">
 											<Name>Error Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>96</BitOffs>
+											<BitOffs>2912</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Warning Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>112</BitOffs>
+											<BitOffs>2928</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Rest Buffer</Name>
 											<Type>UINT</Type>
-											<BitOffs>128</BitOffs>
+											<BitOffs>2944</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Setting Checksum</Name>
 											<Type>UINT</Type>
-											<BitOffs>144</BitOffs>
+											<BitOffs>2960</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Current Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>160</BitOffs>
+											<BitOffs>2976</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Result Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>176</BitOffs>
+											<BitOffs>2992</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Result Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>192</BitOffs>
+											<BitOffs>3008</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time</Name>
 											<Type>UINT</Type>
-											<BitOffs>208</BitOffs>
+											<BitOffs>3024</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8237,47 +8224,47 @@ Submodule Info: Device Statistics
 										<Var Swapping="#x1">
 											<Name>Process Time Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>224</BitOffs>
+											<BitOffs>3040</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>240</BitOffs>
+											<BitOffs>3056</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time Ave</Name>
 											<Type>UINT</Type>
-											<BitOffs>256</BitOffs>
+											<BitOffs>3072</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>272</BitOffs>
+											<BitOffs>3088</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Trigger Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>288</BitOffs>
+											<BitOffs>3104</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>OK Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>320</BitOffs>
+											<BitOffs>3136</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>NG Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>352</BitOffs>
+											<BitOffs>3168</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Trigger Error Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>384</BitOffs>
+											<BitOffs>3200</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Reserve[1]</Name>
 											<Type>UDINT</Type>
-											<BitOffs>416</BitOffs>
+											<BitOffs>3232</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8302,52 +8289,52 @@ Submodule Info: Position Adjust Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>448</BitOffs>
+											<BitOffs>3264</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>464</BitOffs>
+											<BitOffs>3280</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>480</BitOffs>
+											<BitOffs>3296</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>496</BitOffs>
+											<BitOffs>3312</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>512</BitOffs>
+											<BitOffs>3328</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>528</BitOffs>
+											<BitOffs>3344</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>544</BitOffs>
+											<BitOffs>3360</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>560</BitOffs>
+											<BitOffs>3376</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>576</BitOffs>
+											<BitOffs>3392</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[5]</Name>
 											<Type>UINT</Type>
-											<BitOffs>592</BitOffs>
+											<BitOffs>3408</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8372,52 +8359,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>608</BitOffs>
+											<BitOffs>3424</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>624</BitOffs>
+											<BitOffs>3440</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>640</BitOffs>
+											<BitOffs>3456</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>656</BitOffs>
+											<BitOffs>3472</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>672</BitOffs>
+											<BitOffs>3488</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>688</BitOffs>
+											<BitOffs>3504</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>704</BitOffs>
+											<BitOffs>3520</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>720</BitOffs>
+											<BitOffs>3536</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>736</BitOffs>
+											<BitOffs>3552</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>752</BitOffs>
+											<BitOffs>3568</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8442,52 +8429,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>768</BitOffs>
+											<BitOffs>3584</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>784</BitOffs>
+											<BitOffs>3600</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>800</BitOffs>
+											<BitOffs>3616</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>816</BitOffs>
+											<BitOffs>3632</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>832</BitOffs>
+											<BitOffs>3648</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>848</BitOffs>
+											<BitOffs>3664</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>864</BitOffs>
+											<BitOffs>3680</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>880</BitOffs>
+											<BitOffs>3696</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>896</BitOffs>
+											<BitOffs>3712</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>912</BitOffs>
+											<BitOffs>3728</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8512,52 +8499,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>928</BitOffs>
+											<BitOffs>3744</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>944</BitOffs>
+											<BitOffs>3760</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>960</BitOffs>
+											<BitOffs>3776</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>976</BitOffs>
+											<BitOffs>3792</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>992</BitOffs>
+											<BitOffs>3808</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1008</BitOffs>
+											<BitOffs>3824</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1024</BitOffs>
+											<BitOffs>3840</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1040</BitOffs>
+											<BitOffs>3856</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1056</BitOffs>
+											<BitOffs>3872</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1072</BitOffs>
+											<BitOffs>3888</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8582,52 +8569,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>1088</BitOffs>
+											<BitOffs>3904</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>1104</BitOffs>
+											<BitOffs>3920</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>1120</BitOffs>
+											<BitOffs>3936</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>1136</BitOffs>
+											<BitOffs>3952</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>1152</BitOffs>
+											<BitOffs>3968</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1168</BitOffs>
+											<BitOffs>3984</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1184</BitOffs>
+											<BitOffs>4000</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1200</BitOffs>
+											<BitOffs>4016</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1216</BitOffs>
+											<BitOffs>4032</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1232</BitOffs>
+											<BitOffs>4048</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8652,52 +8639,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>1248</BitOffs>
+											<BitOffs>4064</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>1264</BitOffs>
+											<BitOffs>4080</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>1280</BitOffs>
+											<BitOffs>4096</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>1296</BitOffs>
+											<BitOffs>4112</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>1312</BitOffs>
+											<BitOffs>4128</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1328</BitOffs>
+											<BitOffs>4144</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1344</BitOffs>
+											<BitOffs>4160</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1360</BitOffs>
+											<BitOffs>4176</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1376</BitOffs>
+											<BitOffs>4192</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1392</BitOffs>
+											<BitOffs>4208</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -8708,7 +8695,7 @@ Submodule Info: Tool Result
 						</API>
 					</Profinet>
 				</Box>
-				<Box Id="20" BoxType="9121">
+				<Box Id="20" Disabled="true" BoxType="9121">
 					<Name>camera-2</Name>
 					<Comment><![CDATA[GSDML Name: GSDML-V2.42-Keyence-IV4-20240516.xml
 Path: $(TWINCAT3DIR)Config\Io\Profinet\
@@ -8741,7 +8728,7 @@ SW Release Version: V1.0.0]]></Comment>
 31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>1408</BitOffs>
+							<BitOffs>4224</BitOffs>
 						</Var>
 						<Var>
 							<Name>PnIoBoxDiag</Name>
@@ -8759,7 +8746,7 @@ SW Release Version: V1.0.0]]></Comment>
 0x4000 = At least one OutputCR Problemindicator is set
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>1424</BitOffs>
+							<BitOffs>4240</BitOffs>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -8767,7 +8754,7 @@ SW Release Version: V1.0.0]]></Comment>
 						<Var>
 							<Name>PnIoBoxCtrl</Name>
 							<Type>WORD</Type>
-							<BitOffs>848</BitOffs>
+							<BitOffs>2544</BitOffs>
 						</Var>
 					</Vars>
 					<Profinet DeviceId="4004" VendorId="509" FrameOffset="32768" IPAdd="c0a80720" ProtocolType="3" BoxOnDeviceTyp="164" MaxPhysSlotNr="72" AvailableSlots="0..72" InstanceServerPort="50000" InstanceClientPort="50001" InstanceId="1" InstanceNumberOfARs="1" InstanceNumberOfAPIs="1" MinDeviceInterval="128" SavePnIoBoxValues="0100" MultipleWriteSupported="true" Phase="4" WatchdogFaktor="3" ReductionRatio="16" SendClockFaktor="32" MaxInputLen="1440" MaxOutputLen="1440" SendClockFactorData="200040008000" RedRatio="0100020004000800100020004000800000010002" BoxTypeInfo="IV4-XXXX" MacAdd5="225" PDOmapping="1" OutputErrorBehavior="2" GSDMLPath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-V2.42-Keyence-IV4-20240516.xml" ImagePath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-01FD-0FA4-IV4.bmp" MainFamily="Sensors" ProductFamily="Keyence Vision Sensors" OrderNr="IV4-XXXX" DefaultDNSName="IV" VendorName="KEYENCE CORPORATION." FamDescription="IV4 Series Vision Sensor" GraphicFile="GSDML-01FD-0FA4-IV4" SWVersion="V1.0.0" HWVersion="1.0" AltLanguage="7">
@@ -9086,37 +9073,37 @@ Submodule Info: Command Controll device
 										<Var>
 											<Name>Command Control Register0</Name>
 											<Type GUID="{8DBA5F1D-F356-1DCA-701F-DF4079999D8D}">PN_Command_Control_Register0_5D322A42</Type>
-											<BitOffs>864</BitOffs>
+											<BitOffs>2560</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>872</BitOffs>
+											<BitOffs>2568</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Control Register1</Name>
 											<Type GUID="{2420D529-8961-6142-AD76-2935795CE658}">PN_Command_Control_Register1_28AD769C</Type>
-											<BitOffs>880</BitOffs>
+											<BitOffs>2576</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>888</BitOffs>
+											<BitOffs>2584</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>896</BitOffs>
+											<BitOffs>2592</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Setting No.</Name>
 											<Type>UINT</Type>
-											<BitOffs>912</BitOffs>
+											<BitOffs>2608</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value1</Name>
 											<Type>UDINT</Type>
-											<BitOffs>928</BitOffs>
+											<BitOffs>2624</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -9141,117 +9128,117 @@ Submodule Info: Additional Setting Value
 										<Var Swapping="#x3">
 											<Name>Setting Value2</Name>
 											<Type>UDINT</Type>
-											<BitOffs>960</BitOffs>
+											<BitOffs>2656</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value3</Name>
 											<Type>UDINT</Type>
-											<BitOffs>992</BitOffs>
+											<BitOffs>2688</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value4</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1024</BitOffs>
+											<BitOffs>2720</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value5</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1056</BitOffs>
+											<BitOffs>2752</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value6</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1088</BitOffs>
+											<BitOffs>2784</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value7</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1120</BitOffs>
+											<BitOffs>2816</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value8</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1152</BitOffs>
+											<BitOffs>2848</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value9</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1184</BitOffs>
+											<BitOffs>2880</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value10</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1216</BitOffs>
+											<BitOffs>2912</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value11</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1248</BitOffs>
+											<BitOffs>2944</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value12</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1280</BitOffs>
+											<BitOffs>2976</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value13</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1312</BitOffs>
+											<BitOffs>3008</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value14</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1344</BitOffs>
+											<BitOffs>3040</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value15</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1376</BitOffs>
+											<BitOffs>3072</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value16</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1408</BitOffs>
+											<BitOffs>3104</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value17</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1440</BitOffs>
+											<BitOffs>3136</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value18</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1472</BitOffs>
+											<BitOffs>3168</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value19</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1504</BitOffs>
+											<BitOffs>3200</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value20</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1536</BitOffs>
+											<BitOffs>3232</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value21</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1568</BitOffs>
+											<BitOffs>3264</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value22</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1600</BitOffs>
+											<BitOffs>3296</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value23</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1632</BitOffs>
+											<BitOffs>3328</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Setting Value24</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1664</BitOffs>
+											<BitOffs>3360</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -9273,22 +9260,22 @@ Submodule Info: Command Status Bits
 										<Var>
 											<Name>Command Status Bits Register0</Name>
 											<Type GUID="{48C7574E-6898-2FA2-6C62-043092E5BC29}">PN_Command_Status_Bits_Register0_7EDDB828</Type>
-											<BitOffs>1440</BitOffs>
+											<BitOffs>4256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register1</Name>
 											<Type GUID="{CF019500-84CB-FB33-2CC5-749EFC6561A2}">PN_Command_Status_Bits_Register1_0827B11B</Type>
-											<BitOffs>1448</BitOffs>
+											<BitOffs>4264</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register2</Name>
 											<Type GUID="{86DCB71E-0F45-3E9E-6F58-EF99D54A899E}">PN_Command_Status_Bits_Register2_BF24AAE1</Type>
-											<BitOffs>1456</BitOffs>
+											<BitOffs>4272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Command Status Bits Register3</Name>
 											<Type GUID="{D99E76ED-DC6F-30FE-AFB6-9D3C07801D84}">PN_Command_Status_Bits_Register3_51E09C2A</Type>
-											<BitOffs>1464</BitOffs>
+											<BitOffs>4280</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9313,22 +9300,22 @@ Submodule Info: Device Result Bits
 										<Var>
 											<Name>Device Result Bits Register0</Name>
 											<Type GUID="{B763185E-4AFC-111C-EE0D-D3DD57D9B4F5}">PN_Device_Result_Bits_Register0_8E18861B</Type>
-											<BitOffs>1472</BitOffs>
+											<BitOffs>4288</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserve</Name>
 											<Type>USINT</Type>
-											<BitOffs>1480</BitOffs>
+											<BitOffs>4296</BitOffs>
 										</Var>
 										<Var>
 											<Name>Device Result Bits Register1</Name>
 											<Type GUID="{34E5C27A-E885-622E-1564-E9579EED4F55}">PN_Device_Result_Bits_Register1_546DA374</Type>
-											<BitOffs>1488</BitOffs>
+											<BitOffs>4304</BitOffs>
 										</Var>
 										<Var>
 											<Name>Device Result Bits Register2</Name>
 											<Type GUID="{EC8137DF-8B06-C3F2-594F-65074BB766C7}">PN_Device_Result_Bits_Register2_EF7044CB</Type>
-											<BitOffs>1496</BitOffs>
+											<BitOffs>4312</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9353,42 +9340,42 @@ Submodule Info: Device Status Words
 										<Var Swapping="#x1">
 											<Name>Error Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>1504</BitOffs>
+											<BitOffs>4320</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Warning Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>1520</BitOffs>
+											<BitOffs>4336</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Rest Buffer</Name>
 											<Type>UINT</Type>
-											<BitOffs>1536</BitOffs>
+											<BitOffs>4352</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Setting Checksum</Name>
 											<Type>UINT</Type>
-											<BitOffs>1552</BitOffs>
+											<BitOffs>4368</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Current Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>1568</BitOffs>
+											<BitOffs>4384</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Result Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>1584</BitOffs>
+											<BitOffs>4400</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Result Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>1600</BitOffs>
+											<BitOffs>4416</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time</Name>
 											<Type>UINT</Type>
-											<BitOffs>1616</BitOffs>
+											<BitOffs>4432</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9413,47 +9400,47 @@ Submodule Info: Device Statistics
 										<Var Swapping="#x1">
 											<Name>Process Time Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>1632</BitOffs>
+											<BitOffs>4448</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>1648</BitOffs>
+											<BitOffs>4464</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Process Time Ave</Name>
 											<Type>UINT</Type>
-											<BitOffs>1664</BitOffs>
+											<BitOffs>4480</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1680</BitOffs>
+											<BitOffs>4496</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Trigger Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1696</BitOffs>
+											<BitOffs>4512</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>OK Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1728</BitOffs>
+											<BitOffs>4544</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>NG Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1760</BitOffs>
+											<BitOffs>4576</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Trigger Error Count</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1792</BitOffs>
+											<BitOffs>4608</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Reserve[1]</Name>
 											<Type>UDINT</Type>
-											<BitOffs>1824</BitOffs>
+											<BitOffs>4640</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9478,52 +9465,52 @@ Submodule Info: Position Adjust Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>1856</BitOffs>
+											<BitOffs>4672</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>1872</BitOffs>
+											<BitOffs>4688</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>1888</BitOffs>
+											<BitOffs>4704</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>1904</BitOffs>
+											<BitOffs>4720</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1920</BitOffs>
+											<BitOffs>4736</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1936</BitOffs>
+											<BitOffs>4752</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1952</BitOffs>
+											<BitOffs>4768</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1968</BitOffs>
+											<BitOffs>4784</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>1984</BitOffs>
+											<BitOffs>4800</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[5]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2000</BitOffs>
+											<BitOffs>4816</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9548,52 +9535,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>2016</BitOffs>
+											<BitOffs>4832</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>2032</BitOffs>
+											<BitOffs>4848</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>2048</BitOffs>
+											<BitOffs>4864</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2064</BitOffs>
+											<BitOffs>4880</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2080</BitOffs>
+											<BitOffs>4896</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2096</BitOffs>
+											<BitOffs>4912</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2112</BitOffs>
+											<BitOffs>4928</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2128</BitOffs>
+											<BitOffs>4944</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2144</BitOffs>
+											<BitOffs>4960</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2160</BitOffs>
+											<BitOffs>4976</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9618,52 +9605,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>2176</BitOffs>
+											<BitOffs>4992</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>2192</BitOffs>
+											<BitOffs>5008</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>2208</BitOffs>
+											<BitOffs>5024</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2224</BitOffs>
+											<BitOffs>5040</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2240</BitOffs>
+											<BitOffs>5056</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2256</BitOffs>
+											<BitOffs>5072</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2272</BitOffs>
+											<BitOffs>5088</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2288</BitOffs>
+											<BitOffs>5104</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2304</BitOffs>
+											<BitOffs>5120</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2320</BitOffs>
+											<BitOffs>5136</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9688,52 +9675,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>2336</BitOffs>
+											<BitOffs>5152</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>2352</BitOffs>
+											<BitOffs>5168</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>2368</BitOffs>
+											<BitOffs>5184</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2384</BitOffs>
+											<BitOffs>5200</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2400</BitOffs>
+											<BitOffs>5216</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2416</BitOffs>
+											<BitOffs>5232</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2432</BitOffs>
+											<BitOffs>5248</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2448</BitOffs>
+											<BitOffs>5264</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2464</BitOffs>
+											<BitOffs>5280</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2480</BitOffs>
+											<BitOffs>5296</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9758,52 +9745,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>2496</BitOffs>
+											<BitOffs>5312</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>2512</BitOffs>
+											<BitOffs>5328</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>2528</BitOffs>
+											<BitOffs>5344</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2544</BitOffs>
+											<BitOffs>5360</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2560</BitOffs>
+											<BitOffs>5376</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2576</BitOffs>
+											<BitOffs>5392</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2592</BitOffs>
+											<BitOffs>5408</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2608</BitOffs>
+											<BitOffs>5424</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2624</BitOffs>
+											<BitOffs>5440</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2640</BitOffs>
+											<BitOffs>5456</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9828,52 +9815,52 @@ Submodule Info: Tool Result
 										<Var Swapping="#x1">
 											<Name>Score</Name>
 											<Type>UINT</Type>
-											<BitOffs>2656</BitOffs>
+											<BitOffs>5472</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Max</Name>
 											<Type>UINT</Type>
-											<BitOffs>2672</BitOffs>
+											<BitOffs>5488</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Score Min</Name>
 											<Type>UINT</Type>
-											<BitOffs>2688</BitOffs>
+											<BitOffs>5504</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Lower Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2704</BitOffs>
+											<BitOffs>5520</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Upper Limit</Name>
 											<Type>UINT</Type>
-											<BitOffs>2720</BitOffs>
+											<BitOffs>5536</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2736</BitOffs>
+											<BitOffs>5552</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2752</BitOffs>
+											<BitOffs>5568</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2768</BitOffs>
+											<BitOffs>5584</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2784</BitOffs>
+											<BitOffs>5600</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Reserve[4]</Name>
 											<Type>UINT</Type>
-											<BitOffs>2800</BitOffs>
+											<BitOffs>5616</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -9884,7 +9871,7 @@ Submodule Info: Tool Result
 						</API>
 					</Profinet>
 				</Box>
-				<Box Id="10" Disabled="true" BoxType="9121">
+				<Box Id="10" BoxType="9121">
 					<Name>fpc1</Name>
 					<Comment><![CDATA[GSDML Name: GSDML-V2.33-CTS-I28-20210819.xml
 Path: $(TWINCAT3DIR)Config\Io\Profinet\
@@ -9917,7 +9904,6 @@ SW Release Version: Z1.0]]></Comment>
 31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>5632</BitOffs>
 						</Var>
 						<Var>
 							<Name>PnIoBoxDiag</Name>
@@ -9935,7 +9921,7 @@ SW Release Version: Z1.0]]></Comment>
 0x4000 = At least one OutputCR Problemindicator is set
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>5648</BitOffs>
+							<BitOffs>16</BitOffs>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -9943,7 +9929,6 @@ SW Release Version: Z1.0]]></Comment>
 						<Var>
 							<Name>PnIoBoxCtrl</Name>
 							<Type>WORD</Type>
-							<BitOffs>3392</BitOffs>
 						</Var>
 					</Vars>
 					<Profinet DeviceId="9028" VendorId="1163" FrameOffset="32768" IPAdd="c0a80728" ProtocolType="3" BoxOnDeviceTyp="164" MaxPhysSlotNr="2" AvailableSlots="0..2" InstanceServerPort="50000" InstanceClientPort="50001" InstanceId="1" InstanceNumberOfARs="1" InstanceNumberOfAPIs="1" MinDeviceInterval="1024" SavePnIoBoxValues="0100" MultipleWriteSupported="true" Phase="5" WatchdogFaktor="3" ReductionRatio="16" SendClockFaktor="32" MaxInputLen="1440" MaxOutputLen="1440" MaxSupportedRecordSize="4068" SendClockFactorData="2000" RedRatio="0100020004000800100020004000800000010002" BoxTypeInfo="1-port Device" MacAdd5="5" PDOmapping="1" OutputErrorBehavior="2" GSDMLPath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-V2.33-CTS-I28-20210819.xml" ImagePath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-048B-0DC8-CTS.bmp" MainFamily="I/O" ProductFamily="Cincinnati Test Systems" OrderNr="00210" DefaultDNSName="I28" VendorName="Cincinnati Test Systems" FamDescription="I28 " GraphicFile="GSDML-048B-0DC8-CTS" SWVersion="Z1.0" HWVersion="A1.0" AltLanguage="7">
@@ -10314,27 +10299,27 @@ Submodule Info: Instrument Status
 										<Var>
 											<Name>Instrument Status</Name>
 											<Type GUID="{5BF74BC3-AE36-CBFC-D5C1-3A3D0284EF66}">PN_Instrument_Status_CBDEA022</Type>
-											<BitOffs>5664</BitOffs>
+											<BitOffs>32</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 1</Name>
 											<Type>USINT</Type>
-											<BitOffs>5696</BitOffs>
+											<BitOffs>64</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 2</Name>
 											<Type>USINT</Type>
-											<BitOffs>5704</BitOffs>
+											<BitOffs>72</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 3</Name>
 											<Type>USINT</Type>
-											<BitOffs>5712</BitOffs>
+											<BitOffs>80</BitOffs>
 										</Var>
 										<Var>
 											<Name>Current_Program Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>5720</BitOffs>
+											<BitOffs>88</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -10352,102 +10337,102 @@ Submodule Info: Live Measurement Data
 										<Var Swapping="#x3">
 											<Name>Unique ID</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5728</BitOffs>
+											<BitOffs>96</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Current Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>5760</BitOffs>
+											<BitOffs>128</BitOffs>
 										</Var>
 										<Var>
 											<Name>Segment Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>5776</BitOffs>
+											<BitOffs>144</BitOffs>
 										</Var>
 										<Var>
 											<Name>RESERVED</Name>
 											<Type>USINT</Type>
-											<BitOffs>5784</BitOffs>
+											<BitOffs>152</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 1 (Timer)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5792</BitOffs>
+											<BitOffs>160</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5824</BitOffs>
+											<BitOffs>192</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5840</BitOffs>
+											<BitOffs>208</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5848</BitOffs>
+											<BitOffs>216</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 2 (Pressure)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5856</BitOffs>
+											<BitOffs>224</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5888</BitOffs>
+											<BitOffs>256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5904</BitOffs>
+											<BitOffs>272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5912</BitOffs>
+											<BitOffs>280</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 3 (Pressure Loss/Rate)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5920</BitOffs>
+											<BitOffs>288</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5952</BitOffs>
+											<BitOffs>320</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[2]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5968</BitOffs>
+											<BitOffs>336</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[2]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5976</BitOffs>
+											<BitOffs>344</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 4 (Flow/Leak)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5984</BitOffs>
+											<BitOffs>352</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6016</BitOffs>
+											<BitOffs>384</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[3]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6032</BitOffs>
+											<BitOffs>400</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[3]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6040</BitOffs>
+											<BitOffs>408</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -10465,507 +10450,507 @@ Submodule Info: Last test result
 										<Var Swapping="#x3">
 											<Name>Unique ID</Name>
 											<Type>UDINT</Type>
-											<BitOffs>6048</BitOffs>
+											<BitOffs>416</BitOffs>
 										</Var>
 										<Var>
 											<Name>Channel Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>6080</BitOffs>
+											<BitOffs>448</BitOffs>
 										</Var>
 										<Var>
 											<Name>Program Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>6088</BitOffs>
+											<BitOffs>456</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Port</Name>
 											<Type>USINT</Type>
-											<BitOffs>6096</BitOffs>
+											<BitOffs>464</BitOffs>
 										</Var>
 										<Var>
 											<Name>Part Evaluation Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6104</BitOffs>
+											<BitOffs>472</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Year</Name>
 											<Type>USINT</Type>
-											<BitOffs>6112</BitOffs>
+											<BitOffs>480</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Month</Name>
 											<Type>USINT</Type>
-											<BitOffs>6120</BitOffs>
+											<BitOffs>488</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Date</Name>
 											<Type>USINT</Type>
-											<BitOffs>6128</BitOffs>
+											<BitOffs>496</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Hour</Name>
 											<Type>USINT</Type>
-											<BitOffs>6136</BitOffs>
+											<BitOffs>504</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Minutes</Name>
 											<Type>USINT</Type>
-											<BitOffs>6144</BitOffs>
+											<BitOffs>512</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Seconds</Name>
 											<Type>USINT</Type>
-											<BitOffs>6152</BitOffs>
+											<BitOffs>520</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Type Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6160</BitOffs>
+											<BitOffs>528</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Evaluation Code</Name>
 											<Type GUID="{A97DD523-B288-4149-895B-E90AA2A30FA1}">PN_Test_Evaluation_Code_43D29F80</Type>
-											<BitOffs>6168</BitOffs>
+											<BitOffs>536</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Result Measurement 1</Name>
 											<Type>REAL</Type>
-											<BitOffs>6176</BitOffs>
+											<BitOffs>544</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6208</BitOffs>
+											<BitOffs>576</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6224</BitOffs>
+											<BitOffs>592</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6232</BitOffs>
+											<BitOffs>600</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Result Measurement 2</Name>
 											<Type>REAL</Type>
-											<BitOffs>6240</BitOffs>
+											<BitOffs>608</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6272</BitOffs>
+											<BitOffs>640</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6288</BitOffs>
+											<BitOffs>656</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 1 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6296</BitOffs>
+											<BitOffs>664</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 2 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6304</BitOffs>
+											<BitOffs>672</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 3 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6312</BitOffs>
+											<BitOffs>680</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 4 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6320</BitOffs>
+											<BitOffs>688</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 5 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6328</BitOffs>
+											<BitOffs>696</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 6 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6336</BitOffs>
+											<BitOffs>704</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 7 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6344</BitOffs>
+											<BitOffs>712</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 8 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6352</BitOffs>
+											<BitOffs>720</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 9 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6360</BitOffs>
+											<BitOffs>728</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 10 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6368</BitOffs>
+											<BitOffs>736</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 11 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6376</BitOffs>
+											<BitOffs>744</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 12 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6384</BitOffs>
+											<BitOffs>752</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 13 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6392</BitOffs>
+											<BitOffs>760</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 14 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6400</BitOffs>
+											<BitOffs>768</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 15 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6408</BitOffs>
+											<BitOffs>776</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 16 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6416</BitOffs>
+											<BitOffs>784</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 17 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6424</BitOffs>
+											<BitOffs>792</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 18 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6432</BitOffs>
+											<BitOffs>800</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 19 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6440</BitOffs>
+											<BitOffs>808</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 20 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6448</BitOffs>
+											<BitOffs>816</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 21 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6456</BitOffs>
+											<BitOffs>824</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 22 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6464</BitOffs>
+											<BitOffs>832</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 23 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6472</BitOffs>
+											<BitOffs>840</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 24 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6480</BitOffs>
+											<BitOffs>848</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 25 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6488</BitOffs>
+											<BitOffs>856</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 26 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6496</BitOffs>
+											<BitOffs>864</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 27 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6504</BitOffs>
+											<BitOffs>872</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 28 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6512</BitOffs>
+											<BitOffs>880</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 29 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6520</BitOffs>
+											<BitOffs>888</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 30 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6528</BitOffs>
+											<BitOffs>896</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 31 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6536</BitOffs>
+											<BitOffs>904</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 32 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6544</BitOffs>
+											<BitOffs>912</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 33 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6552</BitOffs>
+											<BitOffs>920</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 34 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6560</BitOffs>
+											<BitOffs>928</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 35 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6568</BitOffs>
+											<BitOffs>936</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 36 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6576</BitOffs>
+											<BitOffs>944</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 37 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6584</BitOffs>
+											<BitOffs>952</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 38 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6592</BitOffs>
+											<BitOffs>960</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 39 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6600</BitOffs>
+											<BitOffs>968</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 40 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6608</BitOffs>
+											<BitOffs>976</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 41 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6616</BitOffs>
+											<BitOffs>984</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 42 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6624</BitOffs>
+											<BitOffs>992</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 43 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6632</BitOffs>
+											<BitOffs>1000</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 44 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6640</BitOffs>
+											<BitOffs>1008</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 45 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6648</BitOffs>
+											<BitOffs>1016</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 46 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6656</BitOffs>
+											<BitOffs>1024</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 47 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6664</BitOffs>
+											<BitOffs>1032</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 48 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6672</BitOffs>
+											<BitOffs>1040</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 49 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6680</BitOffs>
+											<BitOffs>1048</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 50 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6688</BitOffs>
+											<BitOffs>1056</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 51 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6696</BitOffs>
+											<BitOffs>1064</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 52 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6704</BitOffs>
+											<BitOffs>1072</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 53 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6712</BitOffs>
+											<BitOffs>1080</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 54 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6720</BitOffs>
+											<BitOffs>1088</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 55 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6728</BitOffs>
+											<BitOffs>1096</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 56 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6736</BitOffs>
+											<BitOffs>1104</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 57 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6744</BitOffs>
+											<BitOffs>1112</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 58 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6752</BitOffs>
+											<BitOffs>1120</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 59 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6760</BitOffs>
+											<BitOffs>1128</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 60 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6768</BitOffs>
+											<BitOffs>1136</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 61 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6776</BitOffs>
+											<BitOffs>1144</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 62 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6784</BitOffs>
+											<BitOffs>1152</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 63 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6792</BitOffs>
+											<BitOffs>1160</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 64 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6800</BitOffs>
+											<BitOffs>1168</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 65 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6808</BitOffs>
+											<BitOffs>1176</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 66 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6816</BitOffs>
+											<BitOffs>1184</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 67 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6824</BitOffs>
+											<BitOffs>1192</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 68 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6832</BitOffs>
+											<BitOffs>1200</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 69 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6840</BitOffs>
+											<BitOffs>1208</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 70 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6848</BitOffs>
+											<BitOffs>1216</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 71 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6856</BitOffs>
+											<BitOffs>1224</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 72 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6864</BitOffs>
+											<BitOffs>1232</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 73 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6872</BitOffs>
+											<BitOffs>1240</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 74 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6880</BitOffs>
+											<BitOffs>1248</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 75 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6888</BitOffs>
+											<BitOffs>1256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 76 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6896</BitOffs>
+											<BitOffs>1264</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 77 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6904</BitOffs>
+											<BitOffs>1272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 78 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6912</BitOffs>
+											<BitOffs>1280</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 79 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6920</BitOffs>
+											<BitOffs>1288</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 80 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6928</BitOffs>
+											<BitOffs>1296</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 81 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6936</BitOffs>
+											<BitOffs>1304</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -10993,27 +10978,27 @@ Submodule Info: Instrument Control
 										<Var>
 											<Name>Instrument Control</Name>
 											<Type GUID="{7266F4BC-3E8E-4C5D-D118-16C18A015B1B}">PN_Instrument_Control_E476D369</Type>
-											<BitOffs>3408</BitOffs>
+											<BitOffs>16</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 1</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3440</BitOffs>
+											<BitOffs>48</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 2</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3448</BitOffs>
+											<BitOffs>56</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 3</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3456</BitOffs>
+											<BitOffs>64</BitOffs>
 										</Var>
 										<Var>
 											<Name>Desired Program Number</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3464</BitOffs>
+											<BitOffs>72</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -11031,407 +11016,407 @@ Submodule Info: Barcode_data
 										<Var>
 											<Name>Barcode_Write_0</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3472</BitOffs>
+											<BitOffs>80</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_1</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3480</BitOffs>
+											<BitOffs>88</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_2</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3488</BitOffs>
+											<BitOffs>96</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_3</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3496</BitOffs>
+											<BitOffs>104</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_4</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3504</BitOffs>
+											<BitOffs>112</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_5</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3512</BitOffs>
+											<BitOffs>120</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_6</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3520</BitOffs>
+											<BitOffs>128</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_7</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3528</BitOffs>
+											<BitOffs>136</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_8</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3536</BitOffs>
+											<BitOffs>144</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_9</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3544</BitOffs>
+											<BitOffs>152</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_10</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3552</BitOffs>
+											<BitOffs>160</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_11</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3560</BitOffs>
+											<BitOffs>168</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_12</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3568</BitOffs>
+											<BitOffs>176</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_13</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3576</BitOffs>
+											<BitOffs>184</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_14</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3584</BitOffs>
+											<BitOffs>192</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_15</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3592</BitOffs>
+											<BitOffs>200</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_16</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3600</BitOffs>
+											<BitOffs>208</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_17</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3608</BitOffs>
+											<BitOffs>216</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_18</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3616</BitOffs>
+											<BitOffs>224</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_19</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3624</BitOffs>
+											<BitOffs>232</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_20</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3632</BitOffs>
+											<BitOffs>240</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_21</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3640</BitOffs>
+											<BitOffs>248</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_22</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3648</BitOffs>
+											<BitOffs>256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_23</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3656</BitOffs>
+											<BitOffs>264</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_24</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3664</BitOffs>
+											<BitOffs>272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_25</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3672</BitOffs>
+											<BitOffs>280</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_26</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3680</BitOffs>
+											<BitOffs>288</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_27</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3688</BitOffs>
+											<BitOffs>296</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_28</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3696</BitOffs>
+											<BitOffs>304</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_29</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3704</BitOffs>
+											<BitOffs>312</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_30</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3712</BitOffs>
+											<BitOffs>320</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_31</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3720</BitOffs>
+											<BitOffs>328</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_32</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3728</BitOffs>
+											<BitOffs>336</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_33</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3736</BitOffs>
+											<BitOffs>344</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_34</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3744</BitOffs>
+											<BitOffs>352</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_35</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3752</BitOffs>
+											<BitOffs>360</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_36</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3760</BitOffs>
+											<BitOffs>368</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_37</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3768</BitOffs>
+											<BitOffs>376</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_38</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3776</BitOffs>
+											<BitOffs>384</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_39</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3784</BitOffs>
+											<BitOffs>392</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_40</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3792</BitOffs>
+											<BitOffs>400</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_41</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3800</BitOffs>
+											<BitOffs>408</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_42</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3808</BitOffs>
+											<BitOffs>416</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_43</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3816</BitOffs>
+											<BitOffs>424</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_44</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3824</BitOffs>
+											<BitOffs>432</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_45</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3832</BitOffs>
+											<BitOffs>440</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_46</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3840</BitOffs>
+											<BitOffs>448</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_47</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3848</BitOffs>
+											<BitOffs>456</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_48</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3856</BitOffs>
+											<BitOffs>464</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_49</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3864</BitOffs>
+											<BitOffs>472</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_50</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3872</BitOffs>
+											<BitOffs>480</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_51</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3880</BitOffs>
+											<BitOffs>488</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_52</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3888</BitOffs>
+											<BitOffs>496</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_53</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3896</BitOffs>
+											<BitOffs>504</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_54</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3904</BitOffs>
+											<BitOffs>512</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_55</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3912</BitOffs>
+											<BitOffs>520</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_56</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3920</BitOffs>
+											<BitOffs>528</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_57</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3928</BitOffs>
+											<BitOffs>536</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_58</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3936</BitOffs>
+											<BitOffs>544</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_59</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3944</BitOffs>
+											<BitOffs>552</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_60</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3952</BitOffs>
+											<BitOffs>560</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_61</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3960</BitOffs>
+											<BitOffs>568</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_62</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3968</BitOffs>
+											<BitOffs>576</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_63</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3976</BitOffs>
+											<BitOffs>584</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_64</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3984</BitOffs>
+											<BitOffs>592</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_65</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3992</BitOffs>
+											<BitOffs>600</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_66</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4000</BitOffs>
+											<BitOffs>608</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_67</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4008</BitOffs>
+											<BitOffs>616</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_68</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4016</BitOffs>
+											<BitOffs>624</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_69</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4024</BitOffs>
+											<BitOffs>632</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_70</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4032</BitOffs>
+											<BitOffs>640</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_71</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4040</BitOffs>
+											<BitOffs>648</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_72</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4048</BitOffs>
+											<BitOffs>656</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_73</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4056</BitOffs>
+											<BitOffs>664</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_74</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4064</BitOffs>
+											<BitOffs>672</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_75</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4072</BitOffs>
+											<BitOffs>680</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_76</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4080</BitOffs>
+											<BitOffs>688</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_77</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4088</BitOffs>
+											<BitOffs>696</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_78</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4096</BitOffs>
+											<BitOffs>704</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_79</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4104</BitOffs>
+											<BitOffs>712</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_80</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4112</BitOffs>
+											<BitOffs>720</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -11439,7 +11424,7 @@ Submodule Info: Barcode_data
 						</API>
 					</Profinet>
 				</Box>
-				<Box Id="15" Disabled="true" BoxType="9121">
+				<Box Id="15" BoxType="9121">
 					<Name>fpc2</Name>
 					<Comment><![CDATA[GSDML Name: GSDML-V2.33-CTS-I28-20210819.xml
 Path: $(TWINCAT3DIR)Config\Io\Profinet\
@@ -11472,7 +11457,7 @@ SW Release Version: Z1.0]]></Comment>
 31 = Only for EtherCAT gateways: WC-State of cyclic EtherCAT frame is 1
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>5632</BitOffs>
+							<BitOffs>1312</BitOffs>
 						</Var>
 						<Var>
 							<Name>PnIoBoxDiag</Name>
@@ -11490,7 +11475,7 @@ SW Release Version: Z1.0]]></Comment>
 0x4000 = At least one OutputCR Problemindicator is set
 ]]></Comment>
 							<Type>WORD</Type>
-							<BitOffs>5648</BitOffs>
+							<BitOffs>1328</BitOffs>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -11498,7 +11483,7 @@ SW Release Version: Z1.0]]></Comment>
 						<Var>
 							<Name>PnIoBoxCtrl</Name>
 							<Type>WORD</Type>
-							<BitOffs>3392</BitOffs>
+							<BitOffs>728</BitOffs>
 						</Var>
 					</Vars>
 					<Profinet DeviceId="9028" VendorId="1163" FrameOffset="32768" IPAdd="c0a80729" ProtocolType="3" BoxOnDeviceTyp="164" MaxPhysSlotNr="2" AvailableSlots="0..2" InstanceServerPort="50000" InstanceClientPort="50001" InstanceId="1" InstanceNumberOfARs="1" InstanceNumberOfAPIs="1" MinDeviceInterval="1024" SavePnIoBoxValues="0100" MultipleWriteSupported="true" Phase="6" WatchdogFaktor="3" ReductionRatio="16" SendClockFaktor="32" MaxInputLen="1440" MaxOutputLen="1440" MaxSupportedRecordSize="4068" SendClockFactorData="2000" RedRatio="0100020004000800100020004000800000010002" BoxTypeInfo="1-port Device" MacAdd5="5" PDOmapping="1" OutputErrorBehavior="2" GSDMLPath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-V2.33-CTS-I28-20210819.xml" ImagePath="$(TWINCAT3DIR)Config\Io\Profinet\GSDML-048B-0DC8-CTS.bmp" MainFamily="I/O" ProductFamily="Cincinnati Test Systems" OrderNr="00210" DefaultDNSName="I28" VendorName="Cincinnati Test Systems" FamDescription="I28 " GraphicFile="GSDML-048B-0DC8-CTS" SWVersion="Z1.0" HWVersion="A1.0" AltLanguage="7">
@@ -11869,27 +11854,27 @@ Submodule Info: Instrument Status
 										<Var>
 											<Name>Instrument Status</Name>
 											<Type GUID="{5BF74BC3-AE36-CBFC-D5C1-3A3D0284EF66}">PN_Instrument_Status_CBDEA022</Type>
-											<BitOffs>5664</BitOffs>
+											<BitOffs>1344</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 1</Name>
 											<Type>USINT</Type>
-											<BitOffs>5696</BitOffs>
+											<BitOffs>1376</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 2</Name>
 											<Type>USINT</Type>
-											<BitOffs>5704</BitOffs>
+											<BitOffs>1384</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 3</Name>
 											<Type>USINT</Type>
-											<BitOffs>5712</BitOffs>
+											<BitOffs>1392</BitOffs>
 										</Var>
 										<Var>
 											<Name>Current_Program Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>5720</BitOffs>
+											<BitOffs>1400</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -11907,102 +11892,102 @@ Submodule Info: Live Measurement Data
 										<Var Swapping="#x3">
 											<Name>Unique ID</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5728</BitOffs>
+											<BitOffs>1408</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Current Program Number</Name>
 											<Type>UINT</Type>
-											<BitOffs>5760</BitOffs>
+											<BitOffs>1440</BitOffs>
 										</Var>
 										<Var>
 											<Name>Segment Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>5776</BitOffs>
+											<BitOffs>1456</BitOffs>
 										</Var>
 										<Var>
 											<Name>RESERVED</Name>
 											<Type>USINT</Type>
-											<BitOffs>5784</BitOffs>
+											<BitOffs>1464</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 1 (Timer)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5792</BitOffs>
+											<BitOffs>1472</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5824</BitOffs>
+											<BitOffs>1504</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5840</BitOffs>
+											<BitOffs>1520</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5848</BitOffs>
+											<BitOffs>1528</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 2 (Pressure)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5856</BitOffs>
+											<BitOffs>1536</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5888</BitOffs>
+											<BitOffs>1568</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5904</BitOffs>
+											<BitOffs>1584</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5912</BitOffs>
+											<BitOffs>1592</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 3 (Pressure Loss/Rate)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5920</BitOffs>
+											<BitOffs>1600</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[2]</Name>
 											<Type>UINT</Type>
-											<BitOffs>5952</BitOffs>
+											<BitOffs>1632</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[2]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5968</BitOffs>
+											<BitOffs>1648</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[2]</Name>
 											<Type>USINT</Type>
-											<BitOffs>5976</BitOffs>
+											<BitOffs>1656</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Measurement 4 (Flow/Leak)</Name>
 											<Type>UDINT</Type>
-											<BitOffs>5984</BitOffs>
+											<BitOffs>1664</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[3]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6016</BitOffs>
+											<BitOffs>1696</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[3]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6032</BitOffs>
+											<BitOffs>1712</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code[3]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6040</BitOffs>
+											<BitOffs>1720</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -12020,507 +12005,507 @@ Submodule Info: Last test result
 										<Var Swapping="#x3">
 											<Name>Unique ID</Name>
 											<Type>UDINT</Type>
-											<BitOffs>6048</BitOffs>
+											<BitOffs>1728</BitOffs>
 										</Var>
 										<Var>
 											<Name>Channel Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>6080</BitOffs>
+											<BitOffs>1760</BitOffs>
 										</Var>
 										<Var>
 											<Name>Program Number</Name>
 											<Type>USINT</Type>
-											<BitOffs>6088</BitOffs>
+											<BitOffs>1768</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Port</Name>
 											<Type>USINT</Type>
-											<BitOffs>6096</BitOffs>
+											<BitOffs>1776</BitOffs>
 										</Var>
 										<Var>
 											<Name>Part Evaluation Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6104</BitOffs>
+											<BitOffs>1784</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Year</Name>
 											<Type>USINT</Type>
-											<BitOffs>6112</BitOffs>
+											<BitOffs>1792</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Month</Name>
 											<Type>USINT</Type>
-											<BitOffs>6120</BitOffs>
+											<BitOffs>1800</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Date</Name>
 											<Type>USINT</Type>
-											<BitOffs>6128</BitOffs>
+											<BitOffs>1808</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Hour</Name>
 											<Type>USINT</Type>
-											<BitOffs>6136</BitOffs>
+											<BitOffs>1816</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Minutes</Name>
 											<Type>USINT</Type>
-											<BitOffs>6144</BitOffs>
+											<BitOffs>1824</BitOffs>
 										</Var>
 										<Var>
 											<Name>Timestamp Seconds</Name>
 											<Type>USINT</Type>
-											<BitOffs>6152</BitOffs>
+											<BitOffs>1832</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Type Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6160</BitOffs>
+											<BitOffs>1840</BitOffs>
 										</Var>
 										<Var>
 											<Name>Test Evaluation Code</Name>
 											<Type GUID="{A97DD523-B288-4149-895B-E90AA2A30FA1}">PN_Test_Evaluation_Code_43D29F80</Type>
-											<BitOffs>6168</BitOffs>
+											<BitOffs>1848</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Result Measurement 1</Name>
 											<Type>REAL</Type>
-											<BitOffs>6176</BitOffs>
+											<BitOffs>1856</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[0]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6208</BitOffs>
+											<BitOffs>1888</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[0]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6224</BitOffs>
+											<BitOffs>1904</BitOffs>
 										</Var>
 										<Var>
 											<Name>Precision Code</Name>
 											<Type>USINT</Type>
-											<BitOffs>6232</BitOffs>
+											<BitOffs>1912</BitOffs>
 										</Var>
 										<Var Swapping="#x3">
 											<Name>Result Measurement 2</Name>
 											<Type>REAL</Type>
-											<BitOffs>6240</BitOffs>
+											<BitOffs>1920</BitOffs>
 										</Var>
 										<Var Swapping="#x1">
 											<Name>Variable Code[1]</Name>
 											<Type>UINT</Type>
-											<BitOffs>6272</BitOffs>
+											<BitOffs>1952</BitOffs>
 										</Var>
 										<Var>
 											<Name>Unit Code[1]</Name>
 											<Type>USINT</Type>
-											<BitOffs>6288</BitOffs>
+											<BitOffs>1968</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 1 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6296</BitOffs>
+											<BitOffs>1976</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 2 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6304</BitOffs>
+											<BitOffs>1984</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 3 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6312</BitOffs>
+											<BitOffs>1992</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 4 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6320</BitOffs>
+											<BitOffs>2000</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 5 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6328</BitOffs>
+											<BitOffs>2008</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 6 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6336</BitOffs>
+											<BitOffs>2016</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 7 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6344</BitOffs>
+											<BitOffs>2024</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 8 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6352</BitOffs>
+											<BitOffs>2032</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 9 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6360</BitOffs>
+											<BitOffs>2040</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 10 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6368</BitOffs>
+											<BitOffs>2048</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 11 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6376</BitOffs>
+											<BitOffs>2056</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 12 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6384</BitOffs>
+											<BitOffs>2064</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 13 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6392</BitOffs>
+											<BitOffs>2072</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 14 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6400</BitOffs>
+											<BitOffs>2080</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 15 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6408</BitOffs>
+											<BitOffs>2088</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 16 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6416</BitOffs>
+											<BitOffs>2096</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 17 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6424</BitOffs>
+											<BitOffs>2104</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 18 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6432</BitOffs>
+											<BitOffs>2112</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 19 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6440</BitOffs>
+											<BitOffs>2120</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 20 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6448</BitOffs>
+											<BitOffs>2128</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 21 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6456</BitOffs>
+											<BitOffs>2136</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 22 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6464</BitOffs>
+											<BitOffs>2144</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 23 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6472</BitOffs>
+											<BitOffs>2152</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 24 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6480</BitOffs>
+											<BitOffs>2160</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 25 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6488</BitOffs>
+											<BitOffs>2168</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 26 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6496</BitOffs>
+											<BitOffs>2176</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 27 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6504</BitOffs>
+											<BitOffs>2184</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 28 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6512</BitOffs>
+											<BitOffs>2192</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 29 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6520</BitOffs>
+											<BitOffs>2200</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 30 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6528</BitOffs>
+											<BitOffs>2208</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 31 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6536</BitOffs>
+											<BitOffs>2216</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 32 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6544</BitOffs>
+											<BitOffs>2224</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 33 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6552</BitOffs>
+											<BitOffs>2232</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 34 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6560</BitOffs>
+											<BitOffs>2240</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 35 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6568</BitOffs>
+											<BitOffs>2248</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 36 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6576</BitOffs>
+											<BitOffs>2256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 37 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6584</BitOffs>
+											<BitOffs>2264</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 38 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6592</BitOffs>
+											<BitOffs>2272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 39 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6600</BitOffs>
+											<BitOffs>2280</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 40 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6608</BitOffs>
+											<BitOffs>2288</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 41 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6616</BitOffs>
+											<BitOffs>2296</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 42 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6624</BitOffs>
+											<BitOffs>2304</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 43 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6632</BitOffs>
+											<BitOffs>2312</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 44 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6640</BitOffs>
+											<BitOffs>2320</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 45 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6648</BitOffs>
+											<BitOffs>2328</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 46 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6656</BitOffs>
+											<BitOffs>2336</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 47 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6664</BitOffs>
+											<BitOffs>2344</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 48 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6672</BitOffs>
+											<BitOffs>2352</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 49 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6680</BitOffs>
+											<BitOffs>2360</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 50 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6688</BitOffs>
+											<BitOffs>2368</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 51 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6696</BitOffs>
+											<BitOffs>2376</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 52 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6704</BitOffs>
+											<BitOffs>2384</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 53 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6712</BitOffs>
+											<BitOffs>2392</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 54 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6720</BitOffs>
+											<BitOffs>2400</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 55 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6728</BitOffs>
+											<BitOffs>2408</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 56 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6736</BitOffs>
+											<BitOffs>2416</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 57 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6744</BitOffs>
+											<BitOffs>2424</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 58 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6752</BitOffs>
+											<BitOffs>2432</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 59 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6760</BitOffs>
+											<BitOffs>2440</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 60 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6768</BitOffs>
+											<BitOffs>2448</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 61 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6776</BitOffs>
+											<BitOffs>2456</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 62 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6784</BitOffs>
+											<BitOffs>2464</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 63 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6792</BitOffs>
+											<BitOffs>2472</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 64 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6800</BitOffs>
+											<BitOffs>2480</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 65 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6808</BitOffs>
+											<BitOffs>2488</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 66 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6816</BitOffs>
+											<BitOffs>2496</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 67 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6824</BitOffs>
+											<BitOffs>2504</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 68 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6832</BitOffs>
+											<BitOffs>2512</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 69 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6840</BitOffs>
+											<BitOffs>2520</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 70 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6848</BitOffs>
+											<BitOffs>2528</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 71 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6856</BitOffs>
+											<BitOffs>2536</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 72 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6864</BitOffs>
+											<BitOffs>2544</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 73 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6872</BitOffs>
+											<BitOffs>2552</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 74 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6880</BitOffs>
+											<BitOffs>2560</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 75 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6888</BitOffs>
+											<BitOffs>2568</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 76 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6896</BitOffs>
+											<BitOffs>2576</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 77 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6904</BitOffs>
+											<BitOffs>2584</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 78 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6912</BitOffs>
+											<BitOffs>2592</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 79 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6920</BitOffs>
+											<BitOffs>2600</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 80 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6928</BitOffs>
+											<BitOffs>2608</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode 81 digit</Name>
 											<Type>USINT</Type>
-											<BitOffs>6936</BitOffs>
+											<BitOffs>2616</BitOffs>
 										</Var>
 									</Vars>
 									<Vars VarGrpType="2">
@@ -12548,27 +12533,27 @@ Submodule Info: Instrument Control
 										<Var>
 											<Name>Instrument Control</Name>
 											<Type GUID="{7266F4BC-3E8E-4C5D-D118-16C18A015B1B}">PN_Instrument_Control_E476D369</Type>
-											<BitOffs>3408</BitOffs>
+											<BitOffs>744</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 1</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3440</BitOffs>
+											<BitOffs>776</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 2</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3448</BitOffs>
+											<BitOffs>784</BitOffs>
 										</Var>
 										<Var>
 											<Name>Reserved Byte 3</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3456</BitOffs>
+											<BitOffs>792</BitOffs>
 										</Var>
 										<Var>
 											<Name>Desired Program Number</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3464</BitOffs>
+											<BitOffs>800</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>
@@ -12586,407 +12571,407 @@ Submodule Info: Barcode_data
 										<Var>
 											<Name>Barcode_Write_0</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3472</BitOffs>
+											<BitOffs>808</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_1</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3480</BitOffs>
+											<BitOffs>816</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_2</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3488</BitOffs>
+											<BitOffs>824</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_3</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3496</BitOffs>
+											<BitOffs>832</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_4</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3504</BitOffs>
+											<BitOffs>840</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_5</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3512</BitOffs>
+											<BitOffs>848</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_6</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3520</BitOffs>
+											<BitOffs>856</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_7</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3528</BitOffs>
+											<BitOffs>864</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_8</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3536</BitOffs>
+											<BitOffs>872</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_9</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3544</BitOffs>
+											<BitOffs>880</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_10</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3552</BitOffs>
+											<BitOffs>888</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_11</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3560</BitOffs>
+											<BitOffs>896</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_12</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3568</BitOffs>
+											<BitOffs>904</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_13</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3576</BitOffs>
+											<BitOffs>912</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_14</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3584</BitOffs>
+											<BitOffs>920</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_15</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3592</BitOffs>
+											<BitOffs>928</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_16</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3600</BitOffs>
+											<BitOffs>936</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_17</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3608</BitOffs>
+											<BitOffs>944</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_18</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3616</BitOffs>
+											<BitOffs>952</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_19</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3624</BitOffs>
+											<BitOffs>960</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_20</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3632</BitOffs>
+											<BitOffs>968</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_21</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3640</BitOffs>
+											<BitOffs>976</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_22</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3648</BitOffs>
+											<BitOffs>984</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_23</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3656</BitOffs>
+											<BitOffs>992</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_24</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3664</BitOffs>
+											<BitOffs>1000</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_25</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3672</BitOffs>
+											<BitOffs>1008</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_26</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3680</BitOffs>
+											<BitOffs>1016</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_27</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3688</BitOffs>
+											<BitOffs>1024</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_28</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3696</BitOffs>
+											<BitOffs>1032</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_29</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3704</BitOffs>
+											<BitOffs>1040</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_30</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3712</BitOffs>
+											<BitOffs>1048</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_31</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3720</BitOffs>
+											<BitOffs>1056</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_32</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3728</BitOffs>
+											<BitOffs>1064</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_33</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3736</BitOffs>
+											<BitOffs>1072</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_34</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3744</BitOffs>
+											<BitOffs>1080</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_35</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3752</BitOffs>
+											<BitOffs>1088</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_36</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3760</BitOffs>
+											<BitOffs>1096</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_37</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3768</BitOffs>
+											<BitOffs>1104</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_38</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3776</BitOffs>
+											<BitOffs>1112</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_39</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3784</BitOffs>
+											<BitOffs>1120</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_40</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3792</BitOffs>
+											<BitOffs>1128</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_41</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3800</BitOffs>
+											<BitOffs>1136</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_42</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3808</BitOffs>
+											<BitOffs>1144</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_43</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3816</BitOffs>
+											<BitOffs>1152</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_44</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3824</BitOffs>
+											<BitOffs>1160</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_45</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3832</BitOffs>
+											<BitOffs>1168</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_46</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3840</BitOffs>
+											<BitOffs>1176</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_47</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3848</BitOffs>
+											<BitOffs>1184</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_48</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3856</BitOffs>
+											<BitOffs>1192</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_49</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3864</BitOffs>
+											<BitOffs>1200</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_50</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3872</BitOffs>
+											<BitOffs>1208</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_51</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3880</BitOffs>
+											<BitOffs>1216</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_52</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3888</BitOffs>
+											<BitOffs>1224</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_53</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3896</BitOffs>
+											<BitOffs>1232</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_54</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3904</BitOffs>
+											<BitOffs>1240</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_55</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3912</BitOffs>
+											<BitOffs>1248</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_56</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3920</BitOffs>
+											<BitOffs>1256</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_57</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3928</BitOffs>
+											<BitOffs>1264</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_58</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3936</BitOffs>
+											<BitOffs>1272</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_59</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3944</BitOffs>
+											<BitOffs>1280</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_60</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3952</BitOffs>
+											<BitOffs>1288</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_61</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3960</BitOffs>
+											<BitOffs>1296</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_62</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3968</BitOffs>
+											<BitOffs>1304</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_63</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3976</BitOffs>
+											<BitOffs>1312</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_64</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3984</BitOffs>
+											<BitOffs>1320</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_65</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>3992</BitOffs>
+											<BitOffs>1328</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_66</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4000</BitOffs>
+											<BitOffs>1336</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_67</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4008</BitOffs>
+											<BitOffs>1344</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_68</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4016</BitOffs>
+											<BitOffs>1352</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_69</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4024</BitOffs>
+											<BitOffs>1360</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_70</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4032</BitOffs>
+											<BitOffs>1368</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_71</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4040</BitOffs>
+											<BitOffs>1376</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_72</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4048</BitOffs>
+											<BitOffs>1384</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_73</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4056</BitOffs>
+											<BitOffs>1392</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_74</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4064</BitOffs>
+											<BitOffs>1400</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_75</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4072</BitOffs>
+											<BitOffs>1408</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_76</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4080</BitOffs>
+											<BitOffs>1416</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_77</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4088</BitOffs>
+											<BitOffs>1424</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_78</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4096</BitOffs>
+											<BitOffs>1432</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_79</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4104</BitOffs>
+											<BitOffs>1440</BitOffs>
 										</Var>
 										<Var>
 											<Name>Barcode_Write_80</Name>
 											<Type>BITARR8</Type>
-											<BitOffs>4112</BitOffs>
+											<BitOffs>1448</BitOffs>
 										</Var>
 									</Vars>
 								</SubModule>

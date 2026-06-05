@@ -519,7 +519,7 @@ IF abMachineDefinition[2] THEN
 	
 	stMACHINE.bHeightTest								:= TRUE;
 	stMACHINE.bLeakTest									:= FALSE;
-	stMACHINE.bVisionTest								:= TRUE;
+	stMACHINE.bVisionTest								:= FALSE;
 	stMACHINE.sName										:= 'WH: HEIGHT TEST: FPB WELDING';
 	stMACHINE.bMachine[1]								:= FALSE;
 	stMACHINE.bMachine[2]								:= TRUE;
