@@ -7,6 +7,8 @@ VAR
 	bResetTest				: BOOL;
 	i						: DINT;
 	n						: DINT;//TABLE INDEX
+	
+	srRejectChuteFull			: SR; 
 
 END_VAR
 ]]></Declaration>
@@ -31,7 +33,10 @@ stStatisticsLT[3]			:= stStatisticsHMI[3];
 
 bOpenRejectDialog			:= bRejectPartDialog[0] OR bRejectPartDialog[1] OR bRejectPartDialog[2];
 
-bProcessCylinderDownEnable	:= dw_T08_EL1809.iPartPresentNest1 AND dw_T08_EL1809.iPartPresentNest2 AND dw_T05_EL1918.iProcessDoorFB;]]></ST>
+bProcessCylinderDownEnable	:= dw_T08_EL1809.iPartPresentNest1 AND dw_T08_EL1809.iPartPresentNest2 AND dw_T05_EL1918.iProcessDoorFB;
+
+srRejectChuteFull(SET1 := stStationEvents[0].aEvents[18].bEventTimer.Q, RESET := bEmptyRejectChuteAcknowledge AND NOT dw_T08_EL1809.iRejectSensor , Q1 => bEmptyRejectChute);
+	]]></ST>
     </Implementation>
     <Action Name="a_ACT_MachineStatusBaner" Id="{0dc7bcd3-753a-4f06-be0f-fec0a8964021}">
       <Implementation>

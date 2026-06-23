@@ -37,7 +37,8 @@
 	fbGetDeviceNetId				: IOF_GetDeviceNetId;
 	NetAmsIdDevice					: T_AmsNetId;
 	
-	bOpenDoorCycleFault				: BOOL;
+	bOpenDoorCycleFault				: BOOL;	
+	bProcessDoorClosed				: BOOL;
 	
 	
 	
@@ -71,6 +72,7 @@
 ////////////////////////////////////////////////////////////////////////////////////SAFETY////////////////////////////////////////////////////////////////////////////
 
 	bDoorClosingFlag				: BOOL;
+	bDoorClosingInitFlag			: BOOL;
 	bDoorOpeningFlag				: BOOL;
 	bProcessDoorClosedConditionFlag	: BOOL;
 	tonSafety						: TON;

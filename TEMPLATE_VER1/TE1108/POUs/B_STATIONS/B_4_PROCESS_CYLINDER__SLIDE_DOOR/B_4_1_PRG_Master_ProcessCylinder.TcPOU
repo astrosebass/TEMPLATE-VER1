@@ -13,6 +13,7 @@ VAR
 	bExtend								: BOOL;
 	bRetract							: BOOL;
 
+	bProcessDoorClosed					: BOOL;
 	
 END_VAR
 ]]></Declaration>
@@ -48,7 +49,11 @@ CASE stProcessCylinder.State OF
 								
 	E_ProcessCylinder_State.HOMING:
 	
-								bRetract								:= TRUE;
+								IF bProcessDoorClosed THEN
+									
+									bRetract							:= TRUE;
+									
+								END_IF
 								
 								IF bRetracted THEN
 									
@@ -150,10 +155,15 @@ IF bExtend OR bProcessCylinder_Down2 THEN
 	dw_T09_EL2809.qExtendProcessCylinder	:= TRUE ;
 	dw_T09_EL2809.qRetractProcessCylinder	:= FALSE;
 
-ELSIF bRetract OR bProcessCylinder_Up OR stTwinSAFE.iInitSafety THEN
+ELSIF bRetract OR bProcessCylinder_Up THEN
 	
 	dw_T09_EL2809.qExtendProcessCylinder	:= FALSE;
 	dw_T09_EL2809.qRetractProcessCylinder	:= TRUE;
+
+ELSIF stMachineStatus.bFault THEN
+	
+	dw_T09_EL2809.qExtendProcessCylinder	:= FALSE;
+	dw_T09_EL2809.qRetractProcessCylinder	:= FALSE;
 
 END_IF
 
@@ -170,7 +180,7 @@ IF stStationEvents[3].aEvents[1].bEventTimer.Q THEN
 
 END_IF
 
-
+bProcessDoorClosed := dw_T05_EL1918.iProcessDoorClosed1 AND dw_T05_EL1918.iProcessDoorClosed2 AND dw_T05_EL1918.iProcessDoorFB;
 
 ]]></ST>
       </Implementation>

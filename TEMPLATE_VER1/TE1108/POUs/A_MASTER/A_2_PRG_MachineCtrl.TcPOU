@@ -6,7 +6,7 @@ VAR
 /////////////////////////////////////////////////////////////////////////////////////TIMERS & TRIGGERS/////////////////////////////////////////////////////////////////////////////////////
 
 	tonSys_Init					: Tc2_Standard.TON:=(PT:=T#1S);
-	tonSys_InitTimeout			: Tc2_Standard.TON:=(PT:=T#5S);					
+	tonSys_InitTimeout			: Tc2_Standard.TON:=(PT:=T#15S);					
 	tonFirstAutoCycle			: Tc2_Standard.TON:=(PT:=T#500MS);
 	tonStopped					: TON := (PT := T#500MS);
 	
@@ -29,6 +29,7 @@ VAR
 	tonWaitExtendCylidner		: TON;
 	tonTakePicture				: TON;
 	ctuRejectPart				: CTU;
+	rRejectSensor				: R_TRIG;
 
 /////////////////////////////////////////////////////////////////////////////////////SAFETY/////////////////////////////////////////////////////////////////////////////////////		
 	
@@ -41,13 +42,15 @@ VAR
 	bPartPresentNest2			: BOOL;
 	bPartPresentNest3			: BOOL;
 	bPartPresentNest4			: BOOL;
-	rRejectSensor				: R_TRIG;
+	
 	bTwoHandsSignal				: BOOL;
 	tonTwoHandsSignal			: TON;
 	
 	bEndAutoCycleFlag			: BOOL;
 	bProcessedPart				: ARRAY[0..1] OF BOOL;
 	fProcessedPart				: ARRAY[0..1] OF F_TRIG;
+	
+	
 	
 	
 END_VAR
@@ -65,13 +68,19 @@ e_ACT_SafetyProcess();
       <Implementation>
         <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////Utilities/////////////////////////////////////////////////////////////////////////////////////
 tonSys_Init(IN:=stMachineStatus.bInitialising);
-tonSys_InitTimeout(IN:=stMachineStatus.bInitialising);
 tonSafety( IN := stMachineStatus.eMachineState = E_MachineState.SAFETY, PT := T#10S);
 tonStopped(IN := stMachineStatus.eMachineState = E_MachineState.STOPPED);
 	
-	IF stMachineStatus.eMachineState <> E_MachineState.SYSTEM_AUTO_CYCLE THEN
+	IF stMachineStatus.eMachineState <> E_MachineState.SYSTEM_AUTO_CYCLE OR 
+		stMachineStatus.eMachineState <> E_MachineState.SYSTEM_INITIALISING THEN
 		
 		sMachineMessage									:= '';			
+		
+	END_IF
+	
+	IF stMachineStatus.eMachineState <> E_MachineState.SYSTEM_INITIALISING THEN
+		
+		tonSys_InitTimeout.IN							:= FALSE;			
 		
 	END_IF
 	
@@ -191,7 +200,7 @@ E_MachineState.SAFETY:
 
 				stTwinSAFE.iRunSafety					:= TRUE;
 				
-				IF stTwinSAFE.qSafetyOk AND stTwinSAFE.qProcessCylinderRetracted AND bDoorOpenedFlag THEN
+				IF stTwinSAFE.qSafetyOk THEN
 					
 					stMachineStatus.eMachineState		:= E_MachineState.SYSTEM_INITIALISING;
 					
@@ -217,11 +226,34 @@ E_MachineState.SYSTEM_INITIALISING:
 				stProcessDoor.CMD.bAbort				:= FALSE;	
 
 				IF tonSys_Init.Q THEN
-					stCamera.CMD.bEnable				:= TRUE;	
-					stLeakTesters.CMD.bEnable			:= TRUE;	
-					stHeightTests.CMD.bEnable			:= TRUE;
-					stProcessCylinder.CMD.bEnable		:= TRUE;
-					stProcessDoor.CMD.bEnable			:= TRUE;						
+					
+					
+					IF NOT stTwinSAFE.qProcessCylinderRetracted AND NOT bProcessDoorClosed THEN
+						
+						sMachineMessage					:= 'trigger both safety buttons to reset machine';
+						
+						IF bTwoHandsSignal THEN
+							
+							tonSys_InitTimeout.IN		:= TRUE;
+							stCamera.CMD.bEnable		:= TRUE;	
+							stLeakTesters.CMD.bEnable	:= TRUE;	
+							stHeightTests.CMD.bEnable	:= TRUE;
+							stProcessCylinder.CMD.bEnable:= TRUE;
+							stProcessDoor.CMD.bEnable	:= TRUE;
+							sMachineMessage				:= '';
+							
+						END_IF
+					ELSE
+						
+						tonSys_InitTimeout.IN			:= TRUE;
+						stCamera.CMD.bEnable			:= TRUE;	
+						stLeakTesters.CMD.bEnable		:= TRUE;	
+						stHeightTests.CMD.bEnable		:= TRUE;
+						stProcessCylinder.CMD.bEnable	:= TRUE;
+						stProcessDoor.CMD.bEnable		:= TRUE;
+						
+					END_IF
+											
 				END_IF
 				
 				IF stMasterCtrl.bAllStationsReady  THEN 
@@ -234,7 +266,7 @@ E_MachineState.SYSTEM_INITIALISING:
 				END_IF
 			
 					
-E_MachineState.SYSTEM_READY_TO_START:	
+E_MachineState.SYSTEM_READY_TO_START:			
 
 				IF 	 stButtonsLamps.bStartButtonFallingEdge AND stMasterCtrl.bAllStationsReady  THEN
 					stMachineStatus.eMachineState 		:= E_MachineState.SYSTEM_AUTO_CYCLE;
@@ -329,12 +361,6 @@ stMasterCtrl.bAllStationsReady			:= (stCamera.Status.bReady OR NOT stMACHINE.bVi
         <ST><![CDATA[/////////////////////////////////////////////////////////////////////////////////////UTILITIES & TRIGGERS/////////////////////////////////////////////////////////////////////////////////////
 //ADD REJECT SENSOR FUNCTION. IF PART FAIL WE SHOULD WAIT UNTIL THE OPERATOR LEAVE THE FAIL PART IN THE CONTAINER
 tonTakePicture(IN := stCamera.Status.bDone, PT := T#500MS);
-
-IF (eCycleState <> E_General_ProcessCycle.WAIT_REJECT_PART) AND rRejectSensor.Q THEN
-	
-	bRejectPartOutTime							:= TRUE;
-
-END_IF
 
 ctuRejectPart();
 IF eCycleState = E_General_ProcessCycle.RESET_ALL_CMD THEN
@@ -816,9 +842,26 @@ E_General_ProcessCycle.WAIT_RETRACT_PROCESS_CYLINDER:
 					stProcessCylinder.CMD.bExecute		:= FALSE;
 					stProcessCylinder.CMD.bAcknowledge	:= TRUE;
 					
-					eCycleState							:= E_General_ProcessCycle.OPEN_PROCESS_DOOR;
+					IF NOT bEmptyRejectChute THEN
+
+						eCycleState							:= E_General_ProcessCycle.OPEN_PROCESS_DOOR;
+					
+					ELSE eCycleState							:= E_General_ProcessCycle.REJECT_CHUTE_FULL; 
+					
+					END_IF
 					
 				END_IF
+		
+E_General_ProcessCycle.REJECT_CHUTE_FULL:
+
+				sMachineMessage									:= 'Waiting for Reject chute empty';
+
+				IF NOT bEmptyRejectChute THEN
+					
+						sMachineMessage							:= '';
+						eCycleState								:= E_General_ProcessCycle.OPEN_PROCESS_DOOR;
+				
+				END_IF	
 		
 E_General_ProcessCycle.OPEN_PROCESS_DOOR:
 
@@ -837,16 +880,18 @@ E_General_ProcessCycle.WAIT_OPEN_PROCESS_DOOR:
 					stProcessDoor.CMD.bExecute			:= FALSE;
 					stProcessDoor.CMD.bAcknowledge		:= TRUE;
 					
-					IF stCycleDataNest1.bFail OR stCycleDataNest2.bFail THEN
+					IF stCycleDataNest1.bFail OR stCycleDataNest2.bFail  THEN
 					
 						eCycleState									:= E_General_ProcessCycle.WAIT_REJECT_PART;
 					
-					ELSE eCycleState								:= E_General_ProcessCycle.RESET_ALL_CMD;
+					ELSIF stCycleDataNest1.bPass AND stCycleDataNest2.bPass  THEN
+
+						eCycleState								:= E_General_ProcessCycle.RESET_ALL_CMD;
 						
 					END_IF
 				
 				END_IF
-				
+			
 E_General_ProcessCycle.WAIT_REJECT_PART:
 					
 				ctuRejectPart.CU 								:= rRejectSensor.Q;				
@@ -1071,7 +1116,8 @@ bPartPresentNest2					:= dw_T08_EL1809.iPartPresentNest2;
 
 rRejectSensor( CLK := dw_T08_EL1809.iRejectSensor);
 
-bDoorClosingFlag					:= (eCycleState = E_General_ProcessCycle.CLOSE_PROCESS_DOOR) OR (eCycleState = E_General_ProcessCycle.WAIT_CLOSE_PROCESS_DOOR);
+bDoorClosingFlag					:= (eCycleState = E_General_ProcessCycle.CLOSE_PROCESS_DOOR) OR (eCycleState = E_General_ProcessCycle.WAIT_CLOSE_PROCESS_DOOR) OR
+										bDoorClosingInitFlag;
 bDoorOpeningFlag					:= eCycleState = E_General_ProcessCycle.OPEN_PROCESS_DOOR;
 
 bProcessDoorClosedConditionFlag		:= eCycleState = E_General_ProcessCycle.PROCESS_FLAGS_DEFINITIONS OR
@@ -1100,6 +1146,7 @@ bProcessDoorClosedConditionFlag		:= eCycleState = E_General_ProcessCycle.PROCESS
 tonTwoHandsSignal( IN := stTwinSAFE.qTwoHandsSafe , PT := stTimers.tTwoHandsSignal);						
 				
 bTwoHandsSignal						:= tonTwoHandsSignal.Q;
+
 		
 dw_T09_EL2809.qIndicatorLED1_Red	:= stCycleDataNest1.bFail;		
 dw_T09_EL2809.qIndicatorLED1_Green	:= stCycleDataNest1.bPass;	
@@ -1118,12 +1165,10 @@ ELSE
 
 END_IF
 
-IF dw_T04_EL1918.iResetButton THEN
-	
-	bRejectPartOutTime							:= FALSE;	
-
-END_IF
-																]]></ST>
+stTwinSAFE.iMachineHoming_Manual	:= 	stMachineStatus.eMachineState = E_MachineState.SAFETY OR
+										stMachineStatus.eMachineState = E_MachineState.SYSTEM_INITIALISING OR
+										stMachineStatus.eMachineState = E_MachineState.MANUAL_MODE;	
+												]]></ST>
       </Implementation>
     </Action>
     <Action Name="e_ACT_SafetyProcess" Id="{0848b2c7-b28b-44f7-b4f5-995247f3c0c3}">

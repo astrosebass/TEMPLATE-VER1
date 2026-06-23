@@ -24,6 +24,8 @@
 	tonHMIAliveOn						: TON;
 	tonHMIAliveOff						: TON;
 	bOutHMI								: BOOL;
+	bEmptyRejectChute					: BOOL;
+	bEmptyRejectChuteAcknowledge		: BOOL;
 	
 /////////////////////////////////////////////////////////////////////////////////////SYSTEM INFO/////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,6 +46,7 @@
 	bManualScreen						: BOOL;
 	tonManualMode						: TON;
 	bEnableSettings						: BOOL;
+	bOnlyHeightTestBypass				: BOOL;
 
 	
 	
@@ -56,7 +59,7 @@
 	bProcessCylinder_Up					: BOOL;
 	bProcessCylinder_Down2				: BOOL;
 	
-	bProcessDoor_Up2					: BOOL;
+	bProcessDoor_Up						: BOOL;
 	bProcessDoor_Down					: BOOL;
 	
 	bLeaktester1_Start					: BOOL;
@@ -114,6 +117,8 @@ VAR_GLOBAL PERSISTENT
 	
 	bNest1Flag							: BOOL;
 	bNest2Flag							: BOOL;
+	
+	nAmountToEmptyRejectChute			: WORD			:= 20;
 
 
 	

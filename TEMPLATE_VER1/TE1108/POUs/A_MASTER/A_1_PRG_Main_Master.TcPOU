@@ -503,8 +503,8 @@ END_IF
 IF abMachineDefinition[1] THEN
 	
 	stMACHINE.bHeightTest								:= TRUE;
-	stMACHINE.bLeakTest									:= TRUE;
-	stMACHINE.bVisionTest								:= TRUE;
+	stMACHINE.bLeakTest									:= NOT bOnlyHeightTestBypass;
+	stMACHINE.bVisionTest								:= NOT bOnlyHeightTestBypass;
 	stMACHINE.sName										:= 'LT-WH-VI LEAK TEST: FLUID PATH , HEIGHT TEST: FPB WELDING, VISION INSPECTION: EWIS FOAM';
 	stMACHINE.bMachine[1]								:= TRUE;
 	stMACHINE.bMachine[2]								:= FALSE;
@@ -519,8 +519,8 @@ IF abMachineDefinition[2] THEN
 	
 	stMACHINE.bHeightTest								:= TRUE;
 	stMACHINE.bLeakTest									:= FALSE;
-	stMACHINE.bVisionTest								:= FALSE;
-	stMACHINE.sName										:= 'WH: HEIGHT TEST: FPB WELDING';
+	stMACHINE.bVisionTest								:= NOT bOnlyHeightTestBypass;
+	stMACHINE.sName										:= 'WH: HEIGHT TEST: FPB WELDING ';
 	stMACHINE.bMachine[1]								:= FALSE;
 	stMACHINE.bMachine[2]								:= TRUE;
 	stMACHINE.bMachine[3]								:= FALSE;

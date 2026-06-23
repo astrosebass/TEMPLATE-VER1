@@ -91,6 +91,8 @@
   "bottomRightUnit": "px"
 }
 </script>
+<div id="TcHmiToggleSwitch_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="240" data-tchmi-left-unit="px" data-tchmi-text="Only Height Test" data-tchmi-top="330" data-tchmi-top-unit="px" data-tchmi-width="158" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_HMI.bOnlyHeightTestBypass|BindingMode=TwoWay%/s%">
+</div>
 </div>
 <div id="TcHmiContainer_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="459" data-tchmi-height-unit="px" data-tchmi-left="710" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="620" data-tchmi-width-unit="px">
 
@@ -318,6 +320,21 @@
 }
 </script>
 
+</div>
+<div id="TcHmiNumericInput_23" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="true" data-tchmi-decimal-digits="0" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="465" data-tchmi-left-unit="px" data-tchmi-max-value="100" data-tchmi-min-value="0" data-tchmi-reset-to-last-valid-value="true" data-tchmi-top="270" data-tchmi-top-unit="px" data-tchmi-width="114" data-tchmi-width-unit="px" data-tchmi-zindex="2" data-tchmi-value="%s%ADS.PLC1.GVL_HMI.nAmountToEmptyRejectChute|BindingMode=TwoWay%/s%" data-tchmi-value-horizontal-alignment="Left">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="TcHmiTextblock_1326" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="38" data-tchmi-height-unit="px" data-tchmi-left="305" data-tchmi-left-unit="px" data-tchmi-text="Amount of parts to empty reject chute" data-tchmi-top="270" data-tchmi-top-unit="px" data-tchmi-width="160" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="1" data-tchmi-text-font-weight="Bold">
+</div>
+<div id="TcHmiTextblock_1327" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="555" data-tchmi-left-unit="px" data-tchmi-text="(u)" data-tchmi-top="270" data-tchmi-top-unit="px" data-tchmi-width="24" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="7" data-tchmi-text-font-weight="Bold">
 </div>
 </div>
 </div>
