@@ -9,6 +9,7 @@
 	stHeightTests							: ST_HeightTest;
 	stProcessCylinder						: ST_ProcessCylinder;
 	stProcessDoor							: ST_ProcessDoor;
+	stPuckLocker 							: ST_PuckLocker;
 	
 
 END_VAR]]></Declaration>

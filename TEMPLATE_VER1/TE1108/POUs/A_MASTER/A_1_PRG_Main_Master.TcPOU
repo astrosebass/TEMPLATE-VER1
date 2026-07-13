@@ -94,6 +94,7 @@ B_4_2_PRG_Master_ProcessDoor();
 /////////////////////////////////////////////////////////////////////////////////////PROCESS/////////////////////////////////////////////////////////////////////////////////////
 
 A_2_PRG_MachineCtrl();
+B_5_1_PRG_PuckLocker(); (* Renan Added 06Jul26 - Puck Locker program *)
 
 
 
@@ -477,6 +478,7 @@ IF rMachineDefinitionSet2.Q THEN
 	stMACHINE.bHeightTest								:= FALSE;
 	stMACHINE.bLeakTest									:= FALSE;
 	stMACHINE.bVisionTest								:= FALSE;
+	stMACHINE.bPuckLocker								:= FALSE; //Renan Added 10Jul26 - Puck Locker
 	stMACHINE.sName										:= '';
 	stMACHINE.bMachine[1]								:= FALSE;
 	stMACHINE.bMachine[2]								:= FALSE;
@@ -505,6 +507,7 @@ IF abMachineDefinition[1] THEN
 	stMACHINE.bHeightTest								:= TRUE;
 	stMACHINE.bLeakTest									:= NOT bOnlyHeightTestBypass;
 	stMACHINE.bVisionTest								:= NOT bOnlyHeightTestBypass;
+	stMACHINE.bPuckLocker								:= FALSE; //Renan Added 10Jul26 - Puck Locker
 	stMACHINE.sName										:= 'LT-WH-VI LEAK TEST: FLUID PATH , HEIGHT TEST: FPB WELDING, VISION INSPECTION: EWIS FOAM';
 	stMACHINE.bMachine[1]								:= TRUE;
 	stMACHINE.bMachine[2]								:= FALSE;
@@ -520,6 +523,7 @@ IF abMachineDefinition[2] THEN
 	stMACHINE.bHeightTest								:= TRUE;
 	stMACHINE.bLeakTest									:= FALSE;
 	stMACHINE.bVisionTest								:= NOT bOnlyHeightTestBypass;
+	stMACHINE.bPuckLocker								:= TRUE; //Renan Added 10Jul26 - Puck Locker
 	stMACHINE.sName										:= 'WH: HEIGHT TEST: FPB WELDING ';
 	stMACHINE.bMachine[1]								:= FALSE;
 	stMACHINE.bMachine[2]								:= TRUE;
@@ -535,6 +539,7 @@ IF abMachineDefinition[3] THEN
 	stMACHINE.bHeightTest								:= FALSE;
 	stMACHINE.bLeakTest									:= TRUE;
 	stMACHINE.bVisionTest								:= FALSE;
+	stMACHINE.bPuckLocker								:= FALSE; //Renan Added 10Jul26 - Puck Locker
 	stMACHINE.sName										:= 'LT LEAK TEST: RESERVOIR ';
 	stMACHINE.bMachine[1]								:= FALSE;
 	stMACHINE.bMachine[2]								:= FALSE;

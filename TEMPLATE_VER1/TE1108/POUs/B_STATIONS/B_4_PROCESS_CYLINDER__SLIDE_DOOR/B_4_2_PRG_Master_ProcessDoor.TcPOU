@@ -68,7 +68,7 @@ CASE stProcessDoor.State OF
 	
 								IF bProcessCylinderNotHomed  THEN
 									
-									bCloseDoor						:= TRUE;
+									bCloseDoor						:= TRUE; 
 									bOpenDoor						:= FALSE;
 									
 									IF NOT bDoorClosed AND bCloseDoor THEN
@@ -117,7 +117,7 @@ CASE stProcessDoor.State OF
 								
 	E_ProcessDoor_State.CLOSE:
 	
-								bCloseDoor							:= TRUE;
+								bCloseDoor							:= TRUE; //Thays
 								
 								IF bDoorClosed THEN
 									
@@ -206,7 +206,7 @@ bProcessCylinderNotHomed				:= NOT stTwinSAFE.qProcessCylinderRetracted;
 
 IF bProcessDoor_Down AND stTwinSAFE.qTwoHandsSafe THEN
 	
-	bCloseDoorHMI					:= TRUE;
+	bCloseDoorHMI					:= TRUE; 
 	bProcessDoor_Down				:= FALSE;
 	
 ELSIF bDoorClosed  OR NOT stMachineStatus.bManualMode THEN

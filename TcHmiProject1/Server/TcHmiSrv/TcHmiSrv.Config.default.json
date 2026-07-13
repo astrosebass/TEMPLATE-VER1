@@ -98,6 +98,43 @@
                 "startOffset": 1,
                 "type": "array"
             },
+            "ADS-PLC1.ARRAY_1..5_OF-BOOL": {
+                "items": {
+                    "$ref": "tchmi:general#/definitions/BOOL"
+                },
+                "maxItems": 5,
+                "minItems": 5,
+                "startOffset": 1,
+                "type": "array"
+            },
+            "ADS-PLC1.E_PuckLockerMode": {
+                "attributes": {
+                    "generate_implicit_init_function": "",
+                    "qualified_only": "",
+                    "strict": "",
+                    "to_string": ""
+                },
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "options": [
+                    {
+                        "label": "Disabled",
+                        "value": 0
+                    },
+                    {
+                        "label": "Enabled",
+                        "value": 1
+                    },
+                    {
+                        "label": "EnabledWithEmptyPuckBypass",
+                        "value": 2
+                    }
+                ],
+                "type": "integer"
+            },
             "ADS-PLC1.STRING-200": {
                 "allOf": [
                     {
@@ -112,6 +149,16 @@
                 "allOf": [
                     {
                         "maxLength": 23
+                    },
+                    {
+                        "$ref": "tchmi:general#/definitions/String"
+                    }
+                ]
+            },
+            "ADS-PLC1.STRING-255": {
+                "allOf": [
+                    {
+                        "maxLength": 255
                     },
                     {
                         "$ref": "tchmi:general#/definitions/String"
@@ -401,6 +448,146 @@
                     "sSetpoint1",
                     "sSetpoint2",
                     "sSetpoint3"
+                ],
+                "type": "object"
+            },
+            "ADS-PLC1.ST_PuckLockerHMI": {
+                "additionalProperties": false,
+                "properties": {
+                    "bCmdAcknowledgeRemovalFault": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 4
+                            }
+                        ]
+                    },
+                    "bCmdEmptyPuckBypass": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 3
+                            }
+                        ]
+                    },
+                    "bEnableEmptyPuckBypass": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 2
+                            }
+                        ]
+                    },
+                    "bPuckDetected": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 5
+                            }
+                        ]
+                    },
+                    "bPuckLocked": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 6
+                            }
+                        ]
+                    },
+                    "bPuckSensorMismatch": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 7
+                            }
+                        ]
+                    },
+                    "bShowEmptyPuckPopup": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 10
+                            }
+                        ]
+                    },
+                    "bShowUnexpectedRemovalPopup": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 9
+                            }
+                        ]
+                    },
+                    "bUnexpectedRemovalFault": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "propertyOrder": 8
+                            }
+                        ]
+                    },
+                    "eMode": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:server#/definitions/ADS-PLC1.E_PuckLockerMode"
+                            },
+                            {
+                                "propertyOrder": 1
+                            }
+                        ]
+                    },
+                    "nPucksAllowedToPass": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/USINT"
+                            },
+                            {
+                                "propertyOrder": 11
+                            }
+                        ]
+                    },
+                    "sMessage": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:server#/definitions/ADS-PLC1.STRING-255"
+                            },
+                            {
+                                "propertyOrder": 12
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "eMode",
+                    "bEnableEmptyPuckBypass",
+                    "bCmdEmptyPuckBypass",
+                    "bCmdAcknowledgeRemovalFault",
+                    "bPuckDetected",
+                    "bPuckLocked",
+                    "bPuckSensorMismatch",
+                    "bUnexpectedRemovalFault",
+                    "bShowUnexpectedRemovalPopup",
+                    "bShowEmptyPuckPopup",
+                    "nPucksAllowedToPass",
+                    "sMessage"
                 ],
                 "type": "object"
             },
@@ -1773,7 +1960,7 @@
     "KEYPASSWORD": "",
     "MAXCONNECTIONSPERCLIENT": 32,
     "MAXHTTPHEADERSIZE": 32768,
-    "MAXREQUESTSIZE": 1048576,
+    "MAXREQUESTSIZE": 8388608,
     "MAXSESSIONS": 128,
     "PERMESSAGEDEFLATEENABLED": true,
     "PROJECTNAME": "TcHmiProject1",
@@ -1786,7 +1973,13 @@
     "SAMESITE_ATTRIBUTE": 2,
     "SELFSIGNEDROOTCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQ4ekNDQXR1Z0F3SUJBZ0lKQUs4eUQ0aGI3bWgzTUEwR0NTcUdTSWIzRFFFQkN3VUFNRWt4Q3pBSkJnTlYKQkFZVEFrUkZNUnN3R1FZRFZRUUtEQkpVZDJsdVEwRlVJRWhOU1NCVFpYSjJaWEl4SFRBYkJnTlZCQU1NRkVSRgpVMHRVVDFBdE1UTTVTakpOT1Y5eWIyOTBNQ0FYRFRJMk1ETXdPVEV4TlRNMU5Gb1lEekl3TmpRd056QTNNVEUxCk16VTBXakJKTVFzd0NRWURWUVFHRXdKRVJURWJNQmtHQTFVRUNnd1NWSGRwYmtOQlZDQklUVWtnVTJWeWRtVnkKTVIwd0d3WURWUVFEREJSRVJWTkxWRTlRTFRFek9Vb3lUVGxmY205dmREQ0NBU0l3RFFZSktvWklodmNOQVFFQgpCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMRlNLVlZsdmp0MWE5RFMwRjF3amhxU0tJbWxMOEE0ZEZnY1BvL2lCTEQxCmFIYmZvbXRnU1p0a2FTem5hNnNVZDFWTjU5eVdaWnR3RnNNTjJsZy8xUjd1NTVySU41OWM2WG53c1h4VG9pZEMKTHFEWitiVURUWU1pR3EwSnBRQjl2TU1UZWY4M3N4b2ZRK20zdHRkTllENnoxS3N2bTlwMFpYako5UTZJTkdBaApEclowNkRLMVRLSzdpY3J6T2w3bUF4OUREYVdnVG9Vb1YrM3hma2dBb0lzWUJ1YUg0SFF5L2VxeCsvUkdlUDdkCm9lMW5ZTXV5S3kwS1JxNGFrUkN6M1RSYzk4bVhvdUxQS3BVWDhFbXY0dXBDbzFGTkt2NnZvaVhEZEt2Y3lsYzEKUXhmZ2p5T0VKdlFqSWxYZ2tOb3IyQjdMZG1sWGZDU01VdGFXdkNLRFBhTUNBd0VBQWFPQjJ6Q0IyRENCcFFZRApWUjBSQklHZE1JR2FnZ2xzYjJOaGJHaHZjM1NIQkg4QUFBR0hFQUFBQUFBQUFBQUFBQUFBQUFBQUFBR0NEMFJGClUwdFVUMUF0TVRNNVNqSk5PWUljUkVWVFMxUlBVQzB4TXpsS01rMDVMblJsWjJGdWFTNXNiMk5oYkljRXdLZ0EKZkljRXdLZzRBWWNFd0tnSW9JY1Evb0FBQUFBQUFBQUJQYWplS1BHMXc0Y1Evb0FBQUFBQUFBRE5NNFdvVUhpbgpHSWNRL29BQUFBQUFBQUR4aC9IQUxEV3RsREFkQmdOVkhRNEVGZ1FVVysxRldTMFZTR2tUOXI3NGJVRkxpYjI1CnhaZ3dEd1lEVlIwVEFRSC9CQVV3QXdFQi96QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFZM1pWSFFGMlZkQ2wKa2ZQOUhpMWd4ZVBEbkpDYnFNUW16NFBWQ0FKeVR5bFhYY3p4Lzd3UzY2cXhpVzRtby9IV2Uwd1dLVWtycjJ5OQpSTkNGUCtkTTBXNUFFNG41NFNlbFRidlRnSGVSQ09heEM2M3RncWtDUGVsQnV3bTZKTHlNaVEwSExXZ0hVcHdJCm44ODgzZUREZUQzcm15QlRNKzVQL0pHZlY0cm40TFZLQ25DdWxNTWpEc05ZU2xSNVJnTFlWcXNDYW1DYU82QkQKYVRNWGZseVZkbVBOd1F4dWpwODhUaVREcURJYlJpM1JRRm5nSnRFcUs3NzVoMjlaSTVTN1JyUTE5YXhXdU1oTQpHY1NwM3FWdTRFcmtkMGIwMHBnVjlERUFaQTlRUkZ2TUszVnIwWFR1RVIyaHlnWHpZd0NEdmNvRzNueGh4MDhQCmVScTg2RHI1SWc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
     "SELFSIGNEDROOTCAKEY": "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQ3hVaWxWWmI0N2RXdlEKMHRCZGNJNGFraWlKcFMvQU9IUllIRDZQNGdTdzlXaDIzNkpyWUVtYlpHa3M1MnVyRkhkVlRlZmNsbVdiY0JiRApEZHBZUDlVZTd1ZWF5RGVmWE9sNThMRjhVNkluUWk2ZzJmbTFBMDJESWhxdENhVUFmYnpERTNuL043TWFIMFBwCnQ3YlhUV0ErczlTckw1dmFkR1Y0eWZVT2lEUmdJUTYyZE9neXRVeWl1NG5LOHpwZTVnTWZRdzJsb0U2RktGZnQKOFg1SUFLQ0xHQWJtaCtCME12M3FzZnYwUm5qKzNhSHRaMkRMc2lzdENrYXVHcEVRczkwMFhQZkpsNkxpenlxVgpGL0JKcitMcVFxTlJUU3IrcjZJbHczU3IzTXBYTlVNWDRJOGpoQ2IwSXlKVjRKRGFLOWdleTNacFYzd2tqRkxXCmxyd2lnejJqQWdNQkFBRUNnZ0VBSFdZMmFvSy94aGhEVG5CTmZLM2NoRnBHOUtvRWRKWEhteE9LYWVKUU9IaTYKZFE4WFhPbll6N1h0QnVBVEJyUG5lZElTQncyUktNZ3VTMFpnMzdDQnFOWEtaT3djNWhsZnI4aUdNaUNrVkx4UgpMU1BHd01vY2tBa3RBV2lGSGhqbGN1QjlUSFo5MnU4T2NhY2ZNNnVRQnJBR2dDQVl4K0QwTVZFbXNMTkl5bkVaCllqVUhjbUpvUUdHS2JndGxYWHRQcFljVVJWNU9QQjBRbWsrOHNNb1dzU0RmblIrUysyL0hJSWVyVGZSSmZqQkwKcWVyUlJWUFlNYk1QUFJDa20yeEJUQ1ZEUGRjQWp2bG9yN1R1dmEzQ25IZHpFNXhqcUsrWVN0NzRGVVNWVTkyOAp6NUt2SVRNT1l6cWxVM2RFdlZVMFlsN25kOE5zb0x5VXNCVVd1VDNDSlFLQmdRRHpxOHVVWXFWckgrandHeXFLCnJzQjh0YTRnVitNeSszZkxjbGRBZEo1YVF0SXM2dFZ4Ky9kZ0ZZSGhQbWZNSlpGTTY5VUp0MTBKVHMvbE5VUUUKWEJRZHBlS05HMkpnaTZ4c3NiTFMzMW12R3JxSzcvcVdzaFZMT3ZwNnJ5b2RMNGJjVnIxUm1xdk81ajlNdzRieQpHcVdMWEhNdDFJdS9sa3QxZXJpZ2U1QmRud0tCZ1FDNlN2TjhyQUc2MkpjWGplNmp5UWFiZFpXUFd1a3hwSjZmClRtc0Q2Qk1wQXZzcENnVmlWUUFnTlFEMDVzUkIraFpHNDMxaUNRNXJqQnQ0cS81bXdhMzNMQ2dXc2JoNXZCQmcKZGtFRnB3UUZtcDlBK0FhR1g1b2Z3b1RGYVQ1RGhFVlh3RW9rSXJZdkI0Z3FJbEhUSWJGbDNWV0EyTHppYkxyMQpjZmprZm44WmZRS0JnUUNYbTZRbXh0bTFOVDF4WnZXcEkrR1B0bHFJdFNZZmFtYTJwb1d6RE53WnZNbVlPT1JrCjd5aVRGODZmbm54bWdGbFBTc3hhSjBRenJsMmJkdkRDNWFkK2F0L3llNzlSNHBWOWEzS2YwV2V6a3lYTm5GS0YKd0hlUFB6cnBhbU1CbGJpTEQwenJvUmlVdXAxWDNhL3dvck90YWZBZjY4YW5oWk9kbktXUzlFNTJjUUtCZ0hVcwpVV3ZZTUpwYVF1YUEwbG5ZUmp5ZnY3dFVQaHFJWlhEai9QR1BGZ1lVcHU4UUs0VEcyL1ptQUQwSnJPV21yRDVZCk5mUGtxRnBDM01DUXhjblNCbDdTT2tEVDlha3ovY1QrZkRWVzhIT3A1b01SdmVEazN1Y2REUyt4MjRUUi9GK08KUmRQbXRWcHRUVnJiRFVaVUNlVjlTcHRwTjV6Zk1OVFNvKzdzRlh0dEFvR0JBTlBRRjRvLzNOaWx3VEg2QzkvZwpjTEZCbktrYTNqWlJqRGx5TXZpTDlnZ2FjN0ZvOFZyMTBLMjZIa2FpRVBVTEdMMXk5cUJKVVk1ZUdoTi9vY0MxCjNyejZTU2lOR01DSUtlTmdZZXZnSTZ0ZUFjbm1MRkVJM3o5VlQ2enNTWWR2R3ZJNmVBekREN0FJMDdmS3NHdWUKekViVFF0eHZTdU9PemlmWDZzbndXR1JzCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K",
-    "SESSIONSTORAGE": {},
+    "SESSIONSTORAGE": {
+        "1b9d0175890110a1eaf87a8f367c3e8166ccb4b5147e1712d9c808635693396aa77eaf16e667a64ccbd85228488a41b5497cd910cfb5d5e15f6eca5b6041f5c3": {
+            "created": "2026-07-09T08:30:50.3848463Z",
+            "domain": "TcHmiUserManagement",
+            "userName": "__SystemAdministrator"
+        }
+    },
     "SHOW_CONFIGURATION_HINTS": true,
     "SHOW_MAINTENANCE_MODE": true,
     "SHUTDOWNTIMEOUT": "PT10S",
@@ -2601,6 +2794,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_HMI.abMachineDefinition": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::abMachineDefinition",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..5_OF-BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_HMI.abMachineDefinition.0": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2768,6 +2971,33 @@
             "MAPPING": "PLC1::GVL_HMI::anCameraScore[3]",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/STRING%2880%29"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.anNestOffsetByProbe1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::anNestOffsetByProbe1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "comment": "//////////////////////////////////////////////////////////////////////////////////SETTINGS/////////////////////////////////////////////////////////////////////////////////////"
+                    },
+                    {
+                        "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..4_OF-REAL"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.anNestOffsetByProbe2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::anNestOffsetByProbe2",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..4_OF-REAL"
             },
             "USEMAPPING": true
         },
@@ -3258,6 +3488,26 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_HMI.bPuckLockerGateEnable": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::bPuckLockerGateEnable",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.bPuckLockerSkipEnable": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::bPuckLockerSkipEnable",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_HMI.bRejectPartDialog.0": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3328,6 +3578,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_HMI.bSetProbeOffsetNest1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::bSetProbeOffsetNest1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Renan Added - 30Jun26 - Getting offset from HMI"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_HMI.bSetTolerances": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3340,6 +3607,23 @@
                     },
                     {
                         "comment": "Probes"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.ePuckLockerMode": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::ePuckLockerMode",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "comment": "Puck locker state"
+                    },
+                    {
+                        "$ref": "tchmi:server#/definitions/ADS-PLC1.E_PuckLockerMode"
                     }
                 ]
             },
@@ -3389,6 +3673,211 @@
             "MAPPING": "PLC1::GVL_HMI::nMachineDefinitionIndex2",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/INT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bCmdAcknowledgeRemovalFault": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bCmdAcknowledgeRemovalFault",
+            "REAUTHENTICATION_REQUIRED": true,
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bCmdEmptyPuckBypass": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bCmdEmptyPuckBypass",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bEnableEmptyPuckBypass": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bEnableEmptyPuckBypass",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 2
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckDetected": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bPuckDetected",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 5
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckLocked": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bPuckLocked",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 6
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckSensorMismatch": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bPuckSensorMismatch",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 7
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bShowEmptyPuckPopup": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bShowEmptyPuckPopup",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 10
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bShowUnexpectedRemovalPopup": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bShowUnexpectedRemovalPopup",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 9
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.bUnexpectedRemovalFault": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::bUnexpectedRemovalFault",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "propertyOrder": 8
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.eMode": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::eMode",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/ADS-PLC1.E_PuckLockerMode"
+                    },
+                    {
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.nPucksAllowedToPass": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::nPucksAllowedToPass",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/USINT"
+                    },
+                    {
+                        "propertyOrder": 11
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_HMI.stPuckLocker.sMessage": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_HMI::stPuckLocker::sMessage",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:server#/definitions/ADS-PLC1.STRING-255"
+                    },
+                    {
+                        "propertyOrder": 12
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -11041,6 +11530,7 @@
                 "ADS.PLC1.B_4_2_PRG_Master_ProcessDoor.bDoorClosed": 3,
                 "ADS.PLC1.B_4_2_PRG_Master_ProcessDoor.bDoorOpened": 3,
                 "ADS.PLC1.GVL_HMI.NetAmsId": 3,
+                "ADS.PLC1.GVL_HMI.abMachineDefinition": 3,
                 "ADS.PLC1.GVL_HMI.abMachineDefinition.0": 3,
                 "ADS.PLC1.GVL_HMI.abMachineDefinition.1": 3,
                 "ADS.PLC1.GVL_HMI.abMachineDefinition.2": 3,
@@ -11058,6 +11548,8 @@
                 "ADS.PLC1.GVL_HMI.anCameraScore.1": 3,
                 "ADS.PLC1.GVL_HMI.anCameraScore.2": 3,
                 "ADS.PLC1.GVL_HMI.anCameraScore.3": 3,
+                "ADS.PLC1.GVL_HMI.anNestOffsetByProbe1": 3,
+                "ADS.PLC1.GVL_HMI.anNestOffsetByProbe2": 3,
                 "ADS.PLC1.GVL_HMI.bCameraResetStatistics.0": 3,
                 "ADS.PLC1.GVL_HMI.bCameraResetStatistics.1": 3,
                 "ADS.PLC1.GVL_HMI.bCameraResetStatistics.2": 3,
@@ -11106,6 +11598,8 @@
                 "ADS.PLC1.GVL_HMI.bProcessDoor_Down": 3,
                 "ADS.PLC1.GVL_HMI.bProcessDoor_Up": 3,
                 "ADS.PLC1.GVL_HMI.bProcessDoor_Up2": 3,
+                "ADS.PLC1.GVL_HMI.bPuckLockerGateEnable": 3,
+                "ADS.PLC1.GVL_HMI.bPuckLockerSkipEnable": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.0": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.1": 3,
                 "ADS.PLC1.GVL_HMI.bRejectPartDialog.2": 3,
@@ -11113,11 +11607,25 @@
                 "ADS.PLC1.GVL_HMI.bSetCalibrationBlock1": 3,
                 "ADS.PLC1.GVL_HMI.bSetCalibrationBlock2": 3,
                 "ADS.PLC1.GVL_HMI.bSetDistances": 3,
+                "ADS.PLC1.GVL_HMI.bSetProbeOffsetNest1": 3,
                 "ADS.PLC1.GVL_HMI.bSetTolerances": 3,
+                "ADS.PLC1.GVL_HMI.ePuckLockerMode": 3,
                 "ADS.PLC1.GVL_HMI.nAirPressureMaxValue": 3,
                 "ADS.PLC1.GVL_HMI.nAirPressureMinValue": 3,
                 "ADS.PLC1.GVL_HMI.nAmountToEmptyRejectChute": 3,
                 "ADS.PLC1.GVL_HMI.nMachineDefinitionIndex2": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bCmdAcknowledgeRemovalFault": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bCmdEmptyPuckBypass": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bEnableEmptyPuckBypass": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckDetected": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckLocked": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bPuckSensorMismatch": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bShowEmptyPuckPopup": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bShowUnexpectedRemovalPopup": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.bUnexpectedRemovalFault": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.eMode": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.nPucksAllowedToPass": 3,
+                "ADS.PLC1.GVL_HMI.stPuckLocker.sMessage": 3,
                 "ADS.PLC1.GVL_HMI.stStatisticsHMI": 3,
                 "ADS.PLC1.GVL_HMI.stStatisticsHMI.0.bResetBad": 3,
                 "ADS.PLC1.GVL_HMI.stStatisticsHMI.0.bResetGood": 3,
@@ -11470,7 +11978,7 @@
     "USERGROUPUSERS": {
         "TcHmiUserManagement": {
             "Administrator": {
-                "USERGROUPUSERS_AUTO_LOGOFF": "PT15M",
+                "USERGROUPUSERS_AUTO_LOGOFF": "PT10M",
                 "USERGROUPUSERS_FORCE_PASSWORD_CHANGE": false,
                 "USERGROUPUSERS_GROUPS": [
                     "__SystemUsers",
@@ -11481,7 +11989,7 @@
                 "USERGROUPUSERS_TIMEZONE": "project"
             },
             "Engineer": {
-                "USERGROUPUSERS_AUTO_LOGOFF": "PT15M",
+                "USERGROUPUSERS_AUTO_LOGOFF": "PT10M",
                 "USERGROUPUSERS_FORCE_PASSWORD_CHANGE": false,
                 "USERGROUPUSERS_GROUPS": [
                     "__SystemUsers",
