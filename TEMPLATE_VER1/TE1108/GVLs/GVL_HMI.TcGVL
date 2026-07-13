@@ -57,6 +57,7 @@
 	fMachineDefinitionSet2				: F_TRIG;
 	
 	bProcessCylinder_Up					: BOOL;
+	bProcessCylinder_Up2				: BOOL;
 	bProcessCylinder_Down2				: BOOL;
 	
 	bProcessDoor_Up						: BOOL;
@@ -84,9 +85,14 @@
 	bEnableSetCablibrationBlock1		: BOOL;
 	bEnableSetCablibrationBlock2		: BOOL;
 	bSetDistances						: BOOL;
-	
-	
-	
+	(*Renan Added - 30Jun26 - Getting offset from HMI*)
+	bSetProbeOffsetNest1				: BOOL;
+	(*/Renan Added - 30Jun26 - Getting offset from HMI*)
+
+	(*Renan Added - 06Jul26 - Getting offset from HMI*)
+	//Puck Locker
+	stPuckLocker 						: ST_PuckLockerHMI;
+	(*\Renan Added - 06Jul26 - Getting offset from HMI*)
 	
 END_VAR
 
@@ -103,9 +109,16 @@ VAR_GLOBAL PERSISTENT
 																	//7: camera set 2
 														
 	/////////////////////////////////////////////////////////////////////////////////////SETTINGS/////////////////////////////////////////////////////////////////////////////////////	
-	
+	(*Renan Added - 30Jun26 - Getting offset from HMI*)
+	anNestOffsetByProbe1         		: ARRAY [1..4] OF REAL;
+    anNestOffsetByProbe2         		: ARRAY [1..4] OF REAL;
+	(*/Renan Added - 30Jun26 - Getting offset from HMI*)
 
-
+	(*Renan Added - 06Jul26 - Getting offset from HMI*)
+	ePuckLockerMode : E_PuckLockerMode := E_PuckLockerMode.Disabled; //Puck locker state
+	bPuckLockerGateEnable 				: BOOL := TRUE;
+	bPuckLockerSkipEnable 				: BOOL := FALSE;
+	(*\Renan Added - 06Jul26 - Getting offset from HMI*)
 	
 	//TwinSAFE
 	

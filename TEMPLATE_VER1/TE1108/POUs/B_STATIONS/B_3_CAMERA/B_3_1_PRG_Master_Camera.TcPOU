@@ -31,6 +31,8 @@ VAR
 	btest								: BOOL;
 	rtest								: R_TRIG;
 	
+	bInspectRequest 					: ARRAY [1..2] OF BOOL; (*Bugfix 03 - 09Jul26 | Code stucks with only one nest enabled*)
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -79,6 +81,9 @@ CASE stCamera.State OF
 							
 								IF stCamera.CMD.bExecute THEN
 									
+									bInspectRequest[1] := stCamera.CMD.CameraCMD.Inspect1; (*Renan Bugfix 03 - 09Jul26*)
+       								bInspectRequest[2] := stCamera.CMD.CameraCMD.Inspect2; (*Renan Bugfix 03 - 09Jul26*)
+									
 									IF abMachineDefinition[1] THEN
 										
 										stCamera.State						:= E_Camera_State.TAKING_PICTURE_CAP;
@@ -97,12 +102,12 @@ CASE stCamera.State OF
 								
 								bClearBuffer							:= FALSE;
 								
-								IF stCamera.CMD.CameraCMD.Inspect1 AND stCamera.CMD.CameraCMD.Inspect2 THEN
+								IF bInspectRequest[1] AND bInspectRequest[2] THEN (*Renan Bugfix 03 - 09Jul26*)
 																		
-										bTtigger[1]							:= TRUE;
-										bTtigger[2]							:= TRUE;
-										bTtigger[3]							:= TRUE;
-										bTtigger[4]							:= TRUE;									
+									bTtigger[1]							:= TRUE;
+									bTtigger[2]							:= TRUE;
+									bTtigger[3]							:= TRUE;
+									bTtigger[4]							:= TRUE;									
 									
 									IF bDone[1] AND bDone[2] AND NOT bGeneralBusy  THEN
 										
@@ -126,7 +131,7 @@ CASE stCamera.State OF
 										
 									END_IF
 									
-								ELSIF stCamera.CMD.CameraCMD.Inspect1 AND NOT stCamera.CMD.CameraCMD.Inspect2 THEN
+								ELSIF bInspectRequest[1] AND NOT bInspectRequest[2] THEN (*Renan Bugfix 03 - 09Jul26*)
 									
 									bTtigger[1]							:= TRUE;
 									bTtigger[2]							:= TRUE;
@@ -149,7 +154,7 @@ CASE stCamera.State OF
 										
 									END_IF
 								
-								ELSIF NOT stCamera.CMD.CameraCMD.Inspect1 AND stCamera.CMD.CameraCMD.Inspect2 THEN
+								ELSIF NOT bInspectRequest[1] AND bInspectRequest[2] THEN (*Renan Bugfix 03 - 09Jul26*)
 									
 									bTtigger[3]							:= TRUE;
 									bTtigger[4]							:= TRUE;
@@ -351,32 +356,38 @@ CASE stCamera.State OF
 								
 								
 								
-		E_Camera_State.RESULTS_CAP:			
-								
-								
-								IF (bPass[1] OR bFail[1]) AND (bPass[2] OR bFail[2]) THEN
-									
-									stCycleDataNest1.Camera_Pass			:= bPass[1];
-									stCycleDataNest1.Camera_Fail			:= bFail[1];
-									stCycleDataNest2.Camera_Pass			:= bPass[2];
-									stCycleDataNest2.Camera_Fail			:= bFail[2];
-								
-									stCamera.State							:= E_Camera_State.DONE;
-									ctuTriggerCounter.RESET					:= TRUE;
-									
-								ELSIF NOT (bPass[1] OR bFail[1]) OR NOT (bPass[2] OR bFail[2]) THEN
-									
-									
-									ctuTriggerCounter.CU					:= TRUE;									
-									bTtigger[1]								:= FALSE;
-									bTtigger[2]								:= FALSE;
-									bTtigger[3]								:= FALSE;
-									bTtigger[4]								:= FALSE;
-									bClearBuffer							:= TRUE;
-										
-									stCamera.State							:= E_Camera_State.TAKING_PICTURE_CAP;
-									
-								END_IF		
+		E_Camera_State.RESULTS_CAP: (*Renan Bugfix 03 - 09Jul26 | Entire case*)
+
+								IF ((bPass[1] OR bFail[1]) OR NOT bInspectRequest[1]) AND
+								   ((bPass[2] OR bFail[2]) OR NOT bInspectRequest[2]) THEN
+							
+									IF bInspectRequest[1] THEN
+										stCycleDataNest1.Camera_Pass := bPass[1];
+										stCycleDataNest1.Camera_Fail := bFail[1];
+									END_IF
+							
+									IF bInspectRequest[2] THEN
+										stCycleDataNest2.Camera_Pass := bPass[2];
+										stCycleDataNest2.Camera_Fail := bFail[2];
+									END_IF
+							
+									stCamera.State := E_Camera_State.DONE;
+									ctuTriggerCounter.RESET := TRUE;
+							
+								ELSE
+							
+									ctuTriggerCounter.CU := TRUE;
+							
+									bTtigger[1] := FALSE;
+									bTtigger[2] := FALSE;
+									bTtigger[3] := FALSE;
+									bTtigger[4] := FALSE;
+							
+									bClearBuffer := TRUE;
+							
+									stCamera.State := E_Camera_State.TAKING_PICTURE_CAP;
+							
+								END_IF
 
 		E_Camera_State.RESULTS_FPB:			
 		
@@ -413,6 +424,8 @@ CASE stCamera.State OF
 								ctuTriggerCounter.RESET					:= FALSE;
 								ctuTriggerCounter.CU					:= FALSE;
 								
+								bInspectRequest[1] 						:= FALSE; (*Renan Bugfix 03 - 09Jul26*)
+								bInspectRequest[2] 						:= FALSE; (*Renan Bugfix 03 - 09Jul26*)
 					
 								IF  bError[1] OR bError[2] OR bError[3] OR bError[4] THEN
 									

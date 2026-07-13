@@ -30,9 +30,11 @@ VAR
 	anRawMesurement2					: ARRAY[1..4] OF REAL;
 	anRealDistance1						: ARRAY[1..3] OF REAL;
 	anRealDistance2						: ARRAY[1..3] OF REAL;
-	
+	(*Renan - Added on 30Jun2026 *)
+	anCorrectedMeasurement1 			: ARRAY [1..4] OF REAL;
+    anCorrectedMeasurement2 			: ARRAY [1..4] OF REAL;
+	(*/Renan - Added on 30Jun2026 *)
 
-	
 	i									: DINT;
 	j									: DINT; //Index for settings
 	
@@ -523,10 +525,10 @@ Probes.stProbesSet[2].anScaledRawMeasurement[2]					:= DINT_TO_REAL(Probes.stPro
 Probes.stProbesSet[2].anScaledRawMeasurement[3]					:= DINT_TO_REAL(Probes.stProbesSet[2].anRawMeasurement[3])/10000;
 Probes.stProbesSet[2].anScaledRawMeasurement[4]					:= DINT_TO_REAL(Probes.stProbesSet[2].anRawMeasurement[4])/10000;
 
-IF Probes.stProbesSet[1].anScaledRawMeasurement[1] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[1] < 10 AND 
-	Probes.stProbesSet[1].anScaledRawMeasurement[2] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[2] < 10 AND 
-	Probes.stProbesSet[1].anScaledRawMeasurement[3] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[3] < 10 AND 
-	Probes.stProbesSet[1].anScaledRawMeasurement[4] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[4] < 10 THEN 
+IF Probes.stProbesSet[1].anScaledRawMeasurement[1] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[1] < 12 AND 
+	Probes.stProbesSet[1].anScaledRawMeasurement[2] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[2] < 12 AND 
+	Probes.stProbesSet[1].anScaledRawMeasurement[3] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[3] < 12 AND 
+	Probes.stProbesSet[1].anScaledRawMeasurement[4] > 2 AND Probes.stProbesSet[1].anScaledRawMeasurement[4] < 12 THEN 
 	
 	bEnableSetCablibrationBlock1								:= TRUE;
 	
@@ -534,10 +536,10 @@ ELSE bEnableSetCablibrationBlock1								:= FALSE;
 	
 END_IF
 
-IF Probes.stProbesSet[2].anScaledRawMeasurement[1] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[1] < 10 AND 
-	Probes.stProbesSet[2].anScaledRawMeasurement[2] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[2] < 10 AND 
-	Probes.stProbesSet[2].anScaledRawMeasurement[3] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[3] < 10 AND 
-	Probes.stProbesSet[2].anScaledRawMeasurement[4] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[4] < 10 THEN 
+IF Probes.stProbesSet[2].anScaledRawMeasurement[1] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[1] < 12 AND 
+	Probes.stProbesSet[2].anScaledRawMeasurement[2] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[2] < 12 AND 
+	Probes.stProbesSet[2].anScaledRawMeasurement[3] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[3] < 12 AND 
+	Probes.stProbesSet[2].anScaledRawMeasurement[4] > 2 AND Probes.stProbesSet[2].anScaledRawMeasurement[4] < 12 THEN 
 	
 	bEnableSetCablibrationBlock2								:= TRUE;
 	
@@ -574,13 +576,30 @@ IF bSetCalibrationBlock2 THEN
 
 END_IF
 
-anRealDistance1[1] 								:= (Probes.stProbesSet[1].anScaledRawMeasurement[2] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[1];
-anRealDistance1[2] 								:= (Probes.stProbesSet[1].anScaledRawMeasurement[3] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[2];
-anRealDistance1[3] 								:= (Probes.stProbesSet[1].anScaledRawMeasurement[4] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[3];
+(* Renan Added 30Jun26 - Nest offset by probe *)
+IF bSetProbeOffsetNest1 THEN
+	FOR i := 1 TO 4 DO
+		stProbesSettings.anNestOffsetByProbe1[i] := anNestOffsetByProbe1[i];
+		stProbesSettings.anNestOffsetByProbe2[i] := anNestOffsetByProbe2[i];
+	END_FOR
+	bSetProbeOffsetNest1 := FALSE;
+END_IF
 
-anRealDistance2[1] 								:= (Probes.stProbesSet[2].anScaledRawMeasurement[2] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[1];
-anRealDistance2[2] 								:= (Probes.stProbesSet[2].anScaledRawMeasurement[3] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[2];
-anRealDistance2[3] 								:= (Probes.stProbesSet[2].anScaledRawMeasurement[4] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[3];]]></ST>
+FOR i := 1 TO 4 DO
+    anCorrectedMeasurement1[i] := Probes.stProbesSet[1].anScaledRawMeasurement[i] + stProbesSettings.anNestOffsetByProbe1[i];
+    anCorrectedMeasurement2[i] := Probes.stProbesSet[2].anScaledRawMeasurement[i] + stProbesSettings.anNestOffsetByProbe2[i];
+END_FOR
+
+(* Renan Changed 30Jun26 - Nest offset by probe *)
+
+anRealDistance1[1] 	:= (anCorrectedMeasurement1[2] - anCorrectedMeasurement1[1]) + stProbesSettings.nDistanceOffset1[1]; //(Probes.stProbesSet[1].anScaledRawMeasurement[2] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[1];
+anRealDistance1[2] 	:= (anCorrectedMeasurement1[3] - anCorrectedMeasurement1[1]) + stProbesSettings.nDistanceOffset1[2]; //(Probes.stProbesSet[1].anScaledRawMeasurement[3] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[2];
+anRealDistance1[3] 	:= (anCorrectedMeasurement1[4] - anCorrectedMeasurement1[1]) + stProbesSettings.nDistanceOffset1[3]; //(Probes.stProbesSet[1].anScaledRawMeasurement[4] - Probes.stProbesSet[1].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset1[3];
+
+anRealDistance2[1] 	:= (anCorrectedMeasurement2[2] - anCorrectedMeasurement2[1]) + stProbesSettings.nDistanceOffset2[1]; //(Probes.stProbesSet[2].anScaledRawMeasurement[2] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[1];
+anRealDistance2[2] 	:= (anCorrectedMeasurement2[3] - anCorrectedMeasurement2[1]) + stProbesSettings.nDistanceOffset2[2]; //(Probes.stProbesSet[2].anScaledRawMeasurement[3] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[2];
+anRealDistance2[3] 	:= (anCorrectedMeasurement2[4] - anCorrectedMeasurement2[1]) + stProbesSettings.nDistanceOffset2[3]; //(Probes.stProbesSet[2].anScaledRawMeasurement[4] - Probes.stProbesSet[2].anScaledRawMeasurement[1]) + stProbesSettings.nDistanceOffset2[3];
+]]></ST>
       </Implementation>
     </Action>
   </POU>

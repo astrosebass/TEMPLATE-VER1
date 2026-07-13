@@ -139,6 +139,9 @@
       "url": "Contents/UserControl/PopUp/YesNo_ver2.usercontrol"
     },
     {
+      "url": "Contents/UserControl/PopUp/YesNoRed.usercontrol"
+    },
+    {
       "url": "Contents/UserControl/ProbeLevel_V2.usercontrol"
     }
   ],
@@ -397,6 +400,13 @@
       "preloadBindings": false
     },
     {
+      "url": "Contents/popup/popup3_LogoffPage.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
       "url": "Contents/popup/popup5_UserManagement.content",
       "preload": false,
       "keepAlive": false,
@@ -405,6 +415,13 @@
     },
     {
       "url": "Contents/popup/popup6_ChangeSettings_ver2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/popup/popup7_PuckRemoved.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
@@ -621,6 +638,13 @@
       "preloadBindings": false
     },
     {
+      "url": "Contents/Settings/NestOffset.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
       "url": "Contents/Settings/ProbePositions1.content",
       "preload": false,
       "keepAlive": false,
@@ -629,6 +653,13 @@
     },
     {
       "url": "Contents/Settings/ProbePositions2.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "Contents/Settings/PuckLockerMode.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,
