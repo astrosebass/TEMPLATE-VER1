@@ -3,7 +3,7 @@
   "basePath": "./Beckhoff.TwinCAT.HMI.Framework",
   "scaleMode": "None",
   "startupView": "Desktop.view",
-  "loginPage": "",
+  "loginPage": "Default",
   "splash": {
     "versionSource": "Framework"
   },

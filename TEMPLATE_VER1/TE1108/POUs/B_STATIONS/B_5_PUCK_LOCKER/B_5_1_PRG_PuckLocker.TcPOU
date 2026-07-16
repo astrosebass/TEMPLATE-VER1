@@ -172,7 +172,13 @@ rTrigApplyDisposition(CLK := GVL_Stations.stPuckLocker.bApplyDisposition);
 
 rTrigEmptyPuckBypass(CLK := GVL_HMI.stPuckLocker.bCmdEmptyPuckBypass);
 
-rTrigAcknowledgeFault(CLK := GVL_HMI.stPuckLocker.bCmdAcknowledgeRemovalFault);
+rTrigAcknowledgeFault(CLK := GVL_HMI.stPuckLocker.bCmdAcknowledgeRemovalFault AND bPuckPresent);//Puck present added 
+
+IF NOT bPuckPresent THEN
+	
+	GVL_HMI.stPuckLocker.bCmdAcknowledgeRemovalFault := FALSE;
+
+END_IF
 
 
 // =================================================================

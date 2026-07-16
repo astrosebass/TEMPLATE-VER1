@@ -80,7 +80,7 @@ tonSys_Init(IN:=stMachineStatus.bInitialising);
 tonSafety( IN := stMachineStatus.eMachineState = E_MachineState.SAFETY, PT := T#10S);
 tonStopped(IN := stMachineStatus.eMachineState = E_MachineState.STOPPED);
 	
-	IF stMachineStatus.eMachineState <> E_MachineState.SYSTEM_AUTO_CYCLE OR 
+	IF stMachineStatus.eMachineState <> E_MachineState.SYSTEM_AUTO_CYCLE AND 
 		stMachineStatus.eMachineState <> E_MachineState.SYSTEM_INITIALISING THEN
 		
 		sMachineMessage									:= '';			

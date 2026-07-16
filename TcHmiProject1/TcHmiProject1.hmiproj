@@ -555,6 +555,12 @@
     <Content Include="Images\animation_cylinder.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Images\Base_animation_HW_3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Images\Base_animation_LT_Reservoir_2.png">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Images\Buttons\AlarmButton.png">
       <SubType>Content</SubType>
     </Content>
