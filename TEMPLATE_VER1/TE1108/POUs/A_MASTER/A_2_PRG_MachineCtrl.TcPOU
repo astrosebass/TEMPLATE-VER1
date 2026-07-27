@@ -496,6 +496,9 @@ E_General_ProcessCycle.RESET_ALL_CMD:
 				bRejectPartDialog[0]											:= FALSE;
 				bRejectPartDialog[1]											:= FALSE;
 				bRejectPartFault												:= FALSE;
+				
+				bProcessedPart[0]												:= FALSE;
+				bProcessedPart[1]												:= FALSE;
 			
 				//add reset command to reset all cycle data
 				
@@ -506,7 +509,7 @@ E_General_ProcessCycle.RESET_ALL_CMD:
 E_General_ProcessCycle.IDLE:
 
 				//start cycle
-				IF bStartProcessCondition AND NOT bProcessedPart[0] AND NOT bProcessedPart[1] AND bPuckLockerReadyToStart THEN (*Renan added - Puck Locker Bug - 08Jul26*) //Original: IF bStartProcessCondition AND NOT bProcessedPart[0] AND NOT bProcessedPart[1] THEN
+				IF bStartProcessCondition AND bPartPresent[0] AND bPartPresent[1] AND bPuckLockerReadyToStart THEN (*Renan added - Puck Locker Bug - 08Jul26*) //Original: IF bStartProcessCondition AND NOT bProcessedPart[0] AND NOT bProcessedPart[1] THEN
 					
 					MEMSET( destAddr := ADR(stCycleDataNest1), fillByte := 0, n := SIZEOF(stCycleDataNest1));
 					MEMSET( destAddr := ADR(stCycleDataNest2), fillByte := 0, n := SIZEOF(stCycleDataNest2));
@@ -527,18 +530,6 @@ E_General_ProcessCycle.IDLE:
 					
 				END_IF
 				
-				//Make sure operator remove processed part
-				fProcessedPart[0]( CLK := bPartPresentNest1);
-				fProcessedPart[1]( CLK := bPartPresentNest2);
-				
-				IF fProcessedPart[0].Q THEN
-					bProcessedPart[0]						:= FALSE;
-				END_IF
-				
-				IF fProcessedPart[1].Q THEN
-					bProcessedPart[1]						:= FALSE;
-				END_IF
-				
 				IF bPuckLockerEnable AND NOT bPuckLockerReadyToStart AND NOT bProcessedPart[0] AND NOT bProcessedPart[1] THEN
 				
 					IF NOT GVL_Stations.stPuckLocker.bPuckDetected THEN
@@ -551,13 +542,23 @@ E_General_ProcessCycle.IDLE:
 						
 					END_IF					
 				
-				ELSIF  bPuckLockerReadyToStart THEN
+				ELSIF  bPuckLockerReadyToStart AND bPartPresent[0] AND bPartPresent[1] THEN
 					
 					sMachineMessage := 'trigger both safety buttons to start cycle';
-						
+					
+				ELSIF bPuckLockerReadyToStart AND ( NOT bPartPresent[0] AND NOT bPartPresent[1]) THEN
+					
+					sMachineMessage 			:= 'Place parts to continue';
+					
+				ELSIF bPuckLockerReadyToStart AND ( bPartPresent[0] AND NOT bPartPresent[1]) THEN
+					
+					sMachineMessage 			:= 'Place part in nest 2 to continue';
+				
+				ELSIF bPuckLockerReadyToStart AND ( NOT bPartPresent[0] AND bPartPresent[1]) THEN
+					
+					sMachineMessage 			:= 'Place part in nest 1 to continue';
+					
 				END_IF
-				
-				
 			
 E_General_ProcessCycle.CLOSE_PROCESS_DOOR:
 
@@ -932,6 +933,8 @@ E_General_ProcessCycle.WAIT_OPEN_PROCESS_DOOR:
 					stProcessDoor.CMD.bExecute			:= FALSE;
 					stProcessDoor.CMD.bAcknowledge		:= TRUE;
 					
+					eCycleState							:= E_General_ProcessCycle.PUCK_DEFINITION;
+					
 				END_IF
 				
 E_General_ProcessCycle.PUCK_DEFINITION:
@@ -1022,6 +1025,7 @@ E_General_ProcessCycle.WAIT_REJECT_PART:
 							GVL_Stations.stPuckLocker.bApplyDisposition 		:= TRUE;
 						END_IF
 						(*\Renan Added 10Jul26 - Puck Locker *)
+						
 						
 						eCycleState												:= E_General_ProcessCycle.NEST_CLEARING;
 						
@@ -1310,8 +1314,8 @@ dw_T09_EL2809.qIndicatorLED1_Green	:= stCycleDataNest1.bPass;
 dw_T09_EL2809.qIndicatorLED2_Red	:= stCycleDataNest2.bFail;		
 dw_T09_EL2809.qIndicatorLED2_Green	:= stCycleDataNest2.bPass;	
 
-IF 	(stMachineStatus.eMachineState = E_MachineState.SYSTEM_AUTO_CYCLE) AND NOT ((eCycleState	= E_General_ProcessCycle.IDLE) OR eCycleState	= E_General_ProcessCycle.WAIT_REJECT_PART) 
-	OR (eCycleState	= E_General_ProcessCycle.NEST_CLEARING) OR (eCycleState	= E_General_ProcessCycle.REJECT_CHUTE_FULL) THEN
+IF 	(stMachineStatus.eMachineState = E_MachineState.SYSTEM_AUTO_CYCLE) AND NOT ((eCycleState	= E_General_ProcessCycle.IDLE) OR (eCycleState	= E_General_ProcessCycle.WAIT_REJECT_PART) 
+	OR (eCycleState	= E_General_ProcessCycle.NEST_CLEARING) OR (eCycleState	= E_General_ProcessCycle.REJECT_CHUTE_FULL) OR (eCycleState	= E_General_ProcessCycle.PUCK_DEFINITION)) THEN
 	
 
 	bPartPresent[0]					:= 	bProcessedPart[0];
