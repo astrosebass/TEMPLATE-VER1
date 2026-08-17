@@ -10,7 +10,7 @@
                 var cssStyles = []; // Collected CSS styles which will be returned at the end
 
                     
-                if (RowData.sType == "Immediate Fault") {
+                if (RowData.sType == "Fault") {
                     cssStyles.push("Alarm");
                 }
                 if (RowData.sType == "Cycle Stop Fault") {
@@ -22,8 +22,37 @@
                 if (RowData.sType == "Message") {
                     cssStyles.push("Message");
                 }
-              
-           
+
+
+
+
+                if (RowData.sGeneralResult == "FAIL") {
+                    cssStyles.push("GeneralFail");
+                }
+                if (RowData.sGeneralResult == "PASS") {
+                    cssStyles.push("GeneralPass");
+                }
+
+                if (RowData.sCameraResult == "FAIL") {
+                    cssStyles.push("CameraFail");
+                }
+                if (RowData.sCameraResult == "PASS") {
+                    cssStyles.push("CameraPass");
+                }
+
+                if (RowData.sLeakTesterResult == "FAIL") {
+                    cssStyles.push("LeakTesterFail");
+                }
+                if (RowData.sLeakTesterResult == "PASS") {
+                    cssStyles.push("LeakTesterPass");
+                }
+
+                if (RowData.sHeightTestResult == "FAIL") {
+                    cssStyles.push("HeightTestFail");
+                }
+                if (RowData.sHeightTestResult == "PASS") {
+                    cssStyles.push("HeightTestPass");
+                }
 
                 return cssStyles;
             }
